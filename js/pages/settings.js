@@ -6,6 +6,16 @@ import { control, groups } from "../fields.js";
 import { EMPTY, dataOf, plural, rejectedNotices, top } from "./parts.js";
 
 const THEMES = [["device", "Follow device"], ["light", "Light"], ["dark", "Dark"]];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/** "Connected until 11 Nov": the day this device is asked for the token again. */
+function connection(view) {
+  if (view.demo) return "Demo";
+  const ends = view.sessionEnds;
+  if (typeof ends !== "number" || !Number.isFinite(ends)) return "Connected";
+  const day = new Date(ends * 1000);
+  return `Connected until ${day.getDate()} ${MONTHS[day.getMonth()]}`;
+}
 
 function device(view) {
   const themes = THEMES.map(([value, label]) =>
@@ -14,7 +24,7 @@ function device(view) {
     ? '<button type="button" data-disconnect>Leave the demo</button>'
     : '<a class="button" href="#connect">Replace token</a><button type="button" data-disconnect>Disconnect</button>';
   return '<section class="group"><h2>This device</h2><div class="card">'
-    + `<div class="row"><span class="row-label">GitHub connection</span><span class="chip ${view.demo ? "demo-chip" : "ok-chip"}">${view.demo ? "Demo" : "Connected"}</span></div>`
+    + `<div class="row"><span class="row-label">GitHub connection</span><span class="chip ${view.demo ? "demo-chip" : "ok-chip"}">${connection(view)}</span></div>`
     + `<div class="row"><label class="row-label" for="theme">Theme</label><span class="row-control"><select id="theme" data-theme-pick>${themes}</select></span></div>`
     + `<div class="row actions">${leave}</div>`
     + "</div></section>";

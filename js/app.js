@@ -5,7 +5,7 @@ import { createClient } from "./github.js";
 import { createDemoClient } from "./demo.js";
 import { createStore } from "./store.js";
 import { coerce, fieldFor } from "./fields.js";
-import { leaveKeys, safely } from "./shell.js";
+import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayReload, safely, sessionOver } from "./shell.js";
 import { movePill, patch, settle, startWeather } from "./motion.js";
 import * as home from "./pages/home.js";
 import * as summary from "./pages/summary.js";
@@ -45,6 +45,9 @@ const view = {
   staged: new Map(),
 };
 let store = null;
+// When this device connected (Unix seconds), kept here as well as in storage
+// so a browser that keeps nothing still works for the visit.
+let connectedAt = null;
 let shown = "";              // the page last drawn, so a change of page is known
 let lastRefresh = 0;
 let toastTimer = null;
@@ -103,7 +106,22 @@ function draw({ whole = false } = {}) {
   }
 }
 
+/** The month is up: forget the token and what was read with it, and ask. */
+function expire() {
+  for (const key of EXPIRED_KEYS) keep.remove(key);
+  store = null;
+  connectedAt = null;
+  view.sessionEnds = null;
+  view.staged.clear();
+  view.connectError = `It has been ${SESSION_DAYS} days since this device connected. Enter the token again.`;
+}
+
 async function refresh() {
+  if (store && !view.demo && sessionOver(connectedAt, now())) {
+    expire();
+    location.hash = "#connect";
+    return draw();
+  }
   if (!store || store.state.busy) return;
   lastRefresh = now();
   const reading = store.refresh();
@@ -126,12 +144,20 @@ function openSaved() {
   const repo = keep.get("panel.repo");
   const token = keep.get("panel.token");
   store = null;
+  connectedAt = null;
   view.demo = false;
+  view.sessionEnds = null;
   view.repo = repo || "";
   if (keep.get("panel.demo") === "1") open(createDemoClient({ fetch: (url, init) => fetch(url, init) }), true);
   else if (repo && token) {
+    // A device connected before there was a month to count gets one from now.
+    const kept = keep.get("panel.connectedAt");
+    connectedAt = kept === null ? now() : Number(kept);
+    if (kept === null) keep.set("panel.connectedAt", String(connectedAt));
+    if (sessionOver(connectedAt, now())) return expire();
     try {
       open(createClient({ repo, token, fetch: (url, init) => fetch(url, init) }), false);
+      view.sessionEnds = connectedAt + SESSION_DAYS * 86400;
     } catch {
       store = null;
     }
@@ -177,7 +203,10 @@ async function connectWith(repo, token) {
   keep.remove("panel.cache");
   keep.set("panel.repo", repo);
   keep.set("panel.token", token);
+  connectedAt = now();
+  keep.set("panel.connectedAt", String(connectedAt));
   open(client, false);
+  view.sessionEnds = connectedAt + SESSION_DAYS * 86400;
   location.hash = "#home";
   draw();
   refresh();
@@ -310,7 +339,23 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && now() - lastRefresh > REFRESH_GAP) refresh();
 });
 
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+if ("serviceWorker" in navigator) {
+  // A new version has taken over from the one that served this page: show it
+  // now, unless that would pull the page from under somebody's hands - then
+  // it shows the next time the page is opened.
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  const lastReload = () => {
+    try { return Number(sessionStorage.getItem("panel.reloadedAt")) || 0; } catch { return 0; }
+  };
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    const active = document.activeElement;
+    const editing = Boolean(active && active.matches("input, select, textarea"));
+    if (!mayReload({ hadController, editing, staged: view.staged.size, sinceLast: now() - lastReload() })) return;
+    try { sessionStorage.setItem("panel.reloadedAt", String(now())); } catch { /* not kept */ }
+    location.reload();
+  });
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 
 start();
 startWeather(document.querySelector(".backdrop"));

@@ -10,7 +10,7 @@ export function render(store, view) {
     + '<label class="row-label" for="token">Token</label>'
     + '<input id="token" name="token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">'
     + '<p class="row-help">A fine-grained token limited to that repository, with Contents read and write. '
-    + "It is kept on this device and sent only to api.github.com.</p>"
+    + "It is kept on this device for 30 days and sent only to api.github.com; after that it is asked for again.</p>"
     + error
     + '<div class="row actions"><button type="submit" class="primary">Connect</button>'
     + '<button type="button" data-demo>Try the demo</button>'

@@ -1,7 +1,28 @@
 // The shell's decisions that need no document, so they can be tested.
 
 const DEMO = "panel.demo";
-const EVERYTHING = ["panel.repo", "panel.token", "panel.cache", "panel.dismissed", DEMO];
+const EVERYTHING = ["panel.repo", "panel.token", "panel.cache", "panel.dismissed", "panel.connectedAt", DEMO];
+
+/** A device is asked for the token again this long after it connected. It is
+ *  the device forgetting, not GitHub refusing: the token itself lasts as long
+ *  as it was made to on GitHub. */
+export const SESSION_DAYS = 30;
+const SESSION = SESSION_DAYS * 86400;
+// A device clock an hour out is nothing; one that says it connected days
+// from now has been set back, and is not believed.
+const CLOCK_SLACK = 3600;
+
+/** What goes when the month is up: the token and what was read with it. The
+ *  repository's name stays, so only the token has to be typed again. */
+export const EXPIRED_KEYS = ["panel.token", "panel.cache", "panel.dismissed", "panel.connectedAt"];
+
+/** Whether a device that connected at `connectedAt` must connect again. With
+ *  no record of when, it must. */
+export function sessionOver(connectedAt, now) {
+  if (typeof connectedAt !== "number" || !Number.isFinite(connectedAt)) return true;
+  if (connectedAt - now > CLOCK_SLACK) return true;
+  return now - connectedAt >= SESSION;
+}
 
 /** What leaving forgets. Leaving the demo forgets only that it was on: the
  *  repository and the token saved before it are still wanted. */
@@ -43,4 +64,15 @@ export function changes(seen, now) {
     seen.set(key, value);
   }
   return out;
+}
+
+// Never twice within this many seconds, whatever the reason.
+const RELOAD_GAP = 60;
+
+/** Whether the page should reload itself now that a new version has taken
+ *  over. Not on a first visit (nothing was replaced), not while somebody is
+ *  in a field or has a list rearranged and not sent, and not in a loop.
+ *  Told nothing, it does nothing. */
+export function mayReload({ hadController = false, editing = true, staged = 1, sinceLast = 0 } = {}) {
+  return hadController && !editing && staged === 0 && sinceLast > RELOAD_GAP;
 }
