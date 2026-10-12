@@ -4,7 +4,7 @@
 //
 // publish.sh puts the commit in place of "dev". While it is "dev" nothing is
 // kept, so a change made here shows on the next reload.
-const VERSION = "7baf01b";
+const VERSION = "35182cd";
 // The page shares its origin with every other site of the account, so its
 // caches carry its own name, and only those are ever cleared.
 const PREFIX = "panel-shell-";
