@@ -19,7 +19,30 @@
 <script type="module" src="js/app.js"></script>
 </head>
 <body class="connecting">
+<div class="backdrop" aria-hidden="true">
+  <div class="bd-scene"></div>
+  <svg class="bd-silk" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <path class="thread thread-a" d="M-20 330 C 180 284 320 376 500 316 S 820 371 1020 307" pathLength="100"/>
+    <path class="bead bead-0" d="M-20 330 C 180 284 320 376 500 316 S 820 371 1020 307" pathLength="100"/>
+    <path class="thread thread-b" d="M-20 360 C 180 317 320 403 500 347 S 820 399 1020 338" pathLength="100"/>
+    <path class="bead bead-1" d="M-20 360 C 180 317 320 403 500 347 S 820 399 1020 338" pathLength="100"/>
+    <path class="thread thread-a" d="M-20 390 C 180 350 320 430 500 378 S 820 426 1020 370" pathLength="100"/>
+    <path class="bead bead-2" d="M-20 390 C 180 350 320 430 500 378 S 820 426 1020 370" pathLength="100"/>
+    <path class="thread thread-b" d="M-20 420 C 180 383 320 457 500 409 S 820 453 1020 402" pathLength="100"/>
+    <path class="bead bead-3" d="M-20 420 C 180 383 320 457 500 409 S 820 453 1020 402" pathLength="100"/>
+    <path class="thread thread-a" d="M-20 450 C 180 416 320 484 500 440 S 820 481 1020 433" pathLength="100"/>
+    <path class="bead bead-0" d="M-20 450 C 180 416 320 484 500 440 S 820 481 1020 433" pathLength="100"/>
+    <path class="thread thread-b" d="M-20 480 C 180 449 320 511 500 471 S 820 508 1020 464" pathLength="100"/>
+    <path class="bead bead-1" d="M-20 480 C 180 449 320 511 500 471 S 820 508 1020 464" pathLength="100"/>
+    <path class="thread thread-a" d="M-20 510 C 180 482 320 538 500 502 S 820 535 1020 496" pathLength="100"/>
+    <path class="bead bead-2" d="M-20 510 C 180 482 320 538 500 502 S 820 535 1020 496" pathLength="100"/>
+    <path class="thread thread-b" d="M-20 540 C 180 515 320 565 500 532 S 820 562 1020 528" pathLength="100"/>
+    <path class="bead bead-3" d="M-20 540 C 180 515 320 565 500 532 S 820 562 1020 528" pathLength="100"/>
+  </svg>
+  <div class="bd-fx"></div>
+</div>
 <nav class="nav" aria-label="Pages">
+  <span class="nav-pill" aria-hidden="true"></span>
   <a href="#home" data-nav="home">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>
     <span>Home</span>

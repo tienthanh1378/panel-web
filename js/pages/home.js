@@ -1,5 +1,6 @@
-// Home: where the PC is, and the run as the panel's Home has it - the count
-// tiles, a card per character, the latest happenings.
+// Home: where the PC is, and the run as the panel's Home has it - the dial
+// and the bar of the cycle's progress, the count tiles, a card per character,
+// the latest happenings.
 import { esc, amount } from "../format.js";
 import { pcLine } from "../store.js";
 import { EMPTY, dataOf, top } from "./parts.js";
@@ -48,22 +49,46 @@ function card(who, schema) {
     + "</article>";
 }
 
+/** The cycle's progress as the panel shows it: a dial with the number, and a
+ *  bar with a dot for each character. Its numbers are set here; how it moves
+ *  is the stylesheet's and motion.js's business. */
+function progress(live, mode) {
+  const part = Math.min(1, Math.max(0, number(live.progress)));
+  const percent = Math.round(part * 100);
+  const dots = (Array.isArray(live.characters) ? live.characters : []).map((who) =>
+    `<li class="ms ms-${word(who && who.status, "pending")}" title="${esc(who && who.name)}"></li>`).join("");
+  const dial = `<svg class="dial" viewBox="0 0 40 40" role="img" aria-label="${percent}%" data-progress="${part}">`
+    + '<circle class="dial-track" cx="20" cy="20" r="15.9155"/>'
+    + `<circle class="dial-ring" cx="20" cy="20" r="15.9155" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>`
+    + `<text x="20" y="20" class="dial-text">${percent}%</text></svg>`;
+  const bar = `<div class="mbar${mode === "running" ? " mbar-active" : ""}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" data-progress="${part}">`
+    + '<div class="mbar-track"><div class="mbar-fill"></div></div>'
+    + `<ol class="mbar-dots">${dots}</ol></div>`;
+  return { dial, bar };
+}
+
 export function render(store, view, now) {
   const live = dataOf(store, "live");
   const schema = dataOf(store, "schema");
   const { mode, text } = pcLine(store.state.files.status, now);
-  const progress = live ? `<progress max="1" value="${Math.min(1, Math.max(0, number(live.progress)))}"></progress>` : "";
-  const sub = `<p class="pc pc-${mode}"><span class="dot"></span>${esc(text)}</p>${progress}`;
-  const header = top("Home", store, live ? "live" : "status", view, now, sub);
-  if (!live) return header + EMPTY;
+  const line = `<p class="pc pc-${mode}"><span class="dot"></span>${esc(text)}</p>`;
+  if (!live) return top("Home", store, "status", view, now, line) + EMPTY;
 
   const totals = live.totals || {};
+  const { dial, bar } = progress(live, mode);
+  const cycle = number(live.cycle)
+    ? `<p class="top-sub">Cycle ${number(live.cycle)} · ${number(totals.characters_done)} of ${number(totals.characters_total)} characters</p>` : "";
+  const header = top("Home", store, "live", view, now,
+    `<div class="hero">${dial}<div class="hero-text">${line}${cycle}</div></div>${bar}`);
+
+  // [what it shows, its name, its colour, whether it is a plain number that can count up]
   const tiles = [
-    [`${number(totals.characters_done)}/${number(totals.characters_total)}`, "Done", ""],
-    [number(totals.tasks_ok), "Tasks", ""],
-    [number(totals.tasks_failed), "Failed", number(totals.tasks_failed) ? " tile-bad" : ""],
-    [number(totals.marches), "Marches", ""],
-  ].map(([value, label, extra]) => `<div class="tile${extra}"><b>${esc(value)}</b><span>${label}</span></div>`).join("");
+    [`${number(totals.characters_done)}/${number(totals.characters_total)}`, "Done", "characters", false],
+    [number(totals.tasks_ok), "Tasks", "tasks", true],
+    [number(totals.tasks_failed), "Failed", number(totals.tasks_failed) ? "failed" : "quiet", true],
+    [number(totals.marches), "Marches", "marches", true],
+  ].map(([value, label, kind, counts]) =>
+    `<div class="tile tile-${kind}"><b${counts ? ` data-count="${esc(value)}"` : ""}>${esc(value)}</b><span>${label}</span></div>`).join("");
 
   const everyone = (Array.isArray(live.characters) ? live.characters : [])
     .map((who, i) => ({ who, i, rank: RANK[who.status] ?? RANK.pending }))

@@ -39,7 +39,7 @@ export function top(title, store, name, view, now, sub = "") {
   const asOf = file ? `<span class="asof">as of ${esc(clockTime(file.at, now))}</span>` : "";
   const demo = view.demo ? '<span class="chip demo-chip">Demo</span>' : "";
   const busy = store.state.busy;
-  return `<header class="top"><div class="top-row"><h1>${esc(title)}</h1>${demo}${asOf}`
+  return `<header class="top"><div class="top-row"><h1><span>${esc(title)}</span></h1>${demo}${asOf}`
     + `<button type="button" class="refresh" data-refresh${busy ? " disabled" : ""}>${busy ? "Refreshing" : "Refresh"}</button>`
     + `</div>${sub}</header>${notices(store, file, now)}`;
 }

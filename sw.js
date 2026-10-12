@@ -4,12 +4,12 @@
 //
 // publish.sh puts the commit in place of "dev". While it is "dev" nothing is
 // kept, so a change made here shows on the next reload.
-const VERSION = "efccb8e";
+const VERSION = "7baf01b";
 // The page shares its origin with every other site of the account, so its
 // caches carry its own name, and only those are ever cleared.
 const PREFIX = "panel-shell-";
 const CACHE = `${PREFIX}${VERSION}`;
-const SHELL = ["./", "index.html", "app.css", "manifest.webmanifest", "icon.svg", "icon-180.png", "icon-512.png", "js/app.js", "js/demo.js", "js/edits.js", "js/fields.js", "js/format.js", "js/github.js", "js/store.js", "js/pages/connect.js", "js/pages/home.js", "js/pages/parts.js", "js/pages/settings.js", "js/pages/summary.js", "js/pages/tasks.js", "js/shell.js"];
+const SHELL = ["./", "index.html", "app.css", "manifest.webmanifest", "icon.svg", "icon-180.png", "icon-512.png", "bg-hex.svg", "js/app.js", "js/demo.js", "js/edits.js", "js/fields.js", "js/format.js", "js/github.js", "js/motion.js", "js/store.js", "js/pages/connect.js", "js/pages/home.js", "js/pages/parts.js", "js/pages/settings.js", "js/pages/summary.js", "js/pages/tasks.js", "js/shell.js"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

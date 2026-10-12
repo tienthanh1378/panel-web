@@ -6,6 +6,7 @@ import { createDemoClient } from "./demo.js";
 import { createStore } from "./store.js";
 import { coerce, fieldFor } from "./fields.js";
 import { leaveKeys, safely } from "./shell.js";
+import { movePill, patch, settle, startWeather } from "./motion.js";
 import * as home from "./pages/home.js";
 import * as summary from "./pages/summary.js";
 import * as tasks from "./pages/tasks.js";
@@ -32,6 +33,7 @@ const keep = {
 };
 
 const page = document.getElementById("page");
+const nav = document.querySelector(".nav");
 const toastBox = document.getElementById("toast");
 const now = () => Date.now() / 1000;
 const view = {
@@ -43,6 +45,7 @@ const view = {
   staged: new Map(),
 };
 let store = null;
+let shown = "";              // the page last drawn, so a change of page is known
 let lastRefresh = 0;
 let toastTimer = null;
 
@@ -72,18 +75,29 @@ function route() {
   return PAGES[name] ? name : "home";
 }
 
-function draw() {
+/** Draw the page on show. A page that has just come up is put in whole and
+ *  slides into place; a redraw of the same page changes only what differs, so
+ *  nothing that is the same moves. `whole` puts it in whole regardless - for
+ *  when what a control shows must be thrown away. */
+function draw({ whole = false } = {}) {
   const name = route();
+  const entering = name !== shown;
+  shown = name;
   const focused = document.activeElement && document.activeElement.id;
   document.body.classList.toggle("connecting", name === "connect");
   view.connected = Boolean(store);
-  page.innerHTML = safely(() =>
+  const html = safely(() =>
     (name === "connect" ? connect.render(store, view, now()) : PAGES[name].render(store, view, now())));
+  if (entering || whole) page.innerHTML = html;
+  else patch(page, html);
+  if (entering) window.scrollTo(0, 0);
   for (const link of document.querySelectorAll("[data-nav]")) {
     if (link.dataset.nav === name) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
-  if (focused) {
+  settle(page, name, entering);
+  movePill(nav);
+  if (focused && document.activeElement !== document.getElementById(focused)) {
     const again = document.getElementById(focused);
     if (again && !again.disabled) again.focus({ preventScroll: true });
   }
@@ -198,7 +212,7 @@ async function change(element, kind, args, raw) {
     await sending;
   } catch (error) {
     toast(error && error.kind ? "Couldn't send the change. Nothing was changed." : (error && error.message) || "Not sent.");
-    draw();
+    draw({ whole: true });      // the control goes back to what the PC has
     return false;
   }
   draw();
@@ -290,7 +304,8 @@ document.addEventListener("submit", (event) => {
   connectWith(String(form.get("repo") || "").trim(), String(form.get("token") || "").trim());
 });
 
-window.addEventListener("hashchange", draw);
+window.addEventListener("hashchange", () => draw());
+window.addEventListener("resize", () => movePill(nav));
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && now() - lastRefresh > REFRESH_GAP) refresh();
 });
@@ -298,3 +313,4 @@ document.addEventListener("visibilitychange", () => {
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 
 start();
+startWeather(document.querySelector(".backdrop"));

@@ -3,7 +3,7 @@ import { esc } from "../format.js";
 
 export function render(store, view) {
   const error = view.connectError ? `<p class="notice bad">${esc(view.connectError)}</p>` : "";
-  return '<header class="top"><div class="top-row"><h1>Connect</h1></div></header>'
+  return '<header class="top"><div class="top-row"><h1><span>Connect</span></h1></div></header>'
     + '<form class="card connect" data-connect>'
     + '<label class="row-label" for="repo">Repository</label>'
     + `<input id="repo" name="repo" placeholder="owner/name" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(view.repo)}">`
