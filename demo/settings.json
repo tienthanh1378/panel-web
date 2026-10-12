@@ -1,0 +1,55 @@
+{
+  "contract": 1,
+  "at": 1791798060.0,
+  "data": {
+    "settings": {
+      "repeat": true,
+      "wait_hours": 3,
+      "wait_minutes": 30,
+      "hibernate": true,
+      "keep_awake": false,
+      "screen_off_x": 60,
+      "characters": "all",
+      "report_zone": "utc",
+      "always_admin": true
+    },
+    "how_often": {
+      "upgrade_city": "always",
+      "research": "always",
+      "collect_city": "twice",
+      "farm": "always",
+      "farm_gem": "always"
+    },
+    "sections": {
+      "high": {
+        "tasks": {"upgrade_city": true, "research": true, "claim_vip": true,
+                  "collect_city": true, "farm": true, "farm_gem": false},
+        "params": {
+          "upgrade_city": {
+            "buildings": [["City Hall", true], ["Academy", true], ["Barracks", false], ["Farm", false]],
+            "replenish": true
+          },
+          "farm": {"resource": "highest", "start_level": 9, "min_level": 6,
+                   "limit_marches": false, "max_marches": 5}
+        }
+      },
+      "lower": {
+        "tasks": {"upgrade_city": true, "research": true, "claim_vip": true,
+                  "collect_city": false, "farm": true, "farm_gem": false},
+        "params": {
+          "upgrade_city": {
+            "buildings": [["Barracks", true], ["City Hall", true], ["Academy", true], ["Farm", false]],
+            "replenish": true
+          },
+          "farm": {"resource": "lowest", "start_level": 2, "min_level": 1,
+                   "limit_marches": true, "max_marches": 4}
+        },
+        "same_as_high": true
+      },
+      "special": {
+        "tasks": {"assist_resources": false},
+        "params": {"assist_resources": {"send": "food"}}
+      }
+    }
+  }
+}

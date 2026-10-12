@@ -1,0 +1,106 @@
+{
+  "contract": 1,
+  "at": 1791798360.0,
+  "data": {
+    "cycle": 4,
+    "cycle_started": "09:30:12",
+    "cycle_done": "",
+    "next_run": "",
+    "current": "Farm Two",
+    "progress": 0.6,
+    "stopped": false,
+    "totals": {
+      "characters_done": 2,
+      "characters_total": 4,
+      "tasks_ok": 8,
+      "tasks_failed": 1,
+      "tasks_nothing": 0,
+      "marches": 10,
+      "research": 2,
+      "upgrades": 2
+    },
+    "characters": [
+      {
+        "name": "Thông Farm 2",
+        "game": "Game",
+        "index": 1,
+        "total": 4,
+        "section": "lower",
+        "why": "City Hall 9",
+        "status": "done",
+        "started": "09:31:02",
+        "finished": "09:36:40",
+        "marches": 5,
+        "order": ["upgrade_city", "research", "claim_vip", "farm"],
+        "resources": {"food": 44000000, "wood": 4800000, "stone": 3400000, "gold": 15456},
+        "runs": [
+          {"id": "upgrade_city", "label": "Upgrade city", "state": "ok", "detail": "upgrading Barracks 8 -> 9", "seconds": 124.5, "at": "09:31:03"},
+          {"id": "research", "label": "Research", "state": "ok", "detail": "researching Sickle 4 -> 5 - 3h49m left", "seconds": 61.0, "at": "09:33:08"},
+          {"id": "claim_vip", "label": "Claim VIP chest", "state": "ok", "detail": "login chest: claimed", "seconds": 18.2, "at": "09:34:10"},
+          {"id": "farm", "label": "Farm resource", "state": "ok", "detail": "5 march(es), queue full (5/5)", "seconds": 131.9, "at": "09:34:29"}
+        ]
+      },
+      {
+        "name": "Farm One",
+        "game": "Game",
+        "index": 2,
+        "total": 4,
+        "section": "high",
+        "why": "City Hall 25",
+        "status": "trouble",
+        "started": "09:36:52",
+        "finished": "09:41:55",
+        "marches": 5,
+        "order": ["upgrade_city", "research", "collect_city", "farm"],
+        "resources": {"food": 480600000, "wood": 52400000, "stone": 59700000, "gold": 110800000},
+        "runs": [
+          {"id": "upgrade_city", "label": "Upgrade city", "state": "ok", "detail": "nothing to upgrade yet", "seconds": 40.1, "at": "09:36:53"},
+          {"id": "research", "label": "Research", "state": "ok", "detail": "researching Masonry 9 -> 10 - 11h02m left", "seconds": 58.4, "at": "09:37:34"},
+          {"id": "collect_city", "label": "Collect resource in city", "state": "failed", "detail": "the city screen did not open", "seconds": 45.0, "at": "09:38:33"},
+          {"id": "farm", "label": "Farm resource", "state": "ok", "detail": "5 march(es), queue full (5/5)", "seconds": 156.3, "at": "09:39:19"}
+        ]
+      },
+      {
+        "name": "Farm Two",
+        "game": "Game",
+        "index": 3,
+        "total": 4,
+        "section": "high",
+        "why": "City Hall 24",
+        "status": "now",
+        "started": "09:42:16",
+        "finished": "",
+        "marches": 0,
+        "order": ["upgrade_city", "research", "claim_vip", "collect_city", "farm"],
+        "resources": {"food": 19500000, "wood": 21300000, "stone": 8100000, "gold": 2400000},
+        "runs": [
+          {"id": "upgrade_city", "label": "Upgrade city", "state": "ok", "detail": "upgrading City Hall 24 -> 25", "seconds": 138.0, "at": "09:42:17"},
+          {"id": "research", "label": "Research", "state": "later", "detail": "the Academy is being upgraded", "seconds": 22.7, "at": "09:44:36"},
+          {"id": "claim_vip", "label": "Claim VIP chest", "state": "running", "detail": "", "seconds": null, "at": "09:45:00"}
+        ]
+      },
+      {
+        "name": "Main",
+        "game": "Game",
+        "index": 4,
+        "total": 4,
+        "section": "high",
+        "why": "City Hall 25",
+        "status": "pending",
+        "started": "",
+        "finished": "",
+        "marches": 0,
+        "order": [],
+        "resources": {},
+        "runs": []
+      }
+    ],
+    "events": [
+      {"at": "09:44:58", "who": "Farm Two", "text": "Research: the Academy is being upgraded", "kind": "warn"},
+      {"at": "09:44:35", "who": "Farm Two", "text": "Upgrade city: upgrading City Hall 24 -> 25", "kind": "ok"},
+      {"at": "09:41:55", "who": "Farm One", "text": "Farm resource: 5 march(es), queue full (5/5)", "kind": "ok"},
+      {"at": "09:39:18", "who": "Farm One", "text": "Collect resource in city: the city screen did not open", "kind": "error"},
+      {"at": "09:36:40", "who": "Thông Farm 2", "text": "Farm resource: 5 march(es), queue full (5/5)", "kind": "ok"}
+    ]
+  }
+}

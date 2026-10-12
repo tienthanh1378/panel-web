@@ -1,0 +1,59 @@
+{
+  "contract": 1,
+  "at": 1791798360.0,
+  "data": {
+    "zone": "utc",
+    "today": "2026-10-12",
+    "days": [
+      {
+        "day": "2026-10-12",
+        "cycles": 2,
+        "research": 3,
+        "training": 4,
+        "seconds": 1500,
+        "cycle_seconds": 1700,
+        "gained": {"food": 7800000, "wood": 5200000, "stone": 2100000, "gold": 1000000},
+        "characters": [
+          {"name": "Farm One", "total": 12100000, "seconds": 620, "research": 1, "training": 2,
+           "gained": {"food": 5000000, "wood": 4000000, "stone": 2100000, "gold": 1000000}},
+          {"name": "Thông Farm 2", "total": 3200000, "seconds": 540, "research": 1, "training": 1,
+           "gained": {"food": 2000000, "wood": 1200000}},
+          {"name": "Farm Two", "total": 800000, "seconds": 340, "research": 1, "training": 1,
+           "gained": {"food": 800000}}
+        ]
+      },
+      {
+        "day": "2026-10-11",
+        "cycles": 6,
+        "research": 5,
+        "training": 9,
+        "seconds": 9660,
+        "cycle_seconds": 10200,
+        "gained": {"food": 33000000, "wood": 24000000, "stone": 14000000, "gold": 4000000},
+        "characters": [
+          {"name": "Farm One", "total": 40000000, "seconds": 4000, "research": 2, "training": 4,
+           "gained": {"food": 20000000, "wood": 10000000, "stone": 6000000, "gold": 4000000}},
+          {"name": "Farm Two", "total": 30000000, "seconds": 3400, "research": 2, "training": 3,
+           "gained": {"food": 10000000, "wood": 12000000, "stone": 8000000}},
+          {"name": "Thông Farm 2", "total": 5000000, "seconds": 2260, "research": 1, "training": 2,
+           "gained": {"food": 3000000, "wood": 2000000}}
+        ]
+      },
+      {
+        "day": "2026-10-10",
+        "cycles": 5,
+        "research": 4,
+        "training": 8,
+        "seconds": 8000,
+        "cycle_seconds": 8400,
+        "gained": {"food": 23000000, "wood": 17000000, "stone": 8000000, "gold": 2000000},
+        "characters": [
+          {"name": "Farm One", "total": 30000000, "seconds": 4200, "research": 2, "training": 4,
+           "gained": {"food": 15000000, "wood": 9000000, "stone": 4000000, "gold": 2000000}},
+          {"name": "Farm Two", "total": 20000000, "seconds": 3800, "research": 2, "training": 4,
+           "gained": {"food": 8000000, "wood": 8000000, "stone": 4000000}}
+        ]
+      }
+    ]
+  }
+}

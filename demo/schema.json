@@ -1,0 +1,123 @@
+{
+  "contract": 1,
+  "at": 1791796800.0,
+  "data": {
+    "sections": [
+      {"id": "high", "label": "Hall 24+"},
+      {"id": "lower", "label": "Lower Hall"},
+      {"id": "special", "label": "Assist resource"}
+    ],
+    "tabs": [
+      {"id": "upgrade", "label": "Upgrade city"},
+      {"id": "city", "label": "City work"},
+      {"id": "farm", "label": "Farming"}
+    ],
+    "tasks": [
+      {
+        "id": "upgrade_city", "label": "Upgrade city",
+        "description": "Upgrades the ticked buildings, the first one that can be upgraded first.",
+        "tab": "upgrade", "feature": "City", "excludes": [], "often": true,
+        "params": [
+          {"id": "buildings", "type": "priority", "label": "Buildings, in priority order",
+           "heading": "Buildings, in priority order",
+           "items": ["City Hall", "Academy", "Barracks", "Farm"],
+           "default": [["City Hall", true], ["Academy", true], ["Barracks", false], ["Farm", false]],
+           "depends_on": "", "help": "The first ticked building that can be upgraded is the one upgraded.", "editable": true},
+          {"id": "replenish", "type": "flag", "label": "Use items when short of a resource",
+           "heading": "Short of resources", "default": true,
+           "depends_on": "", "help": "", "editable": true}
+        ]
+      },
+      {
+        "id": "research", "label": "Research",
+        "description": "Keeps the Academy researching.",
+        "tab": "upgrade", "feature": "City", "excludes": [], "often": true, "params": []
+      },
+      {
+        "id": "claim_vip", "label": "Claim VIP chest",
+        "description": "Claims the two daily chests. Once a day for each character.",
+        "tab": "city", "feature": "Rewards", "excludes": [], "often": false, "params": []
+      },
+      {
+        "id": "collect_city", "label": "Collect resource in city",
+        "description": "Collects what the city's buildings have produced.",
+        "tab": "city", "feature": "City", "excludes": [], "often": true, "params": []
+      },
+      {
+        "id": "farm", "label": "Farm resource",
+        "description": "Sends marches to gather until the queue is full.",
+        "tab": "farm", "feature": "Farming", "excludes": ["farm_gem"], "often": true,
+        "params": [
+          {"id": "resource", "type": "choice", "label": "Resource type", "heading": "Resource type",
+           "choices": [["highest", "Highest one"], ["lowest", "Lowest one"], ["food", "Food"],
+                       ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]],
+           "dropdown": false, "default": "highest",
+           "depends_on": "", "help": "Highest one farms whichever resource the character holds most of.", "editable": true},
+          {"id": "start_level", "type": "number", "label": "Start level", "heading": "Node level",
+           "default": 8, "min": 1, "max": 25, "picker": "Level {n}", "prefix": "",
+           "depends_on": "", "help": "", "editable": true},
+          {"id": "min_level", "type": "number", "label": "Lowest level", "heading": "Node level",
+           "default": 6, "min": 1, "max": 25, "picker": "", "prefix": "Not below",
+           "depends_on": "", "help": "", "editable": true},
+          {"id": "limit_marches", "type": "flag", "label": "Limit the marches sent", "heading": "March",
+           "default": false, "depends_on": "", "help": "", "editable": true},
+          {"id": "max_marches", "type": "number", "label": "At most", "heading": "March",
+           "default": 5, "min": 1, "max": 7, "picker": "March No. {n}", "prefix": "",
+           "depends_on": "limit_marches", "help": "", "editable": true}
+        ]
+      },
+      {
+        "id": "farm_gem", "label": "Farm gems",
+        "description": "Gathers gem deposits instead of resources.",
+        "tab": "farm", "feature": "Farming", "excludes": ["farm"], "often": true, "params": []
+      },
+      {
+        "id": "assist_resources", "label": "Assist resource",
+        "description": "Sends resources to the alliance member chosen on the PC.",
+        "tab": "special", "feature": "Alliance", "excludes": [], "often": false,
+        "params": [
+          {"id": "send", "type": "choice", "label": "Send which", "heading": "Send which",
+           "choices": [["food", "Food"], ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]],
+           "dropdown": true, "default": "food",
+           "depends_on": "", "help": "", "editable": true}
+        ]
+      }
+    ],
+    "settings": [
+      {"id": "repeat", "type": "flag", "label": "Repeat after waiting", "heading": "Timer",
+       "default": false, "depends_on": "", "help": "A full pass is followed by the wait, then it runs again.", "editable": true},
+      {"id": "wait_hours", "type": "number", "label": "Hours", "heading": "Timer",
+       "default": 3, "min": 0, "max": 23, "picker": "", "prefix": "Wait",
+       "depends_on": "repeat", "help": "", "editable": true},
+      {"id": "wait_minutes", "type": "number", "label": "Minutes", "heading": "Timer",
+       "default": 30, "min": 0, "max": 59, "picker": "", "prefix": "",
+       "depends_on": "repeat", "help": "", "editable": true},
+      {"id": "hibernate", "type": "flag", "label": "Hibernate until the next cycle", "heading": "Screen off",
+       "default": false, "depends_on": "", "help": "", "editable": true},
+      {"id": "keep_awake", "type": "flag", "label": "Keep awake until the next run", "heading": "Screen off",
+       "default": false, "depends_on": "", "help": "", "editable": true},
+      {"id": "screen_off_x", "type": "number", "label": "Screen off after (seconds)", "heading": "Screen off",
+       "default": 60, "min": 10, "max": 600, "picker": "", "prefix": "",
+       "depends_on": "", "help": "", "editable": true},
+      {"id": "characters", "type": "choice", "label": "Characters", "heading": "Characters",
+       "choices": [["current", "Current character only"], ["next", "Change 1 character"], ["all", "Change all characters"]],
+       "dropdown": true, "default": "current",
+       "depends_on": "", "help": "", "editable": true},
+      {"id": "report_zone", "type": "choice", "label": "Report time zone", "heading": "Report time zone",
+       "choices": [["utc", "UTC"], ["local", "Local"]],
+       "dropdown": false, "default": "utc",
+       "depends_on": "", "help": "", "editable": true},
+      {"id": "always_admin", "type": "flag", "label": "Always start as administrator", "heading": "Startup",
+       "default": false, "depends_on": "", "help": "", "editable": false}
+    ],
+    "locked_groups": [
+      {"heading": "Discord", "count": 5},
+      {"heading": "Web sync", "count": 1}
+    ],
+    "often_choices": [["always", "Every run"], ["once", "Once a day"], ["twice", "Twice a day"]],
+    "same_as_high": {
+      "label": "Same tasks as Hall 24+",
+      "help": "Run Lower Hall characters with the tasks ticked on Hall 24+. Lower Hall's own ticks are kept for when this is off; its options stay its own."
+    }
+  }
+}
