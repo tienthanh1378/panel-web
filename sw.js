@@ -7,8 +7,9 @@
 //
 // A new version installs beside the old one, takes over as soon as it has
 // every file, and the page - seeing it has a new worker - reloads itself once
-// (app.js), so a publish shows on the first open after it.
-const VERSION = "f264129";
+// (app.js), so a publish shows on the first open after it. Every publish is a
+// new version (the commit), so that is the one way the page changes.
+const VERSION = "69d56f6";
 // The page shares its origin with every other site of the account, so its
 // caches carry its own name, and only those are ever cleared.
 const PREFIX = "panel-shell-";
@@ -42,17 +43,12 @@ self.addEventListener("fetch", (event) => {
   const scope = new URL("./", self.location.href).pathname;
   const path = url.pathname.startsWith(scope) ? url.pathname.slice(scope.length) : null;
   if (path === null || !SHELL.includes(path === "" ? "./" : path)) return;
+  // What this version kept, as it kept it. Nothing is refreshed one file at a
+  // time: that left a mix of two versions in the cache around a publish, and
+  // a page made of both does not start. A change arrives as a new version,
+  // whole (install), or not at all.
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
-    const kept = await cache.match(request, { ignoreSearch: true });
-    const fresh = fetch(request).then((response) => {
-      if (response.ok) cache.put(request, response.clone());
-      return response;
-    });
-    if (kept) {
-      fresh.catch(() => {});
-      return kept;
-    }
-    return fresh;
+    return (await cache.match(request, { ignoreSearch: true })) || fetch(request);
   })());
 });
