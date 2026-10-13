@@ -1,54 +1,401 @@
 {
-  "contract": 1,
-  "at": 1791798060.0,
+  "contract": 2,
+  "at": 1791897469.6055639,
   "data": {
     "settings": {
-      "repeat": true,
-      "wait_hours": 3,
-      "wait_minutes": 30,
-      "hibernate": true,
-      "keep_awake": false,
-      "screen_off_x": 60,
       "characters": "all",
+      "repeat": true,
+      "wait_hours": 2,
+      "wait_minutes": 45,
+      "wait_max_hours": 3,
+      "wait_max_minutes": 15,
+      "start_at": false,
+      "start_hour": 23,
+      "start_minute": 45,
+      "end_at": false,
+      "end_hour": 0,
+      "end_minute": 0,
+      "run_games": "both",
+      "launch_game": true,
+      "close_game": true,
       "report_zone": "utc",
-      "always_admin": true
+      "keep_days": 10,
+      "always_admin": true,
+      "screen_off_at_end": true,
+      "screen_off_repeat": true,
+      "screen_off_x": "60",
+      "hibernate_cycles": true,
+      "keep_awake_between": false
     },
     "how_often": {
       "upgrade_city": "always",
-      "research": "always",
+      "research": "twice",
+      "train_troops": "always",
+      "blacksmith": "twice",
+      "alliance_territory": "twice",
+      "alliance_donate": "twice",
+      "merchant": "twice",
       "collect_city": "twice",
-      "farm": "always",
-      "farm_gem": "always"
+      "farm_alliance_gold": "always",
+      "farm": "always"
     },
     "sections": {
       "high": {
-        "tasks": {"upgrade_city": true, "research": true, "claim_vip": true,
-                  "collect_city": true, "farm": true, "farm_gem": false},
+        "tasks": {
+          "upgrade_city": false,
+          "research": false,
+          "train_troops": false,
+          "blacksmith": true,
+          "claim_vip": true,
+          "alliance_territory": true,
+          "alliance_donate": true,
+          "merchant": true,
+          "collect_city": true,
+          "dispatch": true,
+          "expedition": true,
+          "daily_objectives": true,
+          "farm_alliance_gold": false,
+          "fortress": false,
+          "farm": true
+        },
         "params": {
           "upgrade_city": {
-            "buildings": [["City Hall", true], ["Academy", true], ["Barracks", false], ["Farm", false]],
+            "buildings": [
+              [
+                "State Forum",
+                true
+              ],
+              [
+                "City Hall",
+                false
+              ],
+              [
+                "Academy",
+                false
+              ],
+              [
+                "Castle",
+                false
+              ],
+              [
+                "Siege Workshop",
+                false
+              ],
+              [
+                "Barracks",
+                false
+              ],
+              [
+                "Archery Range",
+                false
+              ],
+              [
+                "Stable",
+                false
+              ],
+              [
+                "Hospital",
+                false
+              ],
+              [
+                "Goldmine",
+                false
+              ],
+              [
+                "Farm",
+                false
+              ],
+              [
+                "Lumber Mill",
+                false
+              ],
+              [
+                "Quarry",
+                false
+              ],
+              [
+                "Wall",
+                false
+              ],
+              [
+                "Storehouse",
+                false
+              ],
+              [
+                "Tavern",
+                false
+              ]
+            ],
             "replenish": true
           },
-          "farm": {"resource": "highest", "start_level": 9, "min_level": 6,
-                   "limit_marches": false, "max_marches": 5}
+          "research": {
+            "order": [
+              [
+                "Gathering speed",
+                true
+              ],
+              [
+                "Research speed",
+                true
+              ],
+              [
+                "Building speed",
+                true
+              ],
+              [
+                "Gem gathering speed",
+                true
+              ],
+              [
+                "Troop load",
+                true
+              ],
+              [
+                "Unlock more gathering speed",
+                true
+              ],
+              [
+                "Unlock more troop load",
+                true
+              ],
+              [
+                "Production speed",
+                false
+              ],
+              [
+                "Unlock more gem gathering speed",
+                false
+              ],
+              [
+                "Rest of Economy",
+                false
+              ],
+              [
+                "Military up to T4",
+                false
+              ],
+              [
+                "Rest of Military",
+                false
+              ]
+            ],
+            "replenish": true
+          },
+          "train_troops": {
+            "train_barracks": true,
+            "tier_barracks": "highest",
+            "train_archery": true,
+            "tier_archery": "highest",
+            "train_stable": true,
+            "tier_stable": "1",
+            "train_siege": true,
+            "tier_siege": "highest"
+          },
+          "blacksmith": {
+            "produce": true,
+            "material": "bone"
+          },
+          "daily_objectives": {
+            "from_hour": 18
+          },
+          "farm_alliance_gold": {
+            "march": 1,
+            "rebuild": false
+          },
+          "fortress": {
+            "march": 7,
+            "r4": false
+          },
+          "farm": {
+            "resource": "highest",
+            "start_level": 9,
+            "min_level": 6
+          }
         }
       },
       "lower": {
-        "tasks": {"upgrade_city": true, "research": true, "claim_vip": true,
-                  "collect_city": false, "farm": true, "farm_gem": false},
+        "tasks": {
+          "upgrade_city": true,
+          "research": true,
+          "train_troops": true,
+          "blacksmith": false,
+          "claim_vip": true,
+          "alliance_territory": true,
+          "alliance_donate": true,
+          "merchant": false,
+          "collect_city": true,
+          "dispatch": false,
+          "expedition": false,
+          "daily_objectives": true,
+          "farm_alliance_gold": false,
+          "fortress": false,
+          "farm": true
+        },
         "params": {
           "upgrade_city": {
-            "buildings": [["Barracks", true], ["City Hall", true], ["Academy", true], ["Farm", false]],
+            "buildings": [
+              [
+                "Siege Workshop",
+                true
+              ],
+              [
+                "City Hall",
+                true
+              ],
+              [
+                "Academy",
+                true
+              ],
+              [
+                "Goldmine",
+                false
+              ],
+              [
+                "State Forum",
+                false
+              ],
+              [
+                "Castle",
+                false
+              ],
+              [
+                "Barracks",
+                false
+              ],
+              [
+                "Archery Range",
+                false
+              ],
+              [
+                "Stable",
+                false
+              ],
+              [
+                "Hospital",
+                false
+              ],
+              [
+                "Farm",
+                false
+              ],
+              [
+                "Lumber Mill",
+                false
+              ],
+              [
+                "Quarry",
+                false
+              ],
+              [
+                "Wall",
+                false
+              ],
+              [
+                "Storehouse",
+                false
+              ],
+              [
+                "Tavern",
+                false
+              ]
+            ],
             "replenish": true
           },
-          "farm": {"resource": "lowest", "start_level": 2, "min_level": 1,
-                   "limit_marches": true, "max_marches": 4}
+          "research": {
+            "order": [
+              [
+                "Gathering speed",
+                true
+              ],
+              [
+                "Research speed",
+                true
+              ],
+              [
+                "Building speed",
+                true
+              ],
+              [
+                "Troop load",
+                true
+              ],
+              [
+                "Unlock more gathering speed",
+                true
+              ],
+              [
+                "Unlock more troop load",
+                true
+              ],
+              [
+                "Gem gathering speed",
+                false
+              ],
+              [
+                "Unlock more gem gathering speed",
+                false
+              ],
+              [
+                "Production speed",
+                false
+              ],
+              [
+                "Rest of Economy",
+                false
+              ],
+              [
+                "Military up to T4",
+                true
+              ],
+              [
+                "Rest of Military",
+                false
+              ]
+            ],
+            "replenish": true
+          },
+          "train_troops": {
+            "train_barracks": true,
+            "tier_barracks": "highest",
+            "train_archery": true,
+            "tier_archery": "highest",
+            "train_stable": true,
+            "tier_stable": "highest",
+            "train_siege": true,
+            "tier_siege": "1"
+          },
+          "blacksmith": {
+            "produce": true,
+            "material": "bone"
+          },
+          "daily_objectives": {
+            "from_hour": 18
+          },
+          "farm_alliance_gold": {
+            "march": 1,
+            "rebuild": true
+          },
+          "fortress": {
+            "march": 7,
+            "r4": false
+          },
+          "farm": {
+            "resource": "lowest_gold",
+            "start_level": 4,
+            "min_level": 1
+          }
         },
-        "same_as_high": true
+        "same_as_high": false
       },
       "special": {
-        "tasks": {"assist_resources": false},
-        "params": {"assist_resources": {"send": "food"}}
+        "tasks": {
+          "assist_resources": false
+        },
+        "params": {
+          "assist_resources": {
+            "resource": "highest"
+          }
+        }
       }
     }
   }

@@ -1,6 +1,8 @@
 // An edit: one change to one thing, as contract/sync.md has it.
 
-export const CONTRACT = 1;
+// The version a page writes, and the ones it can read: 2 added fields to `live` only.
+export const CONTRACT = 2;
+export const CONTRACTS = [1, 2];
 export const KINDS = ["set_setting", "set_often", "set_tick", "set_option", "set_same_as_high"];
 
 /** The one thing an edit changes, as a string two edits can be compared by. */

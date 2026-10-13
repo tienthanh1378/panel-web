@@ -1,123 +1,1154 @@
 {
-  "contract": 1,
-  "at": 1791796800.0,
+  "contract": 2,
+  "at": 1791897469.6055639,
   "data": {
     "sections": [
-      {"id": "high", "label": "Hall 24+"},
-      {"id": "lower", "label": "Lower Hall"},
-      {"id": "special", "label": "Assist resource"}
+      {
+        "id": "high",
+        "label": "Hall 24+"
+      },
+      {
+        "id": "lower",
+        "label": "Lower Hall"
+      },
+      {
+        "id": "special",
+        "label": "Assist resource"
+      }
     ],
     "tabs": [
-      {"id": "upgrade", "label": "Upgrade city"},
-      {"id": "city", "label": "City work"},
-      {"id": "farm", "label": "Farming"}
+      {
+        "id": "upgrade",
+        "label": "City upgrade"
+      },
+      {
+        "id": "before",
+        "label": "City work"
+      },
+      {
+        "id": "farm",
+        "label": "Farming"
+      }
     ],
     "tasks": [
       {
-        "id": "upgrade_city", "label": "Upgrade city",
-        "description": "Upgrades the ticked buildings, the first one that can be upgraded first.",
-        "tab": "upgrade", "feature": "City", "excludes": [], "often": true,
+        "id": "upgrade_city",
+        "label": "Upgrade city",
+        "description": "Checks the Builder's Hut, then keeps both builders on the ticked buildings, top first, upgrading what each needs first. Never gems.",
+        "tab": "upgrade",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
         "params": [
-          {"id": "buildings", "type": "priority", "label": "Buildings, in priority order",
-           "heading": "Buildings, in priority order",
-           "items": ["City Hall", "Academy", "Barracks", "Farm"],
-           "default": [["City Hall", true], ["Academy", true], ["Barracks", false], ["Farm", false]],
-           "depends_on": "", "help": "The first ticked building that can be upgraded is the one upgraded.", "editable": true},
-          {"id": "replenish", "type": "flag", "label": "Use items when short of a resource",
-           "heading": "Short of resources", "default": true,
-           "depends_on": "", "help": "", "editable": true}
+          {
+            "type": "priority",
+            "items": [
+              "City Hall",
+              "Academy",
+              "State Forum",
+              "Castle",
+              "Siege Workshop",
+              "Barracks",
+              "Archery Range",
+              "Stable",
+              "Hospital",
+              "Goldmine",
+              "Farm",
+              "Lumber Mill",
+              "Quarry",
+              "Wall",
+              "Storehouse",
+              "Tavern"
+            ],
+            "id": "buildings",
+            "label": "Buildings, in priority order",
+            "heading": "Buildings, in priority order",
+            "default": [
+              [
+                "City Hall",
+                true
+              ],
+              [
+                "Academy",
+                true
+              ],
+              [
+                "State Forum",
+                false
+              ],
+              [
+                "Castle",
+                false
+              ],
+              [
+                "Siege Workshop",
+                false
+              ],
+              [
+                "Barracks",
+                false
+              ],
+              [
+                "Archery Range",
+                false
+              ],
+              [
+                "Stable",
+                false
+              ],
+              [
+                "Hospital",
+                false
+              ],
+              [
+                "Goldmine",
+                false
+              ],
+              [
+                "Farm",
+                false
+              ],
+              [
+                "Lumber Mill",
+                false
+              ],
+              [
+                "Quarry",
+                false
+              ],
+              [
+                "Wall",
+                false
+              ],
+              [
+                "Storehouse",
+                false
+              ],
+              [
+                "Tavern",
+                false
+              ]
+            ],
+            "depends_on": "",
+            "help": "Ticked buildings are upgraded from the top down, one per free builder. Each one's requirements are upgraded first.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "replenish",
+            "label": "Use Quick Replenish when short of resources",
+            "heading": "Short of resources",
+            "default": true,
+            "depends_on": "",
+            "help": "Tops the shortfall up from resource items in storage. Never gems. Off: that building waits.",
+            "editable": true
+          }
         ]
       },
       {
-        "id": "research", "label": "Research",
-        "description": "Keeps the Academy researching.",
-        "tab": "upgrade", "feature": "City", "excludes": [], "often": true, "params": []
-      },
-      {
-        "id": "claim_vip", "label": "Claim VIP chest",
-        "description": "Claims the two daily chests. Once a day for each character.",
-        "tab": "city", "feature": "Rewards", "excludes": [], "often": false, "params": []
-      },
-      {
-        "id": "collect_city", "label": "Collect resource in city",
-        "description": "Collects what the city's buildings have produced.",
-        "tab": "city", "feature": "City", "excludes": [], "often": true, "params": []
-      },
-      {
-        "id": "farm", "label": "Farm resource",
-        "description": "Sends marches to gather until the queue is full.",
-        "tab": "farm", "feature": "Farming", "excludes": ["farm_gem"], "often": true,
+        "id": "research",
+        "label": "Research",
+        "description": "Keeps the Academy researching, in the groups and order set: gathering speed, gem gathering, troop load, production, research and building speed, Military up to T4, the rest. Never gems.",
+        "tab": "upgrade",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
         "params": [
-          {"id": "resource", "type": "choice", "label": "Resource type", "heading": "Resource type",
-           "choices": [["highest", "Highest one"], ["lowest", "Lowest one"], ["food", "Food"],
-                       ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]],
-           "dropdown": false, "default": "highest",
-           "depends_on": "", "help": "Highest one farms whichever resource the character holds most of.", "editable": true},
-          {"id": "start_level", "type": "number", "label": "Start level", "heading": "Node level",
-           "default": 8, "min": 1, "max": 25, "picker": "Level {n}", "prefix": "",
-           "depends_on": "", "help": "", "editable": true},
-          {"id": "min_level", "type": "number", "label": "Lowest level", "heading": "Node level",
-           "default": 6, "min": 1, "max": 25, "picker": "", "prefix": "Not below",
-           "depends_on": "", "help": "", "editable": true},
-          {"id": "limit_marches", "type": "flag", "label": "Limit the marches sent", "heading": "March",
-           "default": false, "depends_on": "", "help": "", "editable": true},
-          {"id": "max_marches", "type": "number", "label": "At most", "heading": "March",
-           "default": 5, "min": 1, "max": 7, "picker": "March No. {n}", "prefix": "",
-           "depends_on": "limit_marches", "help": "", "editable": true}
+          {
+            "type": "priority",
+            "items": [
+              "Gathering speed",
+              "Gem gathering speed",
+              "Troop load",
+              "Unlock more gathering speed",
+              "Unlock more gem gathering speed",
+              "Unlock more troop load",
+              "Production speed",
+              "Research speed",
+              "Building speed",
+              "Military up to T4",
+              "Rest of Economy",
+              "Rest of Military"
+            ],
+            "id": "order",
+            "label": "Research, in priority order",
+            "heading": "Research, in priority order",
+            "default": [
+              [
+                "Gathering speed",
+                true
+              ],
+              [
+                "Gem gathering speed",
+                true
+              ],
+              [
+                "Troop load",
+                true
+              ],
+              [
+                "Unlock more gathering speed",
+                true
+              ],
+              [
+                "Unlock more gem gathering speed",
+                true
+              ],
+              [
+                "Unlock more troop load",
+                true
+              ],
+              [
+                "Production speed",
+                false
+              ],
+              [
+                "Research speed",
+                false
+              ],
+              [
+                "Building speed",
+                false
+              ],
+              [
+                "Military up to T4",
+                true
+              ],
+              [
+                "Rest of Economy",
+                true
+              ],
+              [
+                "Rest of Military",
+                false
+              ]
+            ],
+            "depends_on": "",
+            "help": "The first ticked line with something to research decides; move lines up or down, tick or untick any. Gathering speed is food, wood, stone and gold on the map; production speed is what the Farm, Lumber Mill, Quarry and Goldmine make. With both gem lines unticked, gem research is never done. 'Unlock more' researches whatever opens the next locked tech of that kind. Military up to T4 only opens Long Swordsman, Chu-Ko-Nu, Knight and Ballista.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "replenish",
+            "label": "Use Quick Replenish when short of resources",
+            "heading": "Short of resources",
+            "default": true,
+            "depends_on": "",
+            "help": "Tops the shortfall up from resource items in storage. Never gems. Off: it waits for the resources.",
+            "editable": true
+          }
         ]
       },
       {
-        "id": "farm_gem", "label": "Farm gems",
-        "description": "Gathers gem deposits instead of resources.",
-        "tab": "farm", "feature": "Farming", "excludes": ["farm"], "often": true, "params": []
+        "id": "train_troops",
+        "label": "Keep troops training",
+        "description": "Trains a full batch in each idle troop building, at the tier set for it. Never INSTANT, never gems.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
+        "params": [
+          {
+            "type": "flag",
+            "id": "train_barracks",
+            "label": "Barracks (infantry)",
+            "heading": "Train",
+            "default": true,
+            "depends_on": "",
+            "help": "Train in this building when it is idle.",
+            "editable": true
+          },
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest available"
+              ],
+              [
+                "1",
+                "Tier I"
+              ],
+              [
+                "2",
+                "Tier II"
+              ],
+              [
+                "3",
+                "Tier III"
+              ],
+              [
+                "4",
+                "Tier IV"
+              ],
+              [
+                "5",
+                "Tier V"
+              ]
+            ],
+            "dropdown": true,
+            "id": "tier_barracks",
+            "label": "Tier",
+            "heading": "Train",
+            "default": "highest",
+            "depends_on": "train_barracks",
+            "help": "Which tier. A tier not unlocked yet trains the highest one below it.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "train_archery",
+            "label": "Archery Range (archers)",
+            "heading": "Train",
+            "default": true,
+            "depends_on": "",
+            "help": "Train in this building when it is idle.",
+            "editable": true
+          },
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest available"
+              ],
+              [
+                "1",
+                "Tier I"
+              ],
+              [
+                "2",
+                "Tier II"
+              ],
+              [
+                "3",
+                "Tier III"
+              ],
+              [
+                "4",
+                "Tier IV"
+              ],
+              [
+                "5",
+                "Tier V"
+              ]
+            ],
+            "dropdown": true,
+            "id": "tier_archery",
+            "label": "Tier",
+            "heading": "Train",
+            "default": "highest",
+            "depends_on": "train_archery",
+            "help": "Which tier. A tier not unlocked yet trains the highest one below it.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "train_stable",
+            "label": "Stable (cavalry)",
+            "heading": "Train",
+            "default": true,
+            "depends_on": "",
+            "help": "Train in this building when it is idle.",
+            "editable": true
+          },
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest available"
+              ],
+              [
+                "1",
+                "Tier I"
+              ],
+              [
+                "2",
+                "Tier II"
+              ],
+              [
+                "3",
+                "Tier III"
+              ],
+              [
+                "4",
+                "Tier IV"
+              ],
+              [
+                "5",
+                "Tier V"
+              ]
+            ],
+            "dropdown": true,
+            "id": "tier_stable",
+            "label": "Tier",
+            "heading": "Train",
+            "default": "highest",
+            "depends_on": "train_stable",
+            "help": "Which tier. A tier not unlocked yet trains the highest one below it.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "train_siege",
+            "label": "Siege Workshop (siege)",
+            "heading": "Train",
+            "default": true,
+            "depends_on": "",
+            "help": "Train in this building when it is idle.",
+            "editable": true
+          },
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest available"
+              ],
+              [
+                "1",
+                "Tier I"
+              ],
+              [
+                "2",
+                "Tier II"
+              ],
+              [
+                "3",
+                "Tier III"
+              ],
+              [
+                "4",
+                "Tier IV"
+              ],
+              [
+                "5",
+                "Tier V"
+              ]
+            ],
+            "dropdown": true,
+            "id": "tier_siege",
+            "label": "Tier",
+            "heading": "Train",
+            "default": "1",
+            "depends_on": "train_siege",
+            "help": "Which tier. A tier not unlocked yet trains the highest one below it.",
+            "editable": true
+          }
+        ]
       },
       {
-        "id": "assist_resources", "label": "Assist resource",
-        "description": "Sends resources to the alliance member chosen on the PC.",
-        "tab": "special", "feature": "Alliance", "excludes": [], "often": false,
+        "id": "blacksmith",
+        "label": "Collect blacksmith and produce",
+        "description": "Takes whatever the blacksmith has finished, then sets it making more of the material you pick below.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
         "params": [
-          {"id": "send", "type": "choice", "label": "Send which", "heading": "Send which",
-           "choices": [["food", "Food"], ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]],
-           "dropdown": true, "default": "food",
-           "depends_on": "", "help": "", "editable": true}
+          {
+            "type": "flag",
+            "id": "produce",
+            "label": "Start producing after collecting",
+            "heading": "Production",
+            "default": true,
+            "depends_on": "",
+            "help": "Untick to only collect the finished item and leave the forge idle.",
+            "editable": true
+          },
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest one"
+              ],
+              [
+                "leather",
+                "Leather"
+              ],
+              [
+                "iron_ore",
+                "Iron Ore"
+              ],
+              [
+                "ebony",
+                "Ebony"
+              ],
+              [
+                "bone",
+                "Animal Bone"
+              ]
+            ],
+            "dropdown": false,
+            "id": "material",
+            "label": "Material",
+            "heading": "Produce which",
+            "default": "highest",
+            "depends_on": "produce",
+            "help": "Which material to produce. 'Highest one' reads the four amounts and picks whichever you hold most of.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "id": "claim_vip",
+        "label": "Claim VIP chest",
+        "description": "Claims whichever VIP chests are on offer, from the badge at the top left. Once a day for each character, counted from 00:00 UTC.",
+        "tab": "before",
+        "feature": "Rewards",
+        "excludes": [],
+        "often": false,
+        "params": []
+      },
+      {
+        "id": "alliance_territory",
+        "label": "Claim alliance resource",
+        "description": "Claims the resources your alliance's territory has earned. Says so and stops when there is nothing waiting.",
+        "tab": "before",
+        "feature": "Alliance",
+        "excludes": [],
+        "often": true,
+        "params": []
+      },
+      {
+        "id": "alliance_donate",
+        "label": "Donate technology",
+        "description": "Reads the six skills' progress bars and donates to the ones that are not full yet, least full first, until the day's chances run out. Only ever the resource button, never the gem one beside it.",
+        "tab": "before",
+        "feature": "Alliance",
+        "excludes": [],
+        "often": true,
+        "params": []
+      },
+      {
+        "id": "merchant",
+        "label": "Buy from the merchant",
+        "description": "Buys out the Mysterious Merchant in the Courier Station, all four rows, then takes the free refresh and buys again. Resource prices only - gem-priced stock is skipped and gem prompts get No.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
+        "params": []
+      },
+      {
+        "id": "collect_city",
+        "label": "Collect resource in city",
+        "description": "Collects the Gold, Stone, Wood and Food waiting in your city. One click empties every building of a type, so the job is four clicks.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": true,
+        "params": []
+      },
+      {
+        "id": "dispatch",
+        "label": "Travel from Dispatch",
+        "description": "Opens the Dispatch building, takes the third icon to reach TRAVEL, and spends the day's chances down to none - as many at a time as the button offers. Once a day, since one visit empties them. Never gems.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": false,
+        "params": []
+      },
+      {
+        "id": "expedition",
+        "label": "Collect Expedition",
+        "description": "Presses U for Campaign, opens Expedition and collects the chest beside the stage map. Once a day. Never Challenge, never the Expedition shop.",
+        "tab": "before",
+        "feature": "Rewards",
+        "excludes": [],
+        "often": false,
+        "params": []
+      },
+      {
+        "id": "daily_objectives",
+        "label": "Claim Daily Objectives",
+        "description": "Opens the quest scroll on the left, presses CLAIM on every finished Daily Objective and opens every activity chest the points have reached. Once a day. Never GO.",
+        "tab": "before",
+        "feature": "Rewards",
+        "excludes": [],
+        "often": false,
+        "params": [
+          {
+            "type": "number",
+            "min": 0,
+            "max": 23,
+            "picker": "",
+            "prefix": "from",
+            "id": "from_hour",
+            "label": "h UTC",
+            "heading": "End of the UTC day",
+            "default": 19,
+            "depends_on": "",
+            "help": "Claimed at the end of the UTC day, when the day's objectives are done: not before this hour (UTC). 19 leaves five hours - room for at least one cycle of three and a half.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "id": "farm_alliance_gold",
+        "label": "Farm alliance gold",
+        "description": "Sends one march to the alliance gold mother lode, known by its own nameplate so an ordinary gold mine is never mistaken for it, and only while the march queue has room. With R4 on, puts a new lode up by the marker when it has gone, capped at 100k per troop.",
+        "tab": "farm",
+        "feature": "Alliance",
+        "excludes": [],
+        "often": true,
+        "params": [
+          {
+            "type": "number",
+            "min": 1,
+            "max": 7,
+            "picker": "March No. {n}",
+            "prefix": "",
+            "id": "march",
+            "label": "Send",
+            "heading": "March",
+            "default": 1,
+            "depends_on": "",
+            "help": "The saved troop preset sent to the alliance gold mother lode - and, with the R4 option below, the one that builds a new lode. If that march is not in the game, no preset is picked and the troops already loaded go instead.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "rebuild",
+            "label": "R4: build a new mother lode if it is gone",
+            "heading": "R4",
+            "default": false,
+            "depends_on": "",
+            "help": "When the marker is there but the lode is not, put a new one up: Alliance > Territory > Alliance Resource Center > Alliance Mother Lode, placed by the marker on the nearest clear ground, and the march picked above sent to build it. It costs the alliance 375K gold, and only an R4 account is offered the BUILD at all. A new lode is set to take at most 100,000 per troop, so one march cannot fill it alone.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "id": "fortress",
+        "label": "Build 1 troop",
+        "description": "Sends one troop to the alliance fortress once a day, with the march you pick, then checks every run and brings it home the moment its own building credit reaches 20,000. With R4 on, returns every member's troop that is full too.",
+        "tab": "farm",
+        "feature": "Alliance",
+        "excludes": [],
+        "often": false,
+        "params": [
+          {
+            "type": "number",
+            "min": 1,
+            "max": 7,
+            "picker": "March No. {n}",
+            "prefix": "",
+            "id": "march",
+            "label": "Send",
+            "heading": "March",
+            "default": 7,
+            "depends_on": "",
+            "help": "The saved troop preset this sends to the fortress. They are numbered by you in the game, and need not start at 1 - one account here has 1, 2 and 7. If that march is not in the game, no preset is picked and the troops already loaded go instead.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "r4",
+            "label": "R4: also return members' troops at 20,000",
+            "heading": "R4",
+            "default": false,
+            "depends_on": "",
+            "help": "Only acts on an account whose fortress popup shows the purple R4 flag. Reads every member's Individual Credit in the BUILD list and returns the troops at exactly 20,000 - nobody else's. Runs with each cycle, like the other tasks; troops still under 20,000 wait for the next cycle.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "id": "farm",
+        "label": "Farm resource",
+        "description": "Searches for resource nodes and sends gathering marches until the march queue is full.",
+        "tab": "farm",
+        "feature": "Farming",
+        "excludes": [],
+        "often": true,
+        "params": [
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest one"
+              ],
+              [
+                "lowest",
+                "Lowest resource, except gold"
+              ],
+              [
+                "lowest_gold",
+                "Lowest resource"
+              ],
+              [
+                "food",
+                "Food"
+              ],
+              [
+                "wood",
+                "Wood"
+              ],
+              [
+                "stone",
+                "Stone"
+              ],
+              [
+                "gold",
+                "Gold"
+              ]
+            ],
+            "dropdown": false,
+            "id": "resource",
+            "label": "Search for",
+            "heading": "Search for",
+            "default": "highest",
+            "depends_on": "",
+            "help": "Which node type to search for. 'Highest one' farms whichever you hold most of; 'Lowest resource' whichever you hold least of, and 'except gold' leaves gold out of that.",
+            "editable": true
+          },
+          {
+            "type": "number",
+            "min": 1,
+            "max": 9,
+            "picker": "",
+            "prefix": "Start at",
+            "id": "start_level",
+            "label": "Start level",
+            "heading": "Node level",
+            "default": 8,
+            "depends_on": "",
+            "help": "The node level searched first. Above what the game offers, it starts at the highest there is.",
+            "editable": true
+          },
+          {
+            "type": "number",
+            "min": 1,
+            "max": 9,
+            "picker": "",
+            "prefix": "Go down to",
+            "id": "min_level",
+            "label": "Lowest level",
+            "heading": "Node level",
+            "default": 6,
+            "depends_on": "",
+            "help": "When a level has nothing free, the search goes one level down, as far as this.",
+            "editable": true
+          }
+        ]
+      },
+      {
+        "id": "assist_resources",
+        "label": "Assist resources",
+        "description": "Sends resources to another city: ASSIST on the city at the coordinates below, one bar dragged all the way right, Transport - and again, until that resource runs out. Runs alone, on the current character only.",
+        "tab": "special",
+        "feature": "",
+        "excludes": [],
+        "often": false,
+        "params": [
+          {
+            "type": "choice",
+            "choices": [
+              [
+                "highest",
+                "Highest one"
+              ],
+              [
+                "food",
+                "Food"
+              ],
+              [
+                "wood",
+                "Wood"
+              ],
+              [
+                "stone",
+                "Stone"
+              ],
+              [
+                "gold",
+                "Gold"
+              ]
+            ],
+            "dropdown": false,
+            "id": "resource",
+            "label": "Send",
+            "heading": "Send which",
+            "default": "highest",
+            "depends_on": "",
+            "help": "Which bar to fill. 'Highest one' fills whichever you hold most of, read again before every transport, and goes on to the next when that one runs out. A resource counts as run out when a full drag loads less than 1,000,000.",
+            "editable": true
+          }
         ]
       }
     ],
     "settings": [
-      {"id": "repeat", "type": "flag", "label": "Repeat after waiting", "heading": "Timer",
-       "default": false, "depends_on": "", "help": "A full pass is followed by the wait, then it runs again.", "editable": true},
-      {"id": "wait_hours", "type": "number", "label": "Hours", "heading": "Timer",
-       "default": 3, "min": 0, "max": 23, "picker": "", "prefix": "Wait",
-       "depends_on": "repeat", "help": "", "editable": true},
-      {"id": "wait_minutes", "type": "number", "label": "Minutes", "heading": "Timer",
-       "default": 30, "min": 0, "max": 59, "picker": "", "prefix": "",
-       "depends_on": "repeat", "help": "", "editable": true},
-      {"id": "hibernate", "type": "flag", "label": "Hibernate until the next cycle", "heading": "Screen off",
-       "default": false, "depends_on": "", "help": "", "editable": true},
-      {"id": "keep_awake", "type": "flag", "label": "Keep awake until the next run", "heading": "Screen off",
-       "default": false, "depends_on": "", "help": "", "editable": true},
-      {"id": "screen_off_x", "type": "number", "label": "Screen off after (seconds)", "heading": "Screen off",
-       "default": 60, "min": 10, "max": 600, "picker": "", "prefix": "",
-       "depends_on": "", "help": "", "editable": true},
-      {"id": "characters", "type": "choice", "label": "Characters", "heading": "Characters",
-       "choices": [["current", "Current character only"], ["next", "Change 1 character"], ["all", "Change all characters"]],
-       "dropdown": true, "default": "current",
-       "depends_on": "", "help": "", "editable": true},
-      {"id": "report_zone", "type": "choice", "label": "Report time zone", "heading": "Report time zone",
-       "choices": [["utc", "UTC"], ["local", "Local"]],
-       "dropdown": false, "default": "utc",
-       "depends_on": "", "help": "", "editable": true},
-      {"id": "always_admin", "type": "flag", "label": "Always start as administrator", "heading": "Startup",
-       "default": false, "depends_on": "", "help": "", "editable": false}
+      {
+        "type": "choice",
+        "choices": [
+          [
+            "current",
+            "Current character only"
+          ],
+          [
+            "next",
+            "Change 1 character"
+          ],
+          [
+            "all",
+            "Change all characters"
+          ]
+        ],
+        "dropdown": false,
+        "id": "characters",
+        "label": "Characters",
+        "heading": "Characters",
+        "default": "current",
+        "depends_on": "",
+        "help": "Every ticked task runs for each character in turn: the city work, then farming, then on to the next character.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "repeat",
+        "label": "Repeat after waiting",
+        "heading": "Timer",
+        "default": false,
+        "depends_on": "",
+        "help": "When every character has been through, wait and run the whole thing again, until you press Stop.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 23,
+        "picker": "",
+        "prefix": "at least",
+        "id": "wait_hours",
+        "label": "h",
+        "heading": "Timer",
+        "default": 3,
+        "depends_on": "repeat",
+        "help": "Shortest gap between runs. Each cycle waits a random time between this and the maximum.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 59,
+        "picker": "",
+        "prefix": "",
+        "id": "wait_minutes",
+        "label": "min",
+        "heading": "Timer",
+        "default": 30,
+        "depends_on": "repeat",
+        "help": "Shortest gap between runs.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 23,
+        "picker": "",
+        "prefix": "at most",
+        "id": "wait_max_hours",
+        "label": "h",
+        "heading": "Timer",
+        "default": 4,
+        "depends_on": "repeat",
+        "help": "Longest gap between runs. A fresh wait is drawn for every cycle, so the schedule is never the same twice.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 59,
+        "picker": "",
+        "prefix": "",
+        "id": "wait_max_minutes",
+        "label": "min",
+        "heading": "Timer",
+        "default": 30,
+        "depends_on": "repeat",
+        "help": "Longest gap between runs.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "start_at",
+        "label": "Start from",
+        "heading": "Active hours",
+        "default": false,
+        "depends_on": "",
+        "help": "Wait until this time before doing anything. A time that has already gone today does not wait for tomorrow - it starts straight away.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 23,
+        "picker": "",
+        "prefix": "",
+        "id": "start_hour",
+        "label": "h",
+        "heading": "Active hours",
+        "default": 8,
+        "depends_on": "start_at",
+        "help": "When the panel may start working, on the local clock.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 59,
+        "picker": "",
+        "prefix": "",
+        "id": "start_minute",
+        "label": "min",
+        "heading": "Active hours",
+        "default": 0,
+        "depends_on": "start_at",
+        "help": "When the panel may start working, on the local clock.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "end_at",
+        "label": "End at",
+        "heading": "Active hours",
+        "default": false,
+        "depends_on": "",
+        "help": "Stop when this time comes round. The character in progress finishes first, rather than stopping mid-march. With the repeat timer on, the next cycle waits for the start time.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 23,
+        "picker": "",
+        "prefix": "",
+        "id": "end_hour",
+        "label": "h",
+        "heading": "Active hours",
+        "default": 23,
+        "depends_on": "end_at",
+        "help": "When it stops, on the local clock.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 0,
+        "max": 59,
+        "picker": "",
+        "prefix": "",
+        "id": "end_minute",
+        "label": "min",
+        "heading": "Active hours",
+        "default": 0,
+        "depends_on": "end_at",
+        "help": "When it stops, on the local clock.",
+        "editable": true
+      },
+      {
+        "type": "choice",
+        "choices": [
+          [
+            "first",
+            "First game only"
+          ],
+          [
+            "second",
+            "Second game only"
+          ],
+          [
+            "both",
+            "Both - the first, then the second"
+          ]
+        ],
+        "dropdown": false,
+        "id": "run_games",
+        "label": "Run",
+        "heading": "Run which game",
+        "default": "both",
+        "depends_on": "",
+        "help": "Both: when the first game has had its cycle, it is closed, the second is started and the same tasks run there for its characters; before the next cycle the second is closed and the first started again. Without a second game set, this is always the first.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "launch_game",
+        "label": "Start a game if it is not running",
+        "heading": "Both games",
+        "default": false,
+        "depends_on": "",
+        "help": "For whichever game a cycle runs on - the first, the second or both in turn. Checked before every cycle; needs its path above. The panel waits for the game to finish loading before it does anything. With both games run, each is started in turn whatever this says.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "close_game",
+        "label": "Close the game while waiting for the timer",
+        "heading": "Both games",
+        "default": false,
+        "depends_on": "",
+        "help": "For whichever game the cycle ended on: shut it down for the wait and start it again for the next cycle. Only does anything with the timer on.",
+        "editable": true
+      },
+      {
+        "type": "choice",
+        "choices": [
+          [
+            "utc",
+            "UTC"
+          ],
+          [
+            "local",
+            "My time zone"
+          ]
+        ],
+        "dropdown": false,
+        "id": "report_zone",
+        "label": "Report days in",
+        "heading": "Report time zone",
+        "default": "utc",
+        "depends_on": "",
+        "help": "Which clock the daily report and the Summary tab count their days by. UTC is where the game's day rolls over. Days already recorded keep the day they were filed under.",
+        "editable": true
+      },
+      {
+        "type": "number",
+        "min": 1,
+        "max": 365,
+        "picker": "",
+        "prefix": "keep",
+        "id": "keep_days",
+        "label": "days",
+        "heading": "Keep history for",
+        "default": 10,
+        "depends_on": "",
+        "help": "How many days of logs, saved reports and recorded totals to keep under the source folder. Older files are deleted as new ones are written.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "always_admin",
+        "label": "Always start as administrator",
+        "heading": "Startup",
+        "default": false,
+        "depends_on": "",
+        "help": "The game runs elevated, and Windows refuses input sent to it from a normal process. With this on, the panel asks for administrator rights the moment it opens, instead of you noticing the warning banner and restarting it by hand.",
+        "editable": false
+      },
+      {
+        "type": "flag",
+        "id": "screen_off_at_end",
+        "label": "After the run",
+        "heading": "Screen off",
+        "default": true,
+        "depends_on": "",
+        "help": "Turn the screen off when a run finishes. If it could not go off then - a video or sound was playing - it tries again after x, until it has. With 'Every x' as well, it then goes off again every x.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "screen_off_repeat",
+        "label": "Every x",
+        "heading": "Screen off",
+        "default": true,
+        "depends_on": "",
+        "help": "Turn the screen off every x through the wait between cycles, so a notification that lights it at two in the morning does not leave it on until dawn. Without 'After the run', the first time is x after the run finishes.\nEither way it comes back on by itself two minutes before the next cycle, and it is never turned off while a video or sound is playing.",
+        "editable": true
+      },
+      {
+        "type": "choice",
+        "choices": [
+          [
+            "15",
+            "15 minutes"
+          ],
+          [
+            "30",
+            "30 minutes"
+          ],
+          [
+            "60",
+            "1 hour"
+          ],
+          [
+            "120",
+            "2 hours"
+          ],
+          [
+            "180",
+            "3 hours"
+          ]
+        ],
+        "dropdown": true,
+        "id": "screen_off_x",
+        "label": "x",
+        "heading": "Screen off",
+        "default": "15",
+        "depends_on": "",
+        "help": "Every x: how often the screen is turned off again. After the run: how long to wait before trying again if it did not go off.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "hibernate_cycles",
+        "label": "Hibernate until the next cycle",
+        "heading": "Screen off",
+        "default": true,
+        "depends_on": "",
+        "help": "Between cycles, put the machine into hibernation and let a wake timer bring it back a couple of minutes before the next one. On a laptop whose screen-off means Modern Standby this is the only way cycles keep running unattended - measured here, nothing in software wakes Modern Standby, while hibernation wakes on its timer every time. Skipped for short waits, while the machine is in use, and when the power plan ignores wake timers (it does on battery by default).",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "keep_awake_between",
+        "label": "Keep awake until the next run",
+        "heading": "Screen off",
+        "default": false,
+        "depends_on": "",
+        "help": "Between cycles, keep the machine and the screen on - no hibernation, no screen-off, no sleep - until the next cycle starts. The surest way for cycles to run unattended, at the price of a lit screen and no saving of power. Takes the place of 'Hibernate until the next cycle' and of the Screen off settings above while it is on.",
+        "editable": true
+      }
     ],
     "locked_groups": [
-      {"heading": "Discord", "count": 5},
-      {"heading": "Web sync", "count": 1}
+      {
+        "heading": "Games",
+        "count": 2
+      },
+      {
+        "heading": "Shortcut",
+        "count": 1
+      },
+      {
+        "heading": "Discord",
+        "count": 5
+      },
+      {
+        "heading": "Web sync",
+        "count": 2
+      }
     ],
-    "often_choices": [["always", "Every run"], ["once", "Once a day"], ["twice", "Twice a day"]],
+    "often_choices": [
+      [
+        "always",
+        "Every run"
+      ],
+      [
+        "once",
+        "Once a day"
+      ],
+      [
+        "twice",
+        "Twice a day"
+      ]
+    ],
     "same_as_high": {
       "label": "Same tasks as Hall 24+",
-      "help": "Run Lower Hall characters with the tasks ticked on Hall 24+. Lower Hall's own ticks are kept for when this is off; its options stay its own."
+      "help": "Run Lower Hall characters with the tasks ticked on Hall 24+. Lower Hall's own ticks are kept, greyed out, for when this is off. Its options - the resource to farm, the buildings to upgrade - are still its own."
     }
   }
 }

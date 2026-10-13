@@ -1,52 +1,184 @@
 // Home: where the PC is, and the run as the panel's Home has it - the dial
 // and the bar of the cycle's progress, the count tiles, a card per character,
 // the latest happenings.
-import { esc, amount } from "../format.js";
+import { esc, amount, duration, minutesLeft } from "../format.js";
 import { pcLine } from "../store.js";
 import { EMPTY, dataOf, top } from "./parts.js";
 
-const RANK = { now: 0, trouble: 1, done: 2, pending: 3 };
 const WORD = { now: "Now", trouble: "Trouble", done: "Done", pending: "To come" };
 const RESOURCES = [["food", "Food"], ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]];
-const EVENTS_SHOWN = 10;
+// What the panel's Home shows before "Show all".
+const NEEDS_SHOWN = 4;
+const EVENTS_SHOWN = 4;
+const DETAIL_CUT = 90;
+// A running time longer than this means the PC's clock is not this device's.
+const RUNNING_LONGEST = 6 * 3600;
 
 const number = (value) => (typeof value === "number" && Number.isFinite(value) ? value : 0);
 const word = (value, fallback) => (/^[a-z]+$/.test(String(value)) ? String(value) : fallback);
 const hhmm = (clock) => String(clock || "").slice(0, 5);
+const list = (value) => (Array.isArray(value) ? value : []);
 
-function card(who, schema) {
-  const status = word(who.status, "pending");
-  const section = ((schema && schema.sections) || []).find((s) => s.id === who.section);
-  const runs = Array.isArray(who.runs) ? who.runs : [];
-  const taskLabel = (id) => {
-    const task = ((schema && schema.tasks) || []).find((t) => t.id === id);
+/** "HH:MM:SS" on the PC's clock -> seconds into its day, or null. */
+function clockSeconds(clock) {
+  const m = /^(\d\d):(\d\d)(?::(\d\d))?$/.exec(String(clock || ""));
+  return m ? Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3] || 0) : null;
+}
+
+/** Seconds from one clock reading to a later one, across midnight if need be. */
+function between(from, to) {
+  const a = clockSeconds(from);
+  const b = clockSeconds(to);
+  return a === null || b === null ? null : (b - a + 86400) % 86400;
+}
+
+/** The PC's clock at the moment its file was built, taking the PC to be in
+ *  this device's zone (the file holds only Unix seconds). */
+function clockOf(unixSeconds) {
+  if (typeof unixSeconds !== "number") return null;
+  const d = new Date(unixSeconds * 1000);
+  const two = (n) => String(n).padStart(2, "0");
+  return `${two(d.getHours())}:${two(d.getMinutes())}:${two(d.getSeconds())}`;
+}
+
+const cut = (text) => (text.length > DETAIL_CUT ? `${text.slice(0, DETAIL_CUT - 1)}…` : text);
+
+/** The words for a task: the schema's, the run's own, or its id. */
+function labeller(schema) {
+  const tasks = list(schema && schema.tasks);
+  return (id, runs = []) => {
+    const task = tasks.find((t) => t.id === id);
     const run = runs.find((r) => r.id === id);
     return task ? task.label : (run && run.label) || id;
   };
-  const chips = (Array.isArray(who.order) ? who.order : []).map((id) => {
-    const run = [...runs].reverse().find((r) => r.id === id);
-    const state = run ? word(run.state, "other") : "pending";
-    return `<span class="chip run-${state}" title="${esc(run ? run.detail : "")}">${esc(taskLabel(id))}</span>`;
-  }).join("");
-  const facts = [
-    who.why,
-    who.started ? `${hhmm(who.started)}${who.finished ? ` to ${hhmm(who.finished)}` : ""}` : "",
-    number(who.marches) ? `${number(who.marches)} march${number(who.marches) === 1 ? "" : "es"}` : "",
-  ].filter(Boolean).map(esc).join(" · ");
-  const failed = runs.filter((r) => r.state === "failed")
-    .map((r) => `<p class="who-note">${esc(taskLabel(r.id))}: ${esc(r.detail)}</p>`).join("");
+}
+
+/** Home's order. Contract 2 gives it (`home_order`); a contract 1 file gets
+ *  the same by the same rule: the one at work, the one next, the others
+ *  latest started first, then those still to come in their order. */
+function ordered(live) {
+  const everyone = list(live.characters).map((who, i) => ({ who, i }));
+  if (Array.isArray(live.home_order)) {
+    const at = (name) => { const n = live.home_order.indexOf(name); return n < 0 ? Infinity : n; };
+    return everyone.sort((a, b) => at(a.who.name) - at(b.who.name) || a.i - b.i).map(({ who }) => who);
+  }
+  const first = everyone.find(({ who }) => who.status === "now");
+  const next = everyone.find(({ who }) => who.status === "pending");
+  const rank = ({ who }) => (who === (first && first.who) ? 0 : who === (next && next.who) ? 1
+    : who.status === "pending" ? 3 : 2);
+  return everyone.sort((a, b) => rank(a) - rank(b) || (rank(a) === 2 ? b.i - a.i : a.i - b.i))
+    .map(({ who }) => who);
+}
+
+/** Row 1, right: "City Hall 25 · VIP 12 · 22.6M power", what is known of it.
+ *  A file without those (contract 1) has only the reason it was run. */
+function facts(who) {
+  const known = [
+    number(who.hall) ? `City Hall ${number(who.hall)}` : "",
+    number(who.vip) ? `VIP ${number(who.vip)}` : "",
+    number(who.power) ? `${amount(who.power)} power` : "",
+  ].filter(Boolean);
+  return (known.length ? known : [who.why].filter(Boolean)).map(esc).join(" · ");
+}
+
+/** Row 3: the status as one pill, in the status colour. */
+function pill(who, ctx) {
+  const runs = list(who.runs);
+  const status = word(who.status, "pending");
+  let kind = "wait";
+  let text = "Waiting";
+  if (status === "now") {
+    if (ctx.running) {
+      kind = "now";
+      const doing = [...runs].reverse().find((r) => r.state === "running");
+      const spent = between(who.started, ctx.clock);
+      text = ["Running", doing && ctx.label(doing.id, runs),
+        spent !== null && spent > 0 && spent <= RUNNING_LONGEST ? duration(spent) : ""]
+        .filter(Boolean).join(" · ");
+    } else {
+      kind = "paused";
+      text = "Paused";
+    }
+  } else if (status === "trouble") {
+    kind = "trouble";
+    const failed = [...runs].reverse().find((r) => r.state === "failed");
+    text = failed ? `Problem · ${ctx.label(failed.id, runs)}` : "Problem";
+  } else if (status === "done") {
+    kind = "done";
+    const took = between(who.started, who.finished);
+    text = took === null ? "Done" : took < 30 ? "Done · <1 min" : `Done · ${Math.round(took / 60)} min`;
+  } else if (ctx.next === who.name) {
+    kind = "next";
+    text = "Next";
+  }
+  return `<p class="who-pill pill-${kind}">${esc(text)}</p>`;
+}
+
+/** The strip at the foot of a card: research, upgrades. */
+function strips(who) {
+  const out = [];
+  const going = who.research;
+  if (going && typeof going === "object") {
+    const left = minutesLeft(going.left_minutes);
+    out.push(`<div class="strip"><p><span class="strip-k">Research</span> · ${esc(going.text)}${left ? ` · ${left} left` : ""}</p>`
+      + (typeof going.fraction === "number" && Number.isFinite(going.fraction)
+        ? `<progress class="strip-bar" max="100" value="${Math.round(Math.min(1, Math.max(0, going.fraction)) * 100)}"></progress>` : "")
+      + "</div>");
+  }
+  for (const up of list(who.upgrades)) {
+    const left = minutesLeft(up && up.left_minutes);
+    out.push(`<div class="strip"><p><span class="strip-k">Upgrade</span> · ${esc(up && up.text)}${left ? ` · ${left} left` : ""}</p></div>`);
+  }
+  return out.join("");
+}
+
+function card(who, ctx) {
+  const status = word(who.status, "pending");
   const held = who.resources || {};
-  const resources = RESOURCES.filter(([key]) => number(held[key]))
-    .map(([key, label]) => `${label} ${esc(amount(held[key]))}`).join(" · ");
+  const gained = who.gained || {};
+  const resources = RESOURCES.map(([key, label]) =>
+    `<li class="res res-${key}"><span class="res-ico" role="img" aria-label="${label}"></span><b>${esc(amount(held[key]))}</b>`
+    + (number(gained[key]) > 0 ? `<small>+${esc(amount(gained[key]))}</small>` : "") + "</li>").join("");
+  const known = facts(who);
   return `<article class="card who who-${status}"><div class="who-head">`
-    + `<span class="who-status">${WORD[status] || esc(who.status)}</span>`
     + `<span class="who-name">${esc(who.name)}</span>`
-    + (section ? `<span class="chip sec">${esc(section.label)}</span>` : "")
-    + `</div>${facts ? `<p class="who-sub">${facts}</p>` : ""}`
-    + (chips ? `<div class="chips">${chips}</div>` : "")
-    + failed
-    + (resources ? `<p class="who-res">${resources}</p>` : "")
+    + (known ? `<span class="who-facts">${known}</span>` : "")
+    + `</div><ul class="who-res">${resources}</ul>`
+    + pill(who, ctx)
+    + strips(who)
     + "</article>";
+}
+
+/** "Show all N" / "Show less" for a list cut short; the page keeps which in view.open. */
+function more(view, key, total, shown) {
+  if (total <= shown) return "";
+  const all = view.open && view.open.has(`more:${key}`);
+  return `<button type="button" class="link more" data-open="more:${key}">${all ? "Show less" : `Show all ${total}`}</button>`;
+}
+
+/** Each task's last go at it, for the characters that have begun: what
+ *  failed, then what found nothing to do. */
+function needsLook(live) {
+  const found = [];
+  for (const who of list(live.characters)) {
+    const last = new Map();
+    for (const run of list(who.runs)) last.set(run.id, run);
+    for (const run of last.values())
+      if (run.state === "failed" || run.state === "nothing") found.push({ who, run });
+  }
+  return found.sort((a, b) => (a.run.state === "failed" ? 0 : 1) - (b.run.state === "failed" ? 0 : 1));
+}
+
+function needs(live, view, label) {
+  const found = needsLook(live);
+  const all = Boolean(view.open && view.open.has("more:needs"));
+  const rows = (all ? found : found.slice(0, NEEDS_SHOWN)).map(({ who, run }) => {
+    const detail = cut(String(run.detail || ""));
+    return `<li class="need need-${run.state === "failed" ? "failed" : "nothing"}"><b>${esc(who.name)}</b> `
+      + `${esc(label(run.id, list(who.runs)))}${detail ? ` · ${esc(detail)}` : ""}</li>`;
+  }).join("");
+  return `<section class="card needs${found.length ? "" : " needs-clear"}"><h2>Needs a look · ${found.length || "all clear"}</h2>`
+    + (rows ? `<ul>${rows}</ul>` : "") + more(view, "needs", found.length, NEEDS_SHOWN) + "</section>";
 }
 
 /** The cycle's progress as the panel shows it: a dial with the number, and a
@@ -87,20 +219,29 @@ export function render(store, view, now) {
     [number(totals.tasks_ok), "Tasks", "tasks", true],
     [number(totals.tasks_failed), "Failed", number(totals.tasks_failed) ? "failed" : "quiet", true],
     [number(totals.marches), "Marches", "marches", true],
+    [number(totals.research), "Research", "research", true],
+    [number(totals.upgrades), "Upgrades", "upgrades", true],
   ].map(([value, label, kind, counts]) =>
     `<div class="tile tile-${kind}"><b${counts ? ` data-count="${esc(value)}"` : ""}>${esc(value)}</b><span>${label}</span></div>`).join("");
 
-  const everyone = (Array.isArray(live.characters) ? live.characters : [])
-    .map((who, i) => ({ who, i, rank: RANK[who.status] ?? RANK.pending }))
-    .sort((a, b) => a.rank - b.rank || a.i - b.i)
-    .map(({ who }) => card(who, schema)).join("");
+  const label = labeller(schema);
+  const ctx = {
+    label, running: mode === "running", clock: clockOf(store.state.files.live.at),
+    // contract 2 says who is next; a file of contract 1 does not
+    next: typeof live.next === "string" ? live.next
+      : (list(live.characters).find((who) => who.status === "pending") || {}).name,
+  };
+  const everyone = ordered(live).map((who) => card(who, ctx)).join("");
 
-  const events = (Array.isArray(live.events) ? live.events : []).slice(0, EVENTS_SHOWN)
+  const all = list(live.events);
+  const shown = view.open && view.open.has("more:events") ? all : all.slice(0, EVENTS_SHOWN);
+  const events = shown
     .map((e) => `<li class="ev ev-${word(e.kind, "info")}"><time>${esc(hhmm(e.at))}</time> `
       + `<span class="ev-who">${esc(e.who)}</span> ${esc(e.text)}</li>`).join("");
 
   return header
-    + `<div class="tiles">${tiles}</div>`
+    + `<div class="tiles tiles-home">${tiles}</div>`
+    + needs(live, view, label)
     + `<section class="cards">${everyone || EMPTY}</section>`
-    + (events ? `<h2>Activity</h2><ul class="events card">${events}</ul>` : "");
+    + (events ? `<h2>Activity</h2><div class="card events"><ul>${events}</ul>${more(view, "events", all.length, EVENTS_SHOWN)}</div>` : "");
 }

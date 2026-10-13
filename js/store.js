@@ -1,7 +1,7 @@
 // What the page knows: the PC's files, the edits waiting for it, and what
 // became of the ones it has handled. Kept on the device between visits, so
 // the page opens with the last thing it saw.
-import { CONTRACT, KINDS, makeEdit, targetKey } from "./edits.js";
+import { CONTRACTS, KINDS, makeEdit, targetKey } from "./edits.js";
 import { clockTime } from "./format.js";
 
 export const FILES = ["status", "live", "summary", "settings", "schema", "results"];
@@ -208,7 +208,7 @@ export function createStore({ client, storage, now, newId, device }) {
 
     /** False when the PC writes a contract this page was not built for. */
     supported() {
-      return FILES.every((name) => !state.files[name] || state.files[name].contract === CONTRACT);
+      return FILES.every((name) => !state.files[name] || CONTRACTS.includes(state.files[name].contract));
     },
 
     canEdit() {

@@ -1,57 +1,1722 @@
 {
-  "contract": 1,
-  "at": 1791798360.0,
+  "contract": 2,
+  "at": 1791897469.6055639,
   "data": {
     "zone": "utc",
-    "today": "2026-10-12",
+    "today": "2026-10-13",
     "days": [
       {
-        "day": "2026-10-12",
-        "cycles": 2,
+        "day": "2026-10-13",
+        "cycles": 4,
+        "gained": {
+          "food": 78100000.0,
+          "wood": 46900000.0,
+          "stone": 29800000.0,
+          "gold": 14008380.0
+        },
         "research": 3,
-        "training": 4,
-        "seconds": 1500,
-        "cycle_seconds": 1700,
-        "gained": {"food": 7800000, "wood": 5200000, "stone": 2100000, "gold": 1000000},
+        "training": 32,
+        "seconds": 5271.100000000033,
+        "cycle_seconds": 7505.699999999997,
         "characters": [
-          {"name": "Farm One", "total": 12100000, "seconds": 620, "research": 1, "training": 2,
-           "gained": {"food": 5000000, "wood": 4000000, "stone": 2100000, "gold": 1000000}},
-          {"name": "Thông Farm 2", "total": 3200000, "seconds": 540, "research": 1, "training": 1,
-           "gained": {"food": 2000000, "wood": 1200000}},
-          {"name": "Farm Two", "total": 800000, "seconds": 340, "research": 1, "training": 1,
-           "gained": {"food": 800000}}
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 29200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 334.50000000000546,
+            "total": 29200000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 26000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 335.59999999999127,
+            "total": 26000000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "wood": 25800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 347.4000000000042,
+            "total": 25800000.0
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 20700000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 338.00000000000273,
+            "total": 20700000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 16400000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 231.59999999999854,
+            "total": 16400000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "stone": 14500000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 229.60000000000582,
+            "total": 14500000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "stone": 13900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 322.20000000000437,
+            "total": 13900000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "gold": 7300000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 309.40000000000873,
+            "total": 7300000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "gold": 6700000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 326.4000000000078,
+            "total": 6700000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1800000.0,
+              "wood": 1100000.0,
+              "stone": 400000.0
+            },
+            "research": 1,
+            "training": 5,
+            "seconds": 504.7000000000062,
+            "total": 3300000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "wood": 1000000.0,
+              "stone": 700000.0
+            },
+            "research": 0,
+            "training": 10,
+            "seconds": 410.1000000000049,
+            "total": 1700000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "food": 400000.0,
+              "wood": 1300000.0
+            },
+            "research": 1,
+            "training": 6,
+            "seconds": 580.7000000000003,
+            "total": 1700000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "wood": 1099999.9999999981,
+              "stone": 100000.0
+            },
+            "research": 1,
+            "training": 1,
+            "seconds": 589.9999999999991,
+            "total": 1199999.9999999981
+          },
+          {
+            "name": "Character 4",
+            "gained": {
+              "wood": 200000.0,
+              "stone": 200000.0,
+              "gold": 8380.0
+            },
+            "research": 0,
+            "training": 10,
+            "seconds": 410.8999999999942,
+            "total": 408380.0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-12",
+        "cycles": 10,
+        "gained": {
+          "food": 153800000.0,
+          "wood": 107900000.0,
+          "stone": 162800000.0,
+          "gold": 46511364.0
+        },
+        "research": 7,
+        "training": 38,
+        "seconds": 8710.500000000015,
+        "cycle_seconds": 13153.099999999999,
+        "characters": [
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 38800000.0,
+              "wood": 1000000.0,
+              "stone": 82300000.0,
+              "gold": 1200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 470.099999999994,
+            "total": 123300000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 1300000.0,
+              "wood": 53300000.0,
+              "stone": 1600000.0,
+              "gold": 2000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 436.1999999999998,
+            "total": 58200000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 50000000.0,
+              "wood": 400000.0,
+              "stone": 1500000.0,
+              "gold": 1700000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 581.3999999999924,
+            "total": 53600000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 43900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 462.5000000000073,
+            "total": 43900000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 37400000.0,
+              "stone": 1000000.0,
+              "gold": 2000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 402.799999999992,
+            "total": 40400000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "food": 600000.0,
+              "wood": 600000.0,
+              "stone": 35000000.0,
+              "gold": 900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 546.700000000008,
+            "total": 37100000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "food": 2300000.0,
+              "wood": 2200000.0,
+              "stone": 25400000.0,
+              "gold": 2700000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 421.29999999999836,
+            "total": 32600000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "food": 7400000.0,
+              "wood": 700000.0,
+              "stone": 1200000.0,
+              "gold": 14900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 523.7000000000062,
+            "total": 24200000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "food": 600000.0,
+              "wood": 300000.0,
+              "stone": 700000.0000000075,
+              "gold": 14800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 581.6000000000004,
+            "total": 16400000.000000007
+          },
+          {
+            "name": "Character 4",
+            "gained": {
+              "food": 4000000.0,
+              "wood": 1700000.0,
+              "stone": 9900000.0,
+              "gold": 11364.0
+            },
+            "research": 0,
+            "training": 11,
+            "seconds": 698.7999999999975,
+            "total": 15611364.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 1999999.9999999981,
+              "wood": 1500000.0000000019,
+              "stone": 1100000.0,
+              "gold": 5000000.0
+            },
+            "research": 2,
+            "training": 2,
+            "seconds": 842.8000000000011,
+            "total": 9600000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "wood": 4400000.0,
+              "gold": 1200000.0
+            },
+            "research": 2,
+            "training": 8,
+            "seconds": 783.2000000000007,
+            "total": 5600000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1900000.0,
+              "wood": 2400000.0000000037,
+              "stone": 1000000.0,
+              "gold": 100000.0
+            },
+            "research": 2,
+            "training": 6,
+            "seconds": 1087.9000000000015,
+            "total": 5400000.000000004
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "food": 1000000.0,
+              "wood": 2000000.0,
+              "stone": 2100000.0
+            },
+            "research": 1,
+            "training": 11,
+            "seconds": 682.2000000000116,
+            "total": 5100000.0
+          },
+          {
+            "name": "Character 15",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 189.3000000000029,
+            "total": 0
+          }
         ]
       },
       {
         "day": "2026-10-11",
         "cycles": 6,
-        "research": 5,
-        "training": 9,
-        "seconds": 9660,
-        "cycle_seconds": 10200,
-        "gained": {"food": 33000000, "wood": 24000000, "stone": 14000000, "gold": 4000000},
+        "gained": {
+          "food": 105676600.0,
+          "wood": 53406500.0,
+          "stone": 48045500.00000003,
+          "gold": 36327949.0
+        },
+        "research": 6,
+        "training": 19,
+        "seconds": 16788.900000000023,
+        "cycle_seconds": 23290.40000000001,
         "characters": [
-          {"name": "Farm One", "total": 40000000, "seconds": 4000, "research": 2, "training": 4,
-           "gained": {"food": 20000000, "wood": 10000000, "stone": 6000000, "gold": 4000000}},
-          {"name": "Farm Two", "total": 30000000, "seconds": 3400, "research": 2, "training": 3,
-           "gained": {"food": 10000000, "wood": 12000000, "stone": 8000000}},
-          {"name": "Thông Farm 2", "total": 5000000, "seconds": 2260, "research": 1, "training": 2,
-           "gained": {"food": 3000000, "wood": 2000000}}
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 42500000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 849.1000000000058,
+            "total": 42500000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 27500000.0,
+              "wood": 1500000.0,
+              "stone": 1200000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1051.2999999999938,
+            "total": 30200000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 799999.9999999981,
+              "wood": 26500000.0,
+              "stone": 700000.0,
+              "gold": 1000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1083.5,
+            "total": 29000000.0
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 25000000.0,
+              "stone": 900000.0,
+              "gold": 1400000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1007.6000000000022,
+            "total": 27300000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "food": 1500000.0,
+              "wood": 1300000.0,
+              "stone": 20300000.00000003,
+              "gold": 1200000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1101.9000000000015,
+            "total": 24300000.00000003
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "food": 1100000.0,
+              "wood": 1100000.0,
+              "stone": 19500000.0,
+              "gold": 1100000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1083.9000000000015,
+            "total": 22800000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "food": 1000000.0,
+              "wood": 17600000.0,
+              "gold": 1300000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 907.1000000000058,
+            "total": 19900000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "gold": 13982449.0
+            },
+            "research": 1,
+            "training": 1,
+            "seconds": 1302.7000000000007,
+            "total": 13982449.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "wood": 1300000.0,
+              "stone": 1200000.0,
+              "gold": 7000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 866.0000000000055,
+            "total": 9500000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "food": 700000.0,
+              "stone": 900000.0,
+              "gold": 7800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1037.900000000005,
+            "total": 9400000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 1800000.0,
+              "wood": 1100000.0,
+              "stone": 1200000.0,
+              "gold": 1000000.0
+            },
+            "research": 0,
+            "training": 4,
+            "seconds": 1665.299999999996,
+            "total": 5100000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 1800000.0,
+              "wood": 1700000.0,
+              "stone": 1100000.0,
+              "gold": 300000.0
+            },
+            "research": 0,
+            "training": 6,
+            "seconds": 1292.6000000000076,
+            "total": 4900000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1100000.0,
+              "wood": 900000.0,
+              "stone": 1000000.0,
+              "gold": 200000.0
+            },
+            "research": 0,
+            "training": 7,
+            "seconds": 1606.2999999999938,
+            "total": 3200000.0
+          },
+          {
+            "name": "Character 15",
+            "gained": {
+              "food": 876600.0,
+              "wood": 406500.0,
+              "stone": 45500.0,
+              "gold": 45500.0
+            },
+            "research": 2,
+            "training": 1,
+            "seconds": 1809.300000000003,
+            "total": 1374100.0
+          },
+          {
+            "name": "Character 16",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 124.40000000000146,
+            "total": 0
+          }
         ]
       },
       {
         "day": "2026-10-10",
-        "cycles": 5,
-        "research": 4,
-        "training": 8,
-        "seconds": 8000,
-        "cycle_seconds": 8400,
-        "gained": {"food": 23000000, "wood": 17000000, "stone": 8000000, "gold": 2000000},
+        "cycles": 6,
+        "gained": {
+          "food": 232600000.00000003,
+          "wood": 92000000.0,
+          "stone": 33700000.0,
+          "gold": 32624778.0
+        },
+        "research": 7,
+        "training": 20,
+        "seconds": 15854.000000000024,
+        "cycle_seconds": 19206.699999999997,
         "characters": [
-          {"name": "Farm One", "total": 30000000, "seconds": 4200, "research": 2, "training": 4,
-           "gained": {"food": 15000000, "wood": 9000000, "stone": 4000000, "gold": 2000000}},
-          {"name": "Farm Two", "total": 20000000, "seconds": 3800, "research": 2, "training": 4,
-           "gained": {"food": 8000000, "wood": 8000000, "stone": 4000000}}
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 143900000.0,
+              "wood": 1500000.0,
+              "stone": 1200000.0,
+              "gold": 1400000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1007.9000000000124,
+            "total": 148000000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 49500000.00000003,
+              "wood": 700000.0,
+              "gold": 1900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 919.8999999999953,
+            "total": 52100000.00000003
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 2200000.0,
+              "wood": 45400000.0,
+              "gold": 1600000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1119.5,
+            "total": 49200000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 39600000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1215.7000000000037,
+            "total": 39600000.0
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 32000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1177.3999999999978,
+            "total": 32000000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "stone": 28000000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1177.6000000000051,
+            "total": 28000000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "food": 1200000.0,
+              "wood": 1400000.0,
+              "stone": 1200000.0,
+              "gold": 15400000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1041.599999999995,
+            "total": 19200000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "gold": 6500000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1382.0000000000073,
+            "total": 6500000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1400000.0,
+              "wood": 1200000.0,
+              "stone": 1400000.0,
+              "gold": 2400000.000000001
+            },
+            "research": 1,
+            "training": 6,
+            "seconds": 1273.8999999999942,
+            "total": 6400000.000000001
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 2400000.0,
+              "wood": 2200000.0,
+              "stone": 1100000.0,
+              "gold": 100000.0
+            },
+            "research": 2,
+            "training": 8,
+            "seconds": 1545.5999999999985,
+            "total": 5800000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "stone": 300000.0,
+              "gold": 3324778.0
+            },
+            "research": 0,
+            "training": 5,
+            "seconds": 998.6000000000076,
+            "total": 3624778.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "stone": 500000.0
+            },
+            "research": 1,
+            "training": 1,
+            "seconds": 1605.300000000003,
+            "total": 500000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 1224.0000000000036,
+            "total": 0
+          },
+          {
+            "name": "Character 17",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 165.0,
+            "total": 0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-09",
+        "cycles": 3,
+        "gained": {
+          "food": 50400000.0,
+          "wood": 76500000.0,
+          "stone": 58000000.0,
+          "gold": 36402889.0
+        },
+        "research": 7,
+        "training": 35,
+        "seconds": 15265.39999999999,
+        "cycle_seconds": 12691.0,
+        "characters": [
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 1500000.0,
+              "wood": 35800000.0,
+              "stone": 900000.0,
+              "gold": 1200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1073.9999999999955,
+            "total": 39400000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "food": 4000000.0,
+              "wood": 26200000.0,
+              "gold": 900000.0
+            },
+            "research": 2,
+            "training": 0,
+            "seconds": 1123.8000000000102,
+            "total": 31100000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "food": 1300000.0,
+              "wood": 1200000.0,
+              "stone": 26800000.0,
+              "gold": 1200000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1251.5000000000018,
+            "total": 30500000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "food": 2800000.0,
+              "wood": 3000000.0,
+              "stone": 21600000.0,
+              "gold": 1900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 960.6999999999953,
+            "total": 29300000.0
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 25900000.0,
+              "gold": 1600000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1031.1000000000013,
+            "total": 27500000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 3100000.0,
+              "wood": 4100000.0,
+              "stone": 2500000.0,
+              "gold": 6100000.0
+            },
+            "research": 1,
+            "training": 5,
+            "seconds": 1261.5,
+            "total": 15800000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "food": 1400000.0,
+              "stone": 900000.0,
+              "gold": 12600000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1096.8000000000065,
+            "total": 14900000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 7500000.0,
+              "gold": 800000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 519.9999999999973,
+            "total": 8300000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "food": 1000000.0,
+              "stone": 600000.0,
+              "gold": 6000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1251.799999999991,
+            "total": 7600000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "wood": 3900000.0,
+              "stone": 2500000.0
+            },
+            "research": 0,
+            "training": 11,
+            "seconds": 1456.4000000000024,
+            "total": 6400000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 1899999.9999999963,
+              "wood": 1500000.0000000037,
+              "stone": 2200000.0,
+              "gold": 500000.0
+            },
+            "research": 1,
+            "training": 7,
+            "seconds": 1587.3999999999887,
+            "total": 6100000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "wood": 100000.0,
+              "gold": 3600000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1295.6000000000095,
+            "total": 3700000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "wood": 700000.0,
+              "gold": 2889.0
+            },
+            "research": 0,
+            "training": 12,
+            "seconds": 1354.799999999991,
+            "total": 702889.0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-08",
+        "cycles": 5,
+        "gained": {
+          "food": 20000000.0,
+          "wood": 40500000.0,
+          "stone": 21400000.0,
+          "gold": 13106219.0
+        },
+        "research": 8,
+        "training": 26,
+        "seconds": 9957.400000000009,
+        "cycle_seconds": 7928.400000000005,
+        "characters": [
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 800000.0,
+              "wood": 18200000.0,
+              "stone": 400000.0,
+              "gold": 600000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 568.1000000000022,
+            "total": 20000000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "food": 800000.0000000019,
+              "wood": 800000.0,
+              "stone": 11200000.0,
+              "gold": 5500000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 663.4999999999927,
+            "total": 18300000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 16400000.0,
+              "gold": 900000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 585.7999999999993,
+            "total": 17300000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 8600000.0,
+              "wood": 1700000.0,
+              "gold": 1100000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 480.4000000000051,
+            "total": 11400000.0
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 7900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 379.50000000000364,
+            "total": 7900000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "stone": 6200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1319.3999999999978,
+            "total": 6200000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "food": 800000.0,
+              "gold": 4100000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 387.40000000000146,
+            "total": 4900000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "wood": 1100000.0,
+              "stone": 1300000.0,
+              "gold": 200000.0
+            },
+            "research": 2,
+            "training": 7,
+            "seconds": 1285.200000000008,
+            "total": 2600000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1100000.0,
+              "wood": 900000.0,
+              "stone": 100000.0,
+              "gold": 100000.0
+            },
+            "research": 1,
+            "training": 7,
+            "seconds": 722.3999999999996,
+            "total": 2200000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "wood": 700000.0,
+              "stone": 500000.0,
+              "gold": 600000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 741.3000000000002,
+            "total": 1800000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "wood": 700000.0,
+              "stone": 900000.0,
+              "gold": 3902.0
+            },
+            "research": 0,
+            "training": 8,
+            "seconds": 990.5999999999958,
+            "total": 1603902.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "stone": 800000.0,
+              "gold": 2317.0
+            },
+            "research": 3,
+            "training": 4,
+            "seconds": 1248.2000000000035,
+            "total": 802317.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 585.5999999999985,
+            "total": 0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-07",
+        "cycles": 4,
+        "gained": {
+          "food": 60600000.0,
+          "wood": 20600000.0,
+          "stone": 20400000.0,
+          "gold": 4205000.0
+        },
+        "research": 10,
+        "training": 17,
+        "seconds": 12209.300000000014,
+        "cycle_seconds": 16195.200000000004,
+        "characters": [
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 28600000.0,
+              "wood": 2900000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 912.5000000000073,
+            "total": 31500000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 17300000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1020.0000000000073,
+            "total": 17300000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 16900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 983.7999999999956,
+            "total": 16900000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 13300000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 869.5000000000036,
+            "total": 13300000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "stone": 9800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 899.4000000000015,
+            "total": 9800000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "stone": 9300000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 888.8000000000029,
+            "total": 9300000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "gold": 4200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 850.0999999999913,
+            "total": 4200000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "wood": 800000.0,
+              "stone": 800000.0
+            },
+            "research": 2,
+            "training": 4,
+            "seconds": 990.5,
+            "total": 1600000.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 700000.0,
+              "gold": 5000.0
+            },
+            "research": 0,
+            "training": 7,
+            "seconds": 1089.6000000000058,
+            "total": 705000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 700000.0
+            },
+            "research": 2,
+            "training": 6,
+            "seconds": 862.0999999999949,
+            "total": 700000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "stone": 500000.0
+            },
+            "research": 2,
+            "training": 0,
+            "seconds": 972.7000000000007,
+            "total": 500000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {},
+            "research": 1,
+            "training": 0,
+            "seconds": 927.0,
+            "total": 0
+          },
+          {
+            "name": "Character 6",
+            "gained": {},
+            "research": 1,
+            "training": 0,
+            "seconds": 943.3000000000029,
+            "total": 0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-06",
+        "cycles": 5,
+        "gained": {
+          "food": 92200000.0,
+          "wood": 81000000.0,
+          "stone": 69799999.99999997,
+          "gold": 72302592.0
+        },
+        "research": 8,
+        "training": 29,
+        "seconds": 15509.000000000016,
+        "cycle_seconds": 22579.200000000004,
+        "characters": [
+          {
+            "name": "Character 5",
+            "gained": {
+              "food": 500000.0,
+              "wood": 32800000.0,
+              "stone": 1600000.0,
+              "gold": 14500000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 908.5999999999927,
+            "total": 49400000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "food": 2000000.0,
+              "wood": 13000000.0,
+              "stone": 21999999.99999997,
+              "gold": 7200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 942.5000000000036,
+            "total": 44199999.99999997
+          },
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 20600000.0,
+              "stone": 16000000.0,
+              "gold": 6800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 907.8999999999971,
+            "total": 43400000.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 37200000.0,
+              "wood": 3200000.0,
+              "gold": 2700000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1326.7000000000044,
+            "total": 43100000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "wood": 2500000.000000002,
+              "stone": 18000000.0,
+              "gold": 11300000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1512.2000000000073,
+            "total": 31800000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 1600000.0,
+              "wood": 21500000.0,
+              "stone": 1199999.9999999981,
+              "gold": 5900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1046.5,
+            "total": 30200000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 21000000.0,
+              "wood": 500000.0,
+              "stone": 1300000.0,
+              "gold": 6100000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1112.1000000000022,
+            "total": 28900000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "food": 2600000.0,
+              "wood": 2400000.0,
+              "stone": 7200000.0,
+              "gold": 14200000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 858.5000000000036,
+            "total": 26400000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 2100000.0,
+              "wood": 2900000.0,
+              "stone": 1500000.0
+            },
+            "research": 1,
+            "training": 5,
+            "seconds": 1981.4000000000106,
+            "total": 6500000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "gold": 3600000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1160.1999999999978,
+            "total": 3600000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 2100000.0,
+              "wood": 1000000.0,
+              "stone": 200000.0
+            },
+            "research": 1,
+            "training": 5,
+            "seconds": 1283.1000000000095,
+            "total": 3300000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "food": 2000000.0,
+              "wood": 500000.0,
+              "stone": 200000.0,
+              "gold": 2592.0
+            },
+            "research": 3,
+            "training": 12,
+            "seconds": 968.5999999999931,
+            "total": 2702592.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 500000.0,
+              "wood": 700000.0,
+              "stone": 600000.0
+            },
+            "research": 0,
+            "training": 7,
+            "seconds": 1500.6999999999953,
+            "total": 1800000.0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-05",
+        "cycles": 7,
+        "gained": {
+          "food": 79343500.0,
+          "wood": 126600000.0,
+          "stone": 53324400.0,
+          "gold": 66003956.0
+        },
+        "research": 9,
+        "training": 51,
+        "seconds": 16755.20000000001,
+        "cycle_seconds": 18801.000000000004,
+        "characters": [
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 28800000.0,
+              "wood": 48900000.0,
+              "gold": 7500000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 1062.8999999999992,
+            "total": 85200000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "food": 3500000.0,
+              "wood": 31000000.0,
+              "stone": 22100000.0,
+              "gold": 7800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1055.8000000000065,
+            "total": 64400000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "food": 3300000.0,
+              "wood": 36400000.0,
+              "gold": 7800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 994.2999999999947,
+            "total": 47500000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 35600000.0,
+              "wood": 2000000.0,
+              "stone": 2300000.0,
+              "gold": 7500000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1185.49999999999,
+            "total": 47400000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "food": 1400000.0,
+              "wood": 1300000.0,
+              "stone": 21200000.0,
+              "gold": 2100000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 743.700000000003,
+            "total": 26000000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "stone": 2200000.0,
+              "gold": 16900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 972.4000000000124,
+            "total": 19100000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "gold": 12500000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 1133.1000000000035,
+            "total": 12500000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 2100000.0,
+              "wood": 3000000.0,
+              "stone": 2400000.0,
+              "gold": 900000.0000000009
+            },
+            "research": 2,
+            "training": 12,
+            "seconds": 3037.400000000008,
+            "total": 8400000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 2200000.0,
+              "wood": 2700000.0,
+              "stone": 1500000.0,
+              "gold": 600000.0
+            },
+            "research": 1,
+            "training": 10,
+            "seconds": 1893.1999999999903,
+            "total": 7000000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "food": 1243500.0,
+              "stone": 1624400.0,
+              "gold": 2400000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 587.3999999999978,
+            "total": 5267900.0
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 1200000.0,
+              "wood": 1300000.0,
+              "gold": 3956.0
+            },
+            "research": 0,
+            "training": 12,
+            "seconds": 2844.700000000002,
+            "total": 2503956.0
+          },
+          {
+            "name": "Character 1",
+            "gained": {},
+            "research": 0,
+            "training": 0,
+            "seconds": 0.0,
+            "total": 0
+          },
+          {
+            "name": "Character 14",
+            "gained": {},
+            "research": 5,
+            "training": 17,
+            "seconds": 1244.800000000003,
+            "total": 0
+          }
+        ]
+      },
+      {
+        "day": "2026-10-04",
+        "cycles": 7,
+        "gained": {
+          "food": 71800000.0,
+          "wood": 41600000.0,
+          "stone": 35000000.0,
+          "gold": 43000000.0
+        },
+        "research": 8,
+        "training": 43,
+        "seconds": 12989.699999999979,
+        "cycle_seconds": 18068.499999999996,
+        "characters": [
+          {
+            "name": "Character 6",
+            "gained": {
+              "food": 27400000.0,
+              "gold": 6700000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 547.9000000000042,
+            "total": 34100000.0
+          },
+          {
+            "name": "Character 9",
+            "gained": {
+              "wood": 29100000.0,
+              "gold": 3900000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 702.4999999999945,
+            "total": 33000000.0
+          },
+          {
+            "name": "Character 10",
+            "gained": {
+              "food": 22900000.0,
+              "gold": 3600000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 896.3999999999978,
+            "total": 26500000.0
+          },
+          {
+            "name": "Character 8",
+            "gained": {
+              "wood": 4900000.0,
+              "stone": 13900000.0,
+              "gold": 2000000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 625.2000000000016,
+            "total": 20800000.0
+          },
+          {
+            "name": "Character 5",
+            "gained": {
+              "food": 2100000.0,
+              "wood": 2000000.0,
+              "stone": 15900000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 534.7999999999984,
+            "total": 20000000.0
+          },
+          {
+            "name": "Character 7",
+            "gained": {
+              "gold": 12600000.0
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 514.6999999999971,
+            "total": 12600000.0
+          },
+          {
+            "name": "Character 2",
+            "gained": {
+              "stone": 3000000.0,
+              "gold": 7599999.999999998
+            },
+            "research": 1,
+            "training": 0,
+            "seconds": 644.5999999999976,
+            "total": 10599999.999999998
+          },
+          {
+            "name": "Character 1",
+            "gained": {
+              "food": 7800000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 462.59999999999854,
+            "total": 7800000.0
+          },
+          {
+            "name": "Character 3",
+            "gained": {
+              "food": 800000.0,
+              "wood": 800000.0,
+              "stone": 600000.0,
+              "gold": 5300000.0
+            },
+            "research": 0,
+            "training": 0,
+            "seconds": 588.699999999998,
+            "total": 7500000.0
+          },
+          {
+            "name": "Character 14",
+            "gained": {
+              "food": 6000000.0,
+              "wood": 100000.0
+            },
+            "research": 2,
+            "training": 16,
+            "seconds": 1284.9999999999973,
+            "total": 6100000.0
+          },
+          {
+            "name": "Character 13",
+            "gained": {
+              "food": 3300000.0,
+              "wood": 1800000.0,
+              "gold": 800000.0
+            },
+            "research": 1,
+            "training": 11,
+            "seconds": 2131.5,
+            "total": 5900000.0
+          },
+          {
+            "name": "Character 11",
+            "gained": {
+              "food": 1300000.0000000019,
+              "wood": 1800000.0,
+              "stone": 1200000.0,
+              "gold": 500000.0
+            },
+            "research": 1,
+            "training": 7,
+            "seconds": 2334.599999999996,
+            "total": 4800000.000000002
+          },
+          {
+            "name": "Character 12",
+            "gained": {
+              "food": 200000.0,
+              "wood": 1100000.0,
+              "stone": 400000.0
+            },
+            "research": 1,
+            "training": 9,
+            "seconds": 1721.199999999998,
+            "total": 1700000.0
+          }
         ]
       }
     ]

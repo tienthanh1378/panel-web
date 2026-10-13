@@ -1,23 +1,63 @@
 {
-  "contract": 1,
-  "at": 1791798060.0,
+  "contract": 2,
+  "at": 1791897469.6055639,
   "data": {
     "results": [
       {
-        "id": "9d2f4c1e-7a35-4b6e-8c0d-2f1e5a7b9c33",
-        "status": "rejected",
-        "message": "changed on the PC to 60",
-        "at": 1791798060.0,
-        "kind": "set_setting",
-        "args": {"id": "screen_off_x", "value": 30, "seen": 45}
-      },
-      {
-        "id": "3b0c7a52-1e4d-4f8a-9b6c-5d2e8f1a0c47",
+        "id": "945444d4-ca14-47fe-9795-9184ac924929",
         "status": "applied",
         "message": "",
-        "at": 1791798060.0,
-        "kind": "set_tick",
-        "args": {"section": "high", "task": "farm_gem", "value": false, "seen": true}
+        "at": 1791862730.8549974,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_max_minutes",
+          "value": 15,
+          "seen": 0
+        }
+      },
+      {
+        "id": "7421db3e-d7a6-406b-a4ad-f038d94a0374",
+        "status": "applied",
+        "message": "",
+        "at": 1791862730.8549974,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_minutes",
+          "value": 45,
+          "seen": 30
+        }
+      },
+      {
+        "id": "0c50a471-7038-4d09-9a79-fb4704e8b17a",
+        "status": "rejected",
+        "message": "changed on the PC to 2",
+        "at": 1791859767.344536,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_hours",
+          "value": 3,
+          "seen": 7
+        }
+      },
+      {
+        "id": "4c9ad84b-ad46-4c5b-a1c4-701ddc040e5d",
+        "status": "applied",
+        "message": "",
+        "at": 1791859772.507186,
+        "kind": "set_setting",
+        "args": {
+          "id": "keep_days",
+          "value": 10,
+          "seen": 10
+        }
+      },
+      {
+        "id": "junk-test",
+        "status": "rejected",
+        "message": "could not be read - it is not JSON",
+        "at": 1791859767.344536,
+        "kind": null,
+        "args": null
       }
     ]
   }

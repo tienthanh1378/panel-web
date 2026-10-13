@@ -43,3 +43,10 @@ export function clockTime(unixSeconds, now) {
     && then.getMonth() === today.getMonth() && then.getDate() === today.getDate();
   return sameDay ? time : `${DAYS[then.getDay()]} ${time}`;
 }
+
+/** 358 -> "5h58m", 61 -> "1h01m", 45 -> "45m": minutes left, as the panel says them. */
+export function minutesLeft(minutes) {
+  if (typeof minutes !== "number" || !Number.isFinite(minutes) || minutes < 0) return "";
+  const whole = Math.floor(minutes);
+  return whole < 60 ? `${whole}m` : `${Math.floor(whole / 60)}h${two(whole % 60)}m`;
+}
