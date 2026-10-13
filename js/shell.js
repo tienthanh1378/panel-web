@@ -83,15 +83,17 @@ export function mayReload({ hadController = false, editing = true, staged = 1, s
 // often than this many seconds.
 const CHECK_GAP = 300;
 
-// While the page is in view it reads the repo again by itself, this many
-// seconds after the last read. Reads are conditional, so a file the PC has not
+// While the page is in view and the PC is in a session it reads the repo again
+// by itself, this many seconds after the last read. Reads are conditional, so a file the PC has not
 // changed costs nothing.
 const POLL_GAP = 60;
 
 /** Whether the page should read the repo again by itself now: only while it is
- *  in view and nobody is in a field. Told nothing, it does nothing. */
-export function mayPoll({ visible = false, editing = true, sinceLast = 0 } = {}) {
-  return visible === true && editing === false && sinceLast >= POLL_GAP;
+ *  in view, nobody is in a field and the PC is in a session (`running`) - a PC
+ *  that waits, sleeps or is not seen has nothing new, and the Refresh button
+ *  is there for it. Told nothing, it does nothing. */
+export function mayPoll({ visible = false, editing = true, running = false, sinceLast = 0 } = {}) {
+  return visible === true && editing === false && running === true && sinceLast >= POLL_GAP;
 }
 
 /** Whether the page should ask for a new version now. */
