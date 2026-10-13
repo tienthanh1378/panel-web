@@ -9,7 +9,7 @@
 // every file, and the page - seeing it has a new worker - reloads itself once
 // (app.js), so a publish shows on the first open after it. Every publish is a
 // new version (the commit), so that is the one way the page changes.
-const VERSION = "daf67e4";
+const VERSION = "97992d5";
 // The page shares its origin with every other site of the account, so its
 // caches carry its own name, and only those are ever cleared.
 const PREFIX = "panel-shell-";

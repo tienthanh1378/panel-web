@@ -1,5 +1,5 @@
 {
-  "contract": 2,
+  "contract": 3,
   "at": 1791897469.6055639,
   "data": {
     "cycle": 4,
@@ -530,11 +530,13 @@
         "upgrades": [
           {
             "text": "Wall to Level 10",
-            "left_minutes": 241
+            "left_minutes": 241,
+            "fraction": 0.72
           },
           {
             "text": "Archery Range to Level 10",
-            "left_minutes": 364
+            "left_minutes": 364,
+            "fraction": 0.45
           }
         ],
         "runs": [
@@ -1593,7 +1595,8 @@
         "upgrades": [
           {
             "text": "City Hall to Level 14",
-            "left_minutes": 583
+            "left_minutes": 583,
+            "fraction": 0.3
           }
         ],
         "runs": [

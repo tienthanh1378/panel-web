@@ -116,21 +116,22 @@ function pill(who, ctx) {
   return `<p class="who-pill pill-${kind}">${esc(text)}</p>`;
 }
 
+/** One line of the strip at the foot of a card, with a bar under it when it is
+ *  known how far along it is (`fraction`, 0..1). */
+function strip(kind, going) {
+  const left = minutesLeft(going && going.left_minutes);
+  const fraction = going && going.fraction;
+  return `<div class="strip"><p><span class="strip-k">${kind}</span> · ${esc(going && going.text)}${left ? ` · ${left} left` : ""}</p>`
+    + (typeof fraction === "number" && Number.isFinite(fraction)
+      ? `<progress class="strip-bar" max="100" value="${Math.round(Math.min(1, Math.max(0, fraction)) * 100)}"></progress>` : "")
+    + "</div>";
+}
+
 /** The strip at the foot of a card: research, upgrades. */
 function strips(who) {
   const out = [];
-  const going = who.research;
-  if (going && typeof going === "object") {
-    const left = minutesLeft(going.left_minutes);
-    out.push(`<div class="strip"><p><span class="strip-k">Research</span> · ${esc(going.text)}${left ? ` · ${left} left` : ""}</p>`
-      + (typeof going.fraction === "number" && Number.isFinite(going.fraction)
-        ? `<progress class="strip-bar" max="100" value="${Math.round(Math.min(1, Math.max(0, going.fraction)) * 100)}"></progress>` : "")
-      + "</div>");
-  }
-  for (const up of list(who.upgrades)) {
-    const left = minutesLeft(up && up.left_minutes);
-    out.push(`<div class="strip"><p><span class="strip-k">Upgrade</span> · ${esc(up && up.text)}${left ? ` · ${left} left` : ""}</p></div>`);
-  }
+  if (who.research && typeof who.research === "object") out.push(strip("Research", who.research));
+  for (const up of list(who.upgrades)) out.push(strip("Upgrade", up));
   return out.join("");
 }
 
