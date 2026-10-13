@@ -389,9 +389,12 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .who-trouble { --band: var(--danger); --band-end: var(--warn); }
 .who-done { --band: var(--ok); --band-end: var(--ok); }
 .who-now { box-shadow: var(--shadow), 0 0 0 1px rgb(var(--glow-a) / 0.35), 0 0 22px rgb(var(--glow-a) / 0.18); }
-.who-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.who-name { font-weight: 700; flex: 1; min-width: 0; }
-.who-facts { font-size: 12px; color: var(--ink-soft); }
+/* A card's header is two lines on every width: the name with the status pill
+   at the far end, then the facts (Hall 11 · VIP 3 · 315.8K) under the name. */
+.who-head { display: flex; align-items: center; gap: 2px 8px; flex-wrap: wrap; }
+.who-name { font-weight: 700; flex: 1; min-width: 0; order: 1; }
+.who-head .who-pill { order: 2; flex: none; }
+.who-facts { font-size: 12px; color: var(--ink-soft); order: 3; flex: 0 0 100%; }
 .who-pending { opacity: 0.82; }
 .who-res { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; align-items: start; }
 .res { font-size: 13px; color: var(--ink-soft); display: grid; grid-template-columns: auto 1fr; column-gap: 5px; align-items: center; }
@@ -399,7 +402,7 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .res small { grid-column: 2; font-size: 11px; color: var(--ok); font-variant-numeric: tabular-nums; }
 .res-ico { width: 16px; height: 16px; object-fit: contain; }
 .short { display: none; }
-.who-head .who-pill { margin: 2px 0 0; }
+.who-head .who-pill { margin: 0; }
 .who-pill { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--quiet); color: var(--ink-soft); }
 .pill-now { background: var(--accent-soft); color: var(--accent-ink); }
 .pill-trouble { background: var(--danger-bg); color: var(--danger); }
@@ -613,12 +616,8 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 10px; align-items: stretch; }
   .cards .card { margin-bottom: 0; }
   .tiles-home { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  /* A card's header is two lines: the name with the status pill at the far
-     end, then the facts (Hall 11 · VIP 3 · 315.8K) under the name. */
-  .who-head { align-items: center; gap: 2px 8px; }
-  .who-name { order: 1; }
-  .who-head .who-pill { order: 2; margin: 0; flex: none; }
-  .who-facts { order: 3; flex: 0 0 100%; white-space: nowrap; }
+  /* The facts are cut down to fit one line under the name (Hall 11 · VIP 3 · 315.8K). */
+  .who-facts { white-space: nowrap; }
   .long { display: none; }
   .short { display: inline; }
   .res b { white-space: nowrap; }
