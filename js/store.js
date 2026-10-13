@@ -43,6 +43,20 @@ export function pcLine(status, now) {
   }
 }
 
+/** Whether the page should be reading the PC's files by itself: in a session
+ *  (`running`, and seen), or once the time the PC said it would be back has
+ *  come - it was asleep until then, or waiting for its next cycle - and until
+ *  it is "not seen". Before that time nothing can have changed; after the
+ *  grace a PC that did not come back is left to the Refresh button. */
+export function pcExpected(status, now) {
+  const { mode } = pcLine(status, now);
+  if (mode === "running") return true;
+  if (mode !== "waiting" && mode !== "asleep") return false;
+  const { next_cycle_at: next, asleep_until: asleep } = status.data;
+  const deadline = mode === "asleep" ? asleep : next;
+  return typeof deadline === "number" && now >= deadline;
+}
+
 export function createStore({ client, storage, now, newId, device }) {
   const state = {
     files: Object.fromEntries(FILES.map((name) => [name, null])),

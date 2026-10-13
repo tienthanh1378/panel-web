@@ -3,7 +3,7 @@
 // module that touches the document.
 import { createClient } from "./github.js";
 import { createDemoClient } from "./demo.js";
-import { createStore, pcLine } from "./store.js";
+import { createStore, pcExpected } from "./store.js";
 import { coerce, fieldFor } from "./fields.js";
 import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayCheck, mayPoll, mayReload, safely, sessionOver } from "./shell.js";
 import { movePill, patch, settle, startWeather } from "./motion.js";
@@ -350,17 +350,18 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && now() - lastRefresh > REFRESH_GAP) refresh();
 });
 
-// While the page is in view and the PC is in a session (what the last read of
-// its status says) it reads the repo by itself once a minute, so what the PC
-// pushed shows without a tap. A PC that waits or sleeps changes nothing: the
-// page stays as it is until a manual refresh. The timer ticks often; mayPoll
-// holds it to the minute counted from the last read, however that began.
+// While the page is in view and the PC is in a session, or the time it said
+// it would be back has come (what the last read of its status says), it reads
+// the repo by itself once a minute, so what the PC pushed shows without a tap.
+// A PC that waits or sleeps changes nothing until then: the page stays as it
+// is, or follows a manual refresh. The timer ticks often; mayPoll holds it to
+// the minute counted from the last read, however that began.
 setInterval(() => {
   const active = document.activeElement;
   const editing = Boolean(active && active.matches("input, select, textarea"));
   if (!store || view.demo || route() === "connect") return;
-  const running = pcLine(store.state.files.status, now()).mode === "running";
-  if (mayPoll({ visible: document.visibilityState === "visible", editing, running, sinceLast: now() - lastRefresh })) refresh();
+  const expected = pcExpected(store.state.files.status, now());
+  if (mayPoll({ visible: document.visibilityState === "visible", editing, expected, sinceLast: now() - lastRefresh })) refresh();
 }, 15000);
 
 if ("serviceWorker" in navigator) {
