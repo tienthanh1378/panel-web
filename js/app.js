@@ -5,7 +5,7 @@ import { createClient } from "./github.js";
 import { createDemoClient } from "./demo.js";
 import { createStore } from "./store.js";
 import { coerce, fieldFor } from "./fields.js";
-import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayCheck, mayReload, safely, sessionOver } from "./shell.js";
+import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayCheck, mayPoll, mayReload, safely, sessionOver } from "./shell.js";
 import { movePill, patch, settle, startWeather } from "./motion.js";
 import * as home from "./pages/home.js";
 import * as summary from "./pages/summary.js";
@@ -349,6 +349,16 @@ window.addEventListener("resize", () => movePill(nav));
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && now() - lastRefresh > REFRESH_GAP) refresh();
 });
+
+// While the page is in view it reads the repo by itself once a minute, so a
+// change the PC pushed shows without a tap. The timer ticks often; mayPoll
+// holds it to the minute counted from the last read, however that began.
+setInterval(() => {
+  const active = document.activeElement;
+  const editing = Boolean(active && active.matches("input, select, textarea"));
+  if (!store || view.demo || route() === "connect") return;
+  if (mayPoll({ visible: document.visibilityState === "visible", editing, sinceLast: now() - lastRefresh })) refresh();
+}, 15000);
 
 if ("serviceWorker" in navigator) {
   // A new version has taken over from the one that served this page: show it
