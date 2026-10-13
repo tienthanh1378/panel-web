@@ -73,12 +73,14 @@ function ordered(live) {
 /** Row 1, right: "City Hall 25 · VIP 12 · 22.6M power", what is known of it.
  *  A file without those (contract 1) has only the reason it was run. */
 function facts(who) {
+  // A wide card has the status pill beside these, so there the words are cut
+  // down (TH 11 · VIP 3 · 315.8K); the long form is what a phone shows.
   const known = [
-    number(who.hall) ? `City Hall ${number(who.hall)}` : "",
+    number(who.hall) ? `<span class="long">City Hall</span><span class="short">TH</span> ${number(who.hall)}` : "",
     number(who.vip) ? `VIP ${number(who.vip)}` : "",
-    number(who.power) ? `${amount(who.power)} power` : "",
+    number(who.power) ? `${esc(amount(who.power))}<span class="long"> power</span>` : "",
   ].filter(Boolean);
-  return (known.length ? known : [who.why].filter(Boolean)).map(esc).join(" · ");
+  return (known.length ? known : [who.why].filter(Boolean).map(esc)).join(" · ");
 }
 
 /** Row 3: the status as one pill, in the status colour. */
@@ -143,8 +145,8 @@ function card(who, ctx) {
   return `<article class="card who who-${status}"><div class="who-head">`
     + `<span class="who-name">${esc(who.name)}</span>`
     + (known ? `<span class="who-facts">${known}</span>` : "")
-    + `</div><ul class="who-res">${resources}</ul>`
     + pill(who, ctx)
+    + `</div><ul class="who-res">${resources}</ul>`
     + strips(who)
     + "</article>";
 }

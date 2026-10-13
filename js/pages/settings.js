@@ -34,7 +34,7 @@ export function render(store, view, now) {
   const schema = dataOf(store, "schema");
   const settings = dataOf(store, "settings");
   const header = top("Settings", store, "settings", view, now) + rejectedNotices(store);
-  if (!schema || !settings) return header + EMPTY + device(view);
+  if (!schema || !settings) return `${header}<div class="groups">${EMPTY}${device(view)}</div>`;
 
   const canEdit = store.canEdit();
   const values = settings.settings || {};
@@ -53,5 +53,5 @@ export function render(store, view, now) {
     `<section class="group"><h2>${esc(group.heading)}</h2><div class="card">`
     + `<div class="row off locked"><span class="row-label">Only on the PC · ${plural(Number(group.count) || 0, "setting")}</span></div>`
     + "</div></section>").join("");
-  return header + drawn + locked + device(view);
+  return `${header}<div class="groups">${drawn}${locked}${device(view)}</div>`;
 }

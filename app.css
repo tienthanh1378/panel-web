@@ -391,6 +391,8 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .res b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 .res small { grid-column: 2; font-size: 11px; color: var(--ok); font-variant-numeric: tabular-nums; }
 .res-ico { width: 16px; height: 16px; object-fit: contain; }
+.short { display: none; }
+.who-head .who-pill { margin: 2px 0 0; }
 .who-pill { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--quiet); color: var(--ink-soft); }
 .pill-now { background: var(--accent-soft); color: var(--accent-ink); }
 .pill-trouble { background: var(--danger-bg); color: var(--danger); }
@@ -570,15 +572,44 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
     border-top: 0; border-right: 1px solid var(--border); padding: 12px 0;
   }
   .nav a { flex: none; min-height: 68px; font-size: 12px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; align-items: start; }
+  /* Home uses the whole width: a row of tiles, the bar across the header, and
+     cards wide enough that a name and four figures stay on their lines. */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 10px; align-items: stretch; }
   .cards .card { margin-bottom: 0; }
-  .tiles { max-width: 720px; }
-  .hero, .mbar { max-width: 720px; }
+  .tiles-home { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  /* The status pill rides in the header after the facts, which are cut down
+     to fit beside it (TH 11 · VIP 3 · 315.8K). */
+  .who-head { flex-wrap: nowrap; }
+  .who-name { flex: 0 0 auto; }
+  .who-facts { flex: 1; min-width: 0; white-space: nowrap; text-align: right; }
+  .who-head .who-pill { margin: 0; flex: none; }
+  .long { display: none; }
+  .short { display: inline; }
+  .res b { white-space: nowrap; }
   .columns.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
   .columns.two .col { display: block; }
   .columns.two .col > h2 { display: block; margin-top: 0; }
-  .group, .col[data-col="special"], .day, .events, .sum-line, .tiles-sum, .chart { max-width: 720px; }
+  /* Settings and the Other tab are forms: a label and its control read best
+     in a column, so they sit in the middle of the space under the header. */
+  .groups, .col[data-col="special"] { max-width: 960px; margin-left: auto; margin-right: auto; }
+  .tiles-sum { grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr)); }
+  .tiles-sum .tile-total { grid-column: auto; }
+  .tiles-sum .tile:not(.tile-total) b { font-size: 19px; }
+  .chart { gap: 32px; padding: 20px 24px; }
+  .ring { width: 140px; height: 140px; }
+  .bars { max-width: 900px; height: 140px; }
+  .chart:not(:has(.bars)) { width: fit-content; min-width: 260px; }
   #toast { bottom: 24px; }
+}
+
+/* Settings on a MacBook-wide window: its groups fall into two columns, each
+   group whole (its heading with its card) and the next one filling the shorter side. */
+@media (min-width: 1000px) {
+  .groups { max-width: 1240px; columns: 2; column-gap: 16px; }
+  .groups > .group { break-inside: avoid; }
+  .groups > .group { margin-bottom: 18px; }
+  .groups > .group > h2 { margin-top: 0; }
+  .groups > .empty { column-span: all; }
 }
 
 /* A device that asks for less motion gets none: things are simply there. */
