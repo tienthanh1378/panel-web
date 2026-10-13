@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#131f33"/>
-  <rect x="136" y="264" width="56" height="120" rx="10" fill="#ffffff"/>
-  <rect x="228" y="128" width="56" height="256" rx="10" fill="#ffffff"/>
-  <rect x="320" y="208" width="56" height="176" rx="10" fill="#ffffff"/>
-  <rect x="120" y="400" width="272" height="12" rx="6" fill="#29a8e0"/>
+  <rect width="512" height="512" fill="#e4f3ec"/>
+  <line x1="80" y1="256" x2="432" y2="256" stroke="#c3ddd0" stroke-width="24" stroke-linecap="round"/>
+  <line x1="80" y1="256" x2="256" y2="256" stroke="#1f9d6b" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="80" cy="256" r="42" fill="#1f9d6b" stroke="#1f9d6b" stroke-width="12"/>
+  <text x="80" y="259" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" fill="#ffffff">B</text>
+  <circle cx="168" cy="256" r="42" fill="#1f9d6b" stroke="#1f9d6b" stroke-width="12"/>
+  <text x="168" y="259" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" fill="#ffffff">L</text>
+  <circle cx="256" cy="256" r="42" fill="#e3a21a" stroke="#e3a21a" stroke-width="12"/>
+  <text x="256" y="259" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" fill="#2b1d00">A</text>
+  <circle cx="344" cy="256" r="42" fill="#e4f3ec" stroke="#c3ddd0" stroke-width="12"/>
+  <text x="344" y="259" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" fill="#7fa393">Z</text>
+  <circle cx="432" cy="256" r="42" fill="#e4f3ec" stroke="#c3ddd0" stroke-width="12"/>
+  <text x="432" y="259" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" fill="#7fa393">E</text>
 </svg>
