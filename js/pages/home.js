@@ -137,7 +137,7 @@ function card(who, ctx) {
   const held = who.resources || {};
   const gained = who.gained || {};
   const resources = RESOURCES.map(([key, label]) =>
-    `<li class="res res-${key}"><span class="res-ico" role="img" aria-label="${label}"></span><b>${esc(amount(held[key]))}</b>`
+    `<li class="res res-${key}"><img class="res-ico" src="img/res-${key}.png" alt="${label}" width="16" height="16"><b>${esc(amount(held[key]))}</b>`
     + (number(gained[key]) > 0 ? `<small>+${esc(amount(gained[key]))}</small>` : "") + "</li>").join("");
   const known = facts(who);
   return `<article class="card who who-${status}"><div class="who-head">`

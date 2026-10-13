@@ -181,6 +181,14 @@ button { -webkit-tap-highlight-color: transparent; }
   opacity: var(--pill-on, 0); pointer-events: none;
   transition: transform 0.5s var(--spring), width 0.5s var(--spring), height 0.5s var(--spring), opacity 0.3s;
 }
+/* A Home Screen app on iOS 27 lays a page out 62 pt short (894 of 956 on a Pro
+   Max, the top inset) when the page does not scroll: a short page such as Summary
+   on "Today". The bar fixed to "bottom: 0" then floats above a strip of bare
+   background. A page that scrolls is laid out whole, so in a Home Screen app the
+   page is always a pixel taller than the large viewport. */
+@media (display-mode: standalone) {
+  body { min-height: calc(100lvh + 1px); }
+}
 body.connecting .nav { display: none; }
 body.connecting #page { padding-bottom: 24px; max-width: 520px; }
 
@@ -347,6 +355,8 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .tile-failed b { color: var(--danger); }
 .tile-quiet { --band: var(--border); --band-end: var(--border); }
 .tile-marches { --band: var(--food); --band-end: var(--gold); }
+/* four resources across a phone: the figure scales with the width and never wraps ("701.2" over "M") */
+.tiles-sum .tile:not(.tile-total) b { font-size: clamp(14px, 4.4vw, 19px); white-space: nowrap; }
 .tile-total { grid-column: 1 / -1; }
 .tile-total b { font-size: 30px; width: fit-content; }
 .tile-food { --band: var(--food); --band-end: var(--food); } .tile-food b { color: var(--food); }
@@ -380,11 +390,7 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .res { font-size: 13px; color: var(--ink-soft); display: grid; grid-template-columns: auto 1fr; column-gap: 5px; align-items: center; }
 .res b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 .res small { grid-column: 2; font-size: 11px; color: var(--ok); font-variant-numeric: tabular-nums; }
-.res-ico { width: 12px; height: 12px; border-radius: 4px; background: var(--ink-faint); }
-.res-food .res-ico { background: var(--food); border-radius: 6px 1px; }
-.res-wood .res-ico { background: var(--wood); border-radius: 2px; }
-.res-stone .res-ico { background: var(--stone); border-radius: 3px 6px 3px 5px; }
-.res-gold .res-ico { background: var(--gold); border-radius: 50%; }
+.res-ico { width: 16px; height: 16px; object-fit: contain; }
 .who-pill { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: var(--quiet); color: var(--ink-soft); }
 .pill-now { background: var(--accent-soft); color: var(--accent-ink); }
 .pill-trouble { background: var(--danger-bg); color: var(--danger); }

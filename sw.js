@@ -9,14 +9,14 @@
 // every file, and the page - seeing it has a new worker - reloads itself once
 // (app.js), so a publish shows on the first open after it. Every publish is a
 // new version (the commit), so that is the one way the page changes.
-const VERSION = "be34c7d";
+const VERSION = "2b009cb";
 // The page shares its origin with every other site of the account, so its
 // caches carry its own name, and only those are ever cleared.
 const PREFIX = "panel-shell-";
 const CACHE = `${PREFIX}${VERSION}`;
 // What the first versions called theirs, before the prefix.
 const LEGACY = /^shell-([0-9a-f]{7}|dev)$/;
-const SHELL = ["./", "index.html", "app.css", "manifest.webmanifest", "icon.svg", "icon-180.png", "icon-512.png", "bg-hex.svg", "js/app.js", "js/demo.js", "js/edits.js", "js/fields.js", "js/format.js", "js/github.js", "js/motion.js", "js/store.js", "js/pages/connect.js", "js/pages/home.js", "js/pages/parts.js", "js/pages/settings.js", "js/pages/summary.js", "js/pages/tasks.js", "js/shell.js"];
+const SHELL = ["./", "index.html", "app.css", "manifest.webmanifest", "icon.svg", "icon-180.png", "icon-512.png", "bg-hex.svg", "img/res-food.png", "img/res-wood.png", "img/res-stone.png", "img/res-gold.png", "js/app.js", "js/demo.js", "js/edits.js", "js/fields.js", "js/format.js", "js/github.js", "js/motion.js", "js/store.js", "js/pages/connect.js", "js/pages/home.js", "js/pages/parts.js", "js/pages/settings.js", "js/pages/summary.js", "js/pages/tasks.js", "js/shell.js"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
