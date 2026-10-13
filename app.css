@@ -577,21 +577,35 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 10px; align-items: stretch; }
   .cards .card { margin-bottom: 0; }
   .tiles-home { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  /* The status pill rides in the header after the facts, which are cut down
-     to fit beside it (TH 11 · VIP 3 · 315.8K). */
-  .who-head { flex-wrap: nowrap; }
-  .who-name { flex: 0 0 auto; }
-  .who-facts { flex: 1; min-width: 0; white-space: nowrap; text-align: right; }
-  .who-head .who-pill { margin: 0; flex: none; }
+  /* A card's header is two lines: the name with the status pill at the far
+     end, then the facts (Hall 11 · VIP 3 · 315.8K) under the name. */
+  .who-head { align-items: center; gap: 2px 8px; }
+  .who-name { order: 1; }
+  .who-head .who-pill { order: 2; margin: 0; flex: none; }
+  .who-facts { order: 3; flex: 0 0 100%; white-space: nowrap; }
   .long { display: none; }
   .short { display: inline; }
   .res b { white-space: nowrap; }
+  /* Smaller type on a wide card: more of the page at a glance. */
+  .who-name { font-size: 14px; }
+  .who-facts { font-size: 11px; }
+  .who-head .who-pill { font-size: 11px; padding: 1px 9px; }
+  .who .res { font-size: 12px; }
+  .who .res small { font-size: 10px; }
+  .who .strip { font-size: 11px; }
   .columns.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
   .columns.two .col { display: block; }
   .columns.two .col > h2 { display: block; margin-top: 0; }
-  /* Settings and the Other tab are forms: a label and its control read best
-     in a column, so they sit in the middle of the space under the header. */
-  .groups, .col[data-col="special"] { max-width: 960px; margin-left: auto; margin-right: auto; }
+  /* The Other tab is one column of a form: it sits in the middle of the space
+     under the header. */
+  .col[data-col="special"] { max-width: 960px; margin-left: auto; margin-right: auto; }
+  /* Settings is two columns the width of Tasks' two (the same 16px between, the
+     same 760px to start), its groups falling into whichever is shorter, each
+     whole - its heading with its card. */
+  .groups { columns: 2; column-gap: 16px; }
+  .groups > .group { break-inside: avoid; margin-bottom: 18px; }
+  .groups > .group > h2 { margin-top: 0; }
+  .groups > .empty { column-span: all; }
   .tiles-sum { grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr)); }
   .tiles-sum .tile-total { grid-column: auto; }
   .tiles-sum .tile:not(.tile-total) b { font-size: 19px; }
@@ -600,16 +614,6 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
   .bars { max-width: 900px; height: 140px; }
   .chart:not(:has(.bars)) { width: fit-content; min-width: 260px; }
   #toast { bottom: 24px; }
-}
-
-/* Settings on a MacBook-wide window: its groups fall into two columns, each
-   group whole (its heading with its card) and the next one filling the shorter side. */
-@media (min-width: 1000px) {
-  .groups { max-width: 1240px; columns: 2; column-gap: 16px; }
-  .groups > .group { break-inside: avoid; }
-  .groups > .group { margin-bottom: 18px; }
-  .groups > .group > h2 { margin-top: 0; }
-  .groups > .empty { column-span: all; }
 }
 
 /* A device that asks for less motion gets none: things are simply there. */
