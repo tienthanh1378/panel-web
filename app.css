@@ -358,6 +358,13 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 /* four resources across a phone: the figure scales with the width and never wraps ("701.2" over "M") */
 .tiles-sum .tile:not(.tile-total) b { font-size: clamp(14px, 4.4vw, 19px); white-space: nowrap; }
 .tile-total { grid-column: 1 / -1; }
+/* The icon sits left of the label, on the row under the figure, on every
+   width. A grid, so the icon centres on the text. */
+.tiles-sum .tile:not(.tile-total) { display: grid; grid-template-columns: auto 1fr; column-gap: 5px; align-items: center; }
+.tiles-sum .tile:not(.tile-total) b { grid-column: 1 / -1; grid-row: 1; }
+.tiles-sum .tile:not(.tile-total) span { grid-column: 2; grid-row: 2; }
+.tile-on { box-shadow: var(--shadow), 0 0 0 2px var(--accent), 0 0 14px rgb(var(--glow-a) / 0.35); }
+.tile-ico { grid-column: 1; grid-row: 2; width: 14px; height: 14px; object-fit: contain; }
 .tile-total b { font-size: 30px; width: fit-content; }
 .tile-food { --band: var(--food); --band-end: var(--food); } .tile-food b { color: var(--food); }
 .tile-wood { --band: var(--wood); --band-end: var(--wood); } .tile-wood b { color: var(--wood); }
@@ -426,16 +433,45 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .ev-error { color: var(--danger); } .ev-warn { color: var(--warn); }
 
 /* ---- Summary */
-.chart { display: flex; align-items: center; gap: 16px; padding: 16px; }
+.chart { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px; }
 .ring { width: 118px; height: 118px; flex: none; }
 .ring-track { fill: none; stroke: var(--rule); stroke-width: 5.4; }
-.arc { stroke-width: 5.4; }
+.arc { stroke-width: 5.4; cursor: pointer; outline: none; transition: stroke-width 0.2s, opacity 0.2s; }
+.arc:hover, .arc:focus-visible, .arc-on { stroke-width: 7; }
+.arc-off { opacity: 0.3; }
+.ring:has(.arc:hover) .arc:not(:hover):not(.arc-on) { opacity: 0.45; }
+.arc:focus-visible { filter: drop-shadow(0 0 1.2px var(--accent)); }
+.ring .ring-ico { pointer-events: none; transition: transform 0.2s; }
+/* the share is in the legend, unless the legend is not there (see the phone rules) */
+.ring .ring-pct { display: none; stroke: none; font-size: 5.4px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
 .res-food { stroke: var(--food); fill: var(--food); }
 .res-wood { stroke: var(--wood); fill: var(--wood); }
 .res-stone { stroke: var(--stone); fill: var(--stone); }
 .res-gold { stroke: var(--gold); fill: var(--gold); }
 .ring .arc { fill: none; }
-.bars { flex: 1; min-width: 0; max-width: 380px; height: 118px; }
+.bars { flex: 1 1 100%; min-width: 0; height: 118px; }
+/* the legend: a row a resource, the bar under its words filling to its share */
+.legend { list-style: none; margin: 0; padding: 0; flex: 1 1 150px; min-width: 150px; max-width: 260px; display: grid; gap: 2px; }
+.lg {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 3px 8px; width: 100%;
+  padding: 4px 8px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); text-align: left;
+  font-size: 12px; transition: background 0.2s, opacity 0.2s;
+}
+button.lg { cursor: pointer; }
+button.lg:hover { background: var(--quiet); }
+button.lg:focus-visible { box-shadow: 0 0 0 3px rgb(var(--glow-a) / 0.28); outline: none; }
+.lg-on { background: var(--accent-soft); }
+.lg-off { opacity: 0.45; }
+.lg-none { opacity: 0.5; }
+.lg-ico { width: 16px; height: 16px; object-fit: contain; grid-row: 1; grid-column: 1; }
+.lg-amount { grid-column: 2; grid-row: 1; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.lg-pct { grid-column: 3; grid-row: 1; font-variant-numeric: tabular-nums; }
+.lg-bar { display: block; grid-column: 1 / -1; grid-row: 2; width: 100%; height: 3px; border: 0; border-radius: 2px; overflow: hidden; appearance: none; background: var(--quiet); }
+.lg-bar::-webkit-progress-bar { background: var(--quiet); }
+.lg-bar::-webkit-progress-value { border-radius: 2px; background: var(--lg, var(--accent)); }
+.lg-bar::-moz-progress-bar { border-radius: 2px; background: var(--lg, var(--accent)); }
+.lg.res-food { --lg: var(--food); } .lg.res-wood { --lg: var(--wood); }
+.lg.res-stone { --lg: var(--stone); } .lg.res-gold { --lg: var(--gold); }
 .bars rect { stroke: none; }
 .bar { transform-box: fill-box; transform-origin: center bottom; }
 .day { padding: 0; overflow: hidden; }
@@ -611,9 +647,19 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
   .tiles-sum .tile:not(.tile-total) b { font-size: 19px; }
   .chart { gap: 32px; padding: 20px 24px; }
   .ring { width: 140px; height: 140px; }
-  .bars { max-width: 900px; height: 140px; }
-  .chart:not(:has(.bars)) { width: fit-content; min-width: 260px; }
+  .bars { flex: 1 1 320px; max-width: 900px; height: 140px; }
+  .legend { flex-basis: 240px; }
+  .chart:not(:has(.bars)) { max-width: 540px; }
   #toast { bottom: 24px; }
+}
+
+/* On a phone, a period of several days has the bars beside the ring and no room
+   for the legend; the ring still tells the shares when an arc is picked. */
+@media (max-width: 759px) {
+  .chart:has(.bars) .legend { display: none; }
+  .chart:has(.bars) .ring .ring-pct { display: inline; }
+  .chart:has(.bars) .ring .ring-ico { transform: translateY(-3.6px); }
+  .chart:has(.bars) .bars { flex: 1 1 150px; }
 }
 
 /* A device that asks for less motion gets none: things are simply there. */

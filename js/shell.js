@@ -76,3 +76,14 @@ const RELOAD_GAP = 60;
 export function mayReload({ hadController = false, editing = true, staged = 1, sinceLast = 0 } = {}) {
   return hadController && !editing && staged === 0 && sinceLast > RELOAD_GAP;
 }
+
+// A new version is looked for when the page is opened - and a Home Screen app
+// is not opened again when it is only brought back from the background, so it
+// is looked for then too, and now and then while it stays in view. Not more
+// often than this many seconds.
+const CHECK_GAP = 300;
+
+/** Whether the page should ask for a new version now. */
+export function mayCheck({ visible = false, sinceLast = 0 } = {}) {
+  return visible === true && sinceLast > CHECK_GAP;
+}

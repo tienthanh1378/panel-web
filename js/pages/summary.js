@@ -40,22 +40,60 @@ function daysIn(summary, period) {
 const totalOf = (gained) => RESOURCES.reduce((sum, [key]) => sum + number((gained || {})[key]), 0);
 const round2 = (value) => Math.round(value * 100) / 100;
 
-/** The period's shares as a ring: an arc a resource, food first, each
- *  starting where the one before it ended. */
-function ring(gained) {
+/** Each resource's share of what was gathered, in the panel's order. The last
+ *  one that gained takes what is left, so rounding never leaves a gap. */
+function shares(gained) {
   const total = totalOf(gained);
-  if (!total) return "";
+  if (!total) return [];
+  const gaining = RESOURCES.filter(([key]) => number(gained[key]) > 0);
   let before = 0;
-  const arcs = RESOURCES.filter(([key]) => number(gained[key]) > 0).map(([key], i, all) => {
-    // the last arc takes what is left, so rounding never leaves a gap
-    const share = i === all.length - 1 ? round2(100 - before) : round2(number(gained[key]) / total * 100);
-    const arc = `<circle class="arc res-${key}" cx="20" cy="20" r="15.9155" pathLength="100" `
-      + `stroke-dasharray="${share} 100" stroke-dashoffset="${before === 0 ? 0 : -before}"/>`;
+  return RESOURCES.map(([key, label]) => {
+    if (!(number(gained[key]) > 0)) return { key, label, share: 0, before: 0, value: 0 };
+    const last = key === gaining[gaining.length - 1][0];
+    const share = last ? round2(100 - before) : round2(number(gained[key]) / total * 100);
+    const row = { key, label, share, before, value: number(gained[key]) };
     before = round2(before + share);
-    return arc;
+    return row;
+  });
+}
+
+/** The period's shares as a ring: an arc a resource, food first, each
+ *  starting where the one before it ended. An arc can be picked (touch, click,
+ *  Enter or Space): the others fade and the middle shows its icon - and its
+ *  share, when there is no legend beside the ring to say it. */
+function ring(rows, chosen) {
+  if (!rows.length) return "";
+  let centre = "";
+  const arcs = rows.filter((row) => row.share > 0).map(({ key, label, share, before }) => {
+    const percent = `${share.toFixed(1)}%`;
+    if (key === chosen)
+      centre = `<image class="ring-ico" href="img/res-${key}.png" x="15.5" y="15.5" width="9" height="9"/>`
+        + `<text class="ring-pct res-${key}" x="20" y="25.6">${percent}</text>`;
+    const state = chosen ? (key === chosen ? " arc-on" : " arc-off") : "";
+    return `<circle class="arc res-${key}${state}" id="pick-${key}" data-pick="${key}" tabindex="0" role="button" `
+      + `aria-pressed="${key === chosen}" aria-label="${label} ${percent}" cx="20" cy="20" r="15.9155" pathLength="100" `
+      + `stroke-dasharray="${share} 100" stroke-dashoffset="${before === 0 ? 0 : -before}"><title>${label} · ${percent}</title></circle>`;
   }).join("");
-  return '<svg class="ring" viewBox="0 0 40 40" role="img" aria-label="The share of each resource">'
-    + `<g transform="rotate(-90 20 20)"><circle class="ring-track" cx="20" cy="20" r="15.9155"/>${arcs}</g></svg>`;
+  return '<svg class="ring" viewBox="0 0 40 40" role="group" aria-label="The share of each resource">'
+    + `<g transform="rotate(-90 20 20)"><circle class="ring-track" cx="20" cy="20" r="15.9155"/>${arcs}</g>${centre}</svg>`;
+}
+
+/** Beside the ring: a row a resource - its icon, name, amount and share, with
+ *  a bar for the share. The same pick as the ring's, from either. */
+function legend(rows, chosen) {
+  if (!rows.length) return "";
+  const items = rows.map(({ key, label, share, value }) => {
+    const state = chosen ? (key === chosen ? " lg-on" : " lg-off") : "";
+    // the icon says which resource; its name is only for those who cannot see it
+    const inner = `<img class="lg-ico" src="img/res-${key}.png" alt="" width="16" height="16">`
+      + `<span class="lg-amount">${esc(amount(value))}</span>`
+      + `<b class="lg-pct">${share.toFixed(1)}%</b>`
+      + `<progress class="lg-bar" max="100" value="${share}" aria-hidden="true"></progress>`;
+    return share > 0
+      ? `<li><button type="button" class="lg res-${key}${state}" id="lg-${key}" data-pick="${key}" aria-pressed="${key === chosen}" aria-label="${label} ${share.toFixed(1)}%">${inner}</button></li>`
+      : `<li><div class="lg lg-none" role="img" aria-label="${label} 0.0%">${inner}</div></li>`;
+  }).join("");
+  return `<ul class="legend">${items}</ul>`;
 }
 
 const BAR_HEIGHT = 40;
@@ -106,10 +144,15 @@ export function render(store, view, now) {
     [key, days.reduce((total, day) => total + number((day.gained || {})[key]), 0)]));
 
   const chips = PERIODS.map(([id, label]) => pick("period", id, label, id === period)).join("");
-  const tiles = [["Total", totalOf(gained), " tile-total"], ...RESOURCES.map(([key, label]) => [label, gained[key], ` tile-${key}`])]
-    .map(([label, value, extra]) =>
-      `<div class="tile${extra}"><b data-count="${number(value)}" data-as="amount">${esc(amount(value))}</b><span>${label}</span></div>`).join("");
-  const pictures = ring(gained) + bars(days);
+  // what was picked on the ring, if that resource gained anything this period
+  const chosen = RESOURCES.some(([key]) => key === view.pick && number(gained[key]) > 0) ? view.pick : "";
+  const tiles = [["Total", totalOf(gained), " tile-total", ""], ...RESOURCES.map(([key, label]) => [label, gained[key], ` tile-${key}${key === chosen ? " tile-on" : ""}`, key])]
+    .map(([label, value, extra, key]) =>
+      // the name is in the tile already, so the icon is only a picture
+      `<div class="tile${extra}">${key ? `<img class="tile-ico" src="img/res-${key}.png" alt="" width="22" height="22">` : ""}`
+      + `<b data-count="${number(value)}" data-as="amount">${esc(amount(value))}</b><span>${label}</span></div>`).join("");
+  const rows = shares(gained);
+  const pictures = ring(rows, chosen) + legend(rows, chosen) + bars(days);
   const chart = pictures ? `<div class="chart card">${pictures}</div>` : "";
   const line = days.length
     ? `<p class="sum-line">${plural(sum("cycles"), "cycle")} · ${sum("research")} research · ${sum("training")} trained · ${esc(duration(sum("seconds")))}</p>`

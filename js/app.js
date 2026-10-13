@@ -5,7 +5,7 @@ import { createClient } from "./github.js";
 import { createDemoClient } from "./demo.js";
 import { createStore } from "./store.js";
 import { coerce, fieldFor } from "./fields.js";
-import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayReload, safely, sessionOver } from "./shell.js";
+import { EXPIRED_KEYS, SESSION_DAYS, leaveKeys, mayCheck, mayReload, safely, sessionOver } from "./shell.js";
 import { movePill, patch, settle, startWeather } from "./motion.js";
 import * as home from "./pages/home.js";
 import * as summary from "./pages/summary.js";
@@ -37,7 +37,7 @@ const nav = document.querySelector(".nav");
 const toastBox = document.getElementById("toast");
 const now = () => Date.now() / 1000;
 const view = {
-  period: "today", section: "high", tab: "", open: new Set(),
+  period: "today", section: "high", tab: "", open: new Set(), pick: "",
   theme: THEMES.includes(keep.get("panel.theme")) ? keep.get("panel.theme") : "device",
   demo: false, connectError: "", repo: keep.get("panel.repo") || "",
   connected: false,
@@ -275,6 +275,8 @@ document.addEventListener("click", async (event) => {
   if ((hit = on("[data-period]"))) view.period = hit.dataset.period;
   else if ((hit = on("[data-section]"))) view.section = hit.dataset.section;
   else if ((hit = on("[data-tab]"))) view.tab = hit.dataset.tab;
+  else if ((hit = on("[data-pick]"))) view.pick = view.pick === hit.dataset.pick ? "" : hit.dataset.pick;
+  else if (on(".ring")) view.pick = "";
   else if ((hit = on("[data-open]"))) {
     if (!view.open.delete(hit.dataset.open)) view.open.add(hit.dataset.open);
   } else if ((hit = on("[data-dismiss]"))) store.dismiss(hit.dataset.dismiss);
@@ -306,6 +308,15 @@ document.addEventListener("click", async (event) => {
   else if (on("[data-demo]")) return startDemo();
   else return;
   draw();
+});
+
+// An arc of the Summary ring is a button made of an svg shape: it has to be
+// told that Enter and Space are a click.
+document.addEventListener("keydown", (event) => {
+  const arc = event.target.closest && event.target.closest("circle[data-pick]");
+  if (!arc || (event.key !== "Enter" && event.key !== " ")) return;
+  event.preventDefault();
+  arc.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 });
 
 document.addEventListener("change", (event) => {
@@ -342,19 +353,41 @@ document.addEventListener("visibilitychange", () => {
 if ("serviceWorker" in navigator) {
   // A new version has taken over from the one that served this page: show it
   // now, unless that would pull the page from under somebody's hands - then
-  // it shows the next time the page is opened.
+  // it shows when they are done: the next time the page is brought back.
   const hadController = Boolean(navigator.serviceWorker.controller);
   const lastReload = () => {
     try { return Number(sessionStorage.getItem("panel.reloadedAt")) || 0; } catch { return 0; }
   };
-  navigator.serviceWorker.addEventListener("controllerchange", () => {
+  let replaced = false;           // a new version is in charge and this page has not yet reloaded for it
+  const reloadForIt = () => {
     const active = document.activeElement;
     const editing = Boolean(active && active.matches("input, select, textarea"));
-    if (!mayReload({ hadController, editing, staged: view.staged.size, sinceLast: now() - lastReload() })) return;
+    if (!replaced || !mayReload({ hadController, editing, staged: view.staged.size, sinceLast: now() - lastReload() })) return;
     try { sessionStorage.setItem("panel.reloadedAt", String(now())); } catch { /* not kept */ }
     location.reload();
+  };
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    replaced = hadController;
+    reloadForIt();
   });
-  navigator.serviceWorker.register("sw.js").catch(() => {});
+
+  // A page that is brought back, not opened, looks for a new version itself:
+  // the browser only does when a page is opened (and a Home Screen app that
+  // stays in memory is not).
+  let registration = null;
+  let lastCheck = now();
+  const look = () => {
+    if (!registration || !mayCheck({ visible: document.visibilityState === "visible", sinceLast: now() - lastCheck })) return;
+    lastCheck = now();
+    registration.update().catch(() => {});
+  };
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    if (replaced) reloadForIt();
+    else look();
+  });
+  setInterval(look, 600000);
+  navigator.serviceWorker.register("sw.js").then((made) => { registration = made; }).catch(() => {});
 }
 
 start();
