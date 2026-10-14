@@ -1,9 +1,10 @@
 {
-  "contract": 3,
+  "contract": 4,
   "at": 1791897469.6055639,
   "data": {
     "cycle": 4,
     "cycle_started": "04:13:16",
+    "last_cycle_seconds": 6680,
     "next": "Character 14",
     "home_order": [
       "Character 14",

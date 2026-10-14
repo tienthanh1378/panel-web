@@ -211,8 +211,12 @@ export function render(store, view, now) {
 
   const totals = live.totals || {};
   const { dial, bar } = progress(live, mode);
+  // How long the last finished cycle ran (contract 4), once the PC says it, in
+  // minutes as the panel's own Home has it ("took 112 min").
+  const ran = number(live.last_cycle_seconds);
+  const last = ran > 0 ? ` · last run ${ran < 30 ? "&lt;1" : Math.round(ran / 60)} min` : "";
   const cycle = number(live.cycle)
-    ? `<p class="top-sub">Cycle ${number(live.cycle)} · ${number(totals.characters_done)} of ${number(totals.characters_total)} characters</p>` : "";
+    ? `<p class="top-sub">Cycle ${number(live.cycle)} · ${number(totals.characters_done)} of ${number(totals.characters_total)} characters${last}</p>` : "";
   const header = top("Home", store, "live", view, now,
     `<div class="hero">${dial}<div class="hero-text">${line}${cycle}</div></div>${bar}`);
 

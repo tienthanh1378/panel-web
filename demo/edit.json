@@ -1,5 +1,5 @@
 {
-  "contract": 3,
+  "contract": 4,
   "id": "6f1c0d2e-5b7a-4c3d-9e8f-1a2b3c4d5e6f",
   "kind": "set_option",
   "args": {"section": "high", "task": "farm", "option": "start_level", "value": 8, "seen": 9},
