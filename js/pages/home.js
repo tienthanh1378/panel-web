@@ -252,7 +252,7 @@ function held(live) {
     `<div class="tile tile-${key}"><img class="tile-ico" src="img/res-${key}.png" alt="${label}" width="22" height="22">`
     + `<b data-count="${have[key]}" data-as="amount">${esc(amount(have[key]))}</b>`
     + (gained[key] > 0 ? `<em class="tile-gain">+${esc(amount(gained[key]))}</em>` : "") + "</div>").join("");
-  return `<h2>Total resources</h2><p class="held-note">All characters, as last read · green is gathered today</p><div class="tiles tiles-sum tiles-held">${tiles}</div>`;
+  return `<h2 title="All characters, as last read · green is gathered today">Total resources</h2><div class="tiles tiles-sum tiles-held">${tiles}</div>`;
 }
 
 export function render(store, view, now) {
