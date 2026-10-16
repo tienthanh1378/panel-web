@@ -1,6 +1,6 @@
-// What every page has: the header with "as of", the line that says a refresh
+// What every page has: the header with "Updated .. ago", the line that says a refresh
 // failed, the edits the PC turned down.
-import { esc, clockTime } from "../format.js";
+import { esc, clockTime, ago } from "../format.js";
 
 export const EMPTY = '<p class="empty">Nothing from the PC yet</p>';
 
@@ -36,7 +36,10 @@ function notices(store, file, now) {
  *  the page is drawn from; `sub` is HTML that sits in the header. */
 export function top(title, store, name, view, now, sub = "") {
   const file = store.state.files[name];
-  const asOf = file ? `<span class="asof">as of ${esc(clockTime(file.at, now))}</span>` : "";
+  // An age, not a clock time: Home's header also has the next cycle's time, and
+  // two times side by side look like the same thing.
+  const asOf = file && typeof file.at === "number"
+    ? `<span class="asof" title="${esc(clockTime(file.at, now))}">Updated ${esc(ago(now - file.at))}</span>` : "";
   const demo = view.demo ? '<span class="chip demo-chip">Demo</span>' : "";
   const busy = store.state.busy;
   return `<header class="top"><div class="top-row"><h1><span>${esc(title)}</span></h1>${demo}${asOf}`

@@ -1,7 +1,7 @@
 // Home: where the PC is, and the run as the panel's Home has it - the dial
 // and the bar of the cycle's progress, the count tiles, a card per character,
 // the latest happenings.
-import { esc, amount, duration, minutesLeft } from "../format.js";
+import { esc, amount, duration, minutesLeft, clockTime } from "../format.js";
 import { pcLine } from "../store.js";
 import { EMPTY, dataOf, top } from "./parts.js";
 
@@ -186,31 +186,86 @@ function needs(live, view, label) {
 
 /** The cycle's progress as the panel shows it: a dial with the number, and a
  *  bar with a dot for each character. Its numbers are set here; how it moves
- *  is the stylesheet's and motion.js's business. */
+ *  is the stylesheet's and motion.js's business. While a character is at work
+ *  the bar's fill ends on that character's dot (the dots are spread evenly, so
+ *  the dot of the one at index i of n is at (i + 0.5) / n), and a line under
+ *  the bar says who and how far down the run they are. */
 function progress(live, mode) {
   const part = Math.min(1, Math.max(0, number(live.progress)));
   const percent = Math.round(part * 100);
-  const dots = (Array.isArray(live.characters) ? live.characters : []).map((who) =>
+  const everyone = list(live.characters);
+  const at = everyone.findIndex((who) => who && who.status === "now");
+  const reach = at < 0 ? part : (at + 0.5) / everyone.length;
+  const dots = everyone.map((who) =>
     `<li class="ms ms-${word(who && who.status, "pending")}" title="${esc(who && who.name)}"></li>`).join("");
   const dial = `<svg class="dial" viewBox="0 0 40 40" role="img" aria-label="${percent}%" data-progress="${part}">`
     + '<circle class="dial-track" cx="20" cy="20" r="15.9155"/>'
     + `<circle class="dial-ring" cx="20" cy="20" r="15.9155" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>`
     + `<text x="20" y="20" class="dial-text">${percent}%</text></svg>`;
-  const bar = `<div class="mbar${mode === "running" ? " mbar-active" : ""}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" data-progress="${part}">`
+  // While running the name is already in the header; stopped or waiting, the line keeps it.
+  const where = at < 0 ? ""
+    : `<p class="mbar-cap">${mode === "running" ? "" : `${esc(everyone[at].name)} · `}${at + 1} of ${everyone.length}</p>`;
+  const bar = `<div class="mbar${mode === "running" ? " mbar-active" : ""}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" data-progress="${reach}">`
     + '<div class="mbar-track"><div class="mbar-fill"></div></div>'
-    + `<ol class="mbar-dots">${dots}</ol></div>`;
+    + `<ol class="mbar-dots">${dots}</ol></div>${where}`;
   return { dial, bar };
+}
+
+/** "Mon 09:46" / "09:46" on this device's clock, the day part small. */
+function when(unixSeconds, now) {
+  const m = /^(?:(\w{3}) )?(\d\d:\d\d)$/.exec(clockTime(unixSeconds, now));
+  return m ? `${m[1] ? `<small class="next-day">${m[1]}</small> ` : ""}${m[2]}` : "";
+}
+
+const countdown = (unixSeconds, now) => {
+  const left = Math.ceil((unixSeconds - now) / 60);
+  return left > 0 ? `in ${minutesLeft(left)}` : "due now";
+};
+
+/** The one thing in Home's header to look at: when the PC starts again, or,
+ *  while it runs, who is at work. `line` is what the status line should say,
+ *  short where the block says the rest. */
+function focus(status, live, mode, now, fallback) {
+  const block = (kind, label, value, sub) => `<div class="next next-${kind}"><span class="next-k">${label}</span>`
+    + `<b class="next-v">${value}</b>${sub ? `<span class="next-sub">${sub}</span>` : ""}</div>`;
+  if (mode === "waiting" && typeof status.next_cycle_at === "number")
+    return { html: block("waiting", "Next cycle", when(status.next_cycle_at, now), countdown(status.next_cycle_at, now)), line: "Waiting" };
+  if (mode === "asleep" && typeof status.asleep_until === "number")
+    return { html: block("asleep", "PC asleep · back at", when(status.asleep_until, now), countdown(status.asleep_until, now)), line: "Asleep" };
+  const doing = list(live.characters).find((who) => who && who.status === "now");
+  if (mode === "running" && doing) {
+    const after = typeof live.next === "string" && live.next ? `Next: ${esc(live.next)}` : "";
+    return { html: block("now", "Now", esc(doing.name), after), line: fallback };
+  }
+  return { html: "", line: fallback };
+}
+
+/** What all the characters hold, from each one's last reading, and what they
+ *  gathered today. Gems are not on the cards, so not here either. */
+function held(live) {
+  const sum = (field) => Object.fromEntries(RESOURCES.map(([key]) =>
+    [key, list(live.characters).reduce((total, who) => total + number(((who && who[field]) || {})[key]), 0)]));
+  const have = sum("resources");
+  const gained = sum("gained");
+  if (!RESOURCES.some(([key]) => have[key] > 0)) return "";
+  const tiles = RESOURCES.map(([key, label]) =>
+    `<div class="tile tile-${key}"><img class="tile-ico" src="img/res-${key}.png" alt="${label}" width="22" height="22">`
+    + `<b data-count="${have[key]}" data-as="amount">${esc(amount(have[key]))}</b>`
+    + (gained[key] > 0 ? `<em class="tile-gain">+${esc(amount(gained[key]))}</em>` : "") + "</div>").join("");
+  return `<h2>Total resources</h2><p class="held-note">All characters, as last read · green is gathered today</p><div class="tiles tiles-sum tiles-held">${tiles}</div>`;
 }
 
 export function render(store, view, now) {
   const live = dataOf(store, "live");
   const schema = dataOf(store, "schema");
   const { mode, text } = pcLine(store.state.files.status, now);
-  const line = `<p class="pc pc-${mode}"><span class="dot"></span>${esc(text)}</p>`;
-  if (!live) return top("Home", store, "status", view, now, line) + EMPTY;
+  const status = (store.state.files.status && store.state.files.status.data) || {};
+  const line = (words) => `<p class="pc pc-${mode}"><span class="dot"></span>${esc(words)}</p>`;
+  if (!live) return top("Home", store, "status", view, now, line(text)) + EMPTY;
 
   const totals = live.totals || {};
   const { dial, bar } = progress(live, mode);
+  const next = focus(status, live, mode, now, text);
   // How long the last finished cycle ran (contract 4), once the PC says it, in
   // minutes as the panel's own Home has it ("took 112 min").
   const ran = number(live.last_cycle_seconds);
@@ -218,7 +273,7 @@ export function render(store, view, now) {
   const cycle = number(live.cycle)
     ? `<p class="top-sub">Cycle ${number(live.cycle)} · ${number(totals.characters_done)} of ${number(totals.characters_total)} characters${last}</p>` : "";
   const header = top("Home", store, "live", view, now,
-    `<div class="hero">${dial}<div class="hero-text">${line}${cycle}</div></div>${bar}`);
+    `${next.html}<div class="hero">${dial}<div class="hero-text">${line(next.line)}${cycle}</div></div>${bar}`);
 
   // [what it shows, its name, its colour, whether it is a plain number that can count up]
   const tiles = [
@@ -248,6 +303,7 @@ export function render(store, view, now) {
 
   return header
     + `<div class="tiles tiles-home">${tiles}</div>`
+    + held(live)
     + needs(live, view, label)
     + `<section class="cards">${everyone || EMPTY}</section>`
     + (events ? `<h2>Activity</h2><div class="card events"><ul>${events}</ul>${more(view, "events", all.length, EVENTS_SHOWN)}</div>` : "");

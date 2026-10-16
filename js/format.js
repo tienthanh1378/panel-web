@@ -50,3 +50,13 @@ export function minutesLeft(minutes) {
   const whole = Math.floor(minutes);
   return whole < 60 ? `${whole}m` : `${Math.floor(whole / 60)}h${two(whole % 60)}m`;
 }
+
+/** How long ago, as a reader says it: "just now", "2 min ago", "1h 05m ago", "3 d ago". */
+export function ago(seconds) {
+  if (typeof seconds !== "number" || !Number.isFinite(seconds)) return "";
+  const minutes = Math.floor(Math.max(0, seconds) / 60);
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes} min ago`;
+  if (minutes < 1440) return `${Math.floor(minutes / 60)}h ${two(minutes % 60)}m ago`;
+  return `${Math.floor(minutes / 1440)} d ago`;
+}

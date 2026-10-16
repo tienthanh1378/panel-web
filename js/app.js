@@ -364,6 +364,13 @@ setInterval(() => {
   if (mayPoll({ visible: document.visibilityState === "visible", editing, expected, sinceLast: now() - lastRefresh })) refresh();
 }, 15000);
 
+// "Updated 2 min ago" and "in 2h47m" move with the clock, not only with a read.
+setInterval(() => {
+  const active = document.activeElement;
+  const editing = Boolean(active && active.matches("input, select, textarea"));
+  if (store && !editing && route() !== "connect" && document.visibilityState === "visible") draw();
+}, 30000);
+
 if ("serviceWorker" in navigator) {
   // A new version has taken over from the one that served this page: show it
   // now, unless that would pull the page from under somebody's hands - then
