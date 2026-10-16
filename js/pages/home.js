@@ -242,7 +242,7 @@ function focus(status, live, mode, now, fallback) {
 
 /** What all the characters hold, from each one's last reading, and what they
  *  gathered today. Gems are not on the cards, so not here either. */
-function held(live) {
+function held(live, view) {
   const sum = (field) => Object.fromEntries(RESOURCES.map(([key]) =>
     [key, list(live.characters).reduce((total, who) => total + number(((who && who[field]) || {})[key]), 0)]));
   const have = sum("resources");
@@ -252,7 +252,12 @@ function held(live) {
     `<div class="tile tile-${key}"><img class="tile-ico" src="img/res-${key}.png" alt="${label}" width="22" height="22">`
     + `<b data-count="${have[key]}" data-as="amount">${esc(amount(have[key]))}</b>`
     + (gained[key] > 0 ? `<em class="tile-gain">+${esc(amount(gained[key]))}</em>` : "") + "</div>").join("");
-  return `<h2 title="All characters, as last read · green is gathered today">Total resources</h2><div class="tiles tiles-sum tiles-held">${tiles}</div>`;
+  // The words behind the figures show when the "i" is tapped (a tooltip would not reach a phone).
+  const open = Boolean(view.open && view.open.has("note:held"));
+  return `<div class="held-head"><h2>Total resources</h2>`
+    + `<button type="button" class="info${open ? " info-on" : ""}" data-open="note:held" aria-expanded="${open}" aria-label="About these totals">i</button></div>`
+    + (open ? '<p class="held-note">All characters, as last read · green is gathered today</p>' : "")
+    + `<div class="tiles tiles-sum tiles-held">${tiles}</div>`;
 }
 
 export function render(store, view, now) {
@@ -303,7 +308,7 @@ export function render(store, view, now) {
 
   return header
     + `<div class="tiles tiles-home">${tiles}</div>`
-    + held(live)
+    + held(live, view)
     + needs(live, view, label)
     + `<section class="cards">${everyone || EMPTY}</section>`
     + (events ? `<h2>Activity</h2><div class="card events"><ul>${events}</ul>${more(view, "events", all.length, EVENTS_SHOWN)}</div>` : "");

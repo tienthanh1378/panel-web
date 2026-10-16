@@ -371,6 +371,16 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 /* four resources across a phone: the figure scales with the width and never wraps ("701.2" over "M") */
 .tiles-sum .tile:not(.tile-total) b { font-size: clamp(14px, 4.4vw, 19px); white-space: nowrap; }
 .tile-total { grid-column: 1 / -1; }
+.held-head { display: flex; align-items: center; gap: 4px; }
+.held-head h2 { margin-right: 0; }
+.info {
+  width: 20px; height: 20px; padding: 0; margin: 12px 0 0 2px; border-radius: 50%; flex: none;
+  border: 1px solid var(--border); background: var(--card-glass); color: var(--ink-faint);
+  font: italic 700 12px/1 Georgia, serif; position: relative;
+}
+.info::after { content: ""; position: absolute; inset: -9px; }      /* a finger-sized target */
+.info-on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.held-note { margin: -2px 4px 8px; font-size: 12px; color: var(--ink-faint); }
 .tiles-sum.tiles-held { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 /* The totals: the picture says which resource, on the same line as the figure
    and what was gathered today. Two across a phone, as many as fit on a wide page. */
