@@ -8,7 +8,8 @@
 // (the PC refuses an edit to the second section for a task that follows the first).
 export const CONTRACT = 2;
 export const CONTRACTS = [1, 2, 3, 4, 5, 6];
-export const KINDS = ["set_setting", "set_often", "set_tick", "set_option", "set_same_as_high"];
+export const KINDS = ["set_setting", "set_often", "set_tick", "set_option", "set_same_as_high",
+  "set_farm_resource", "set_separate", "reload_characters"];
 
 /** The one thing an edit changes, as a string two edits can be compared by. */
 export function targetKey(kind, args = {}) {
@@ -18,6 +19,9 @@ export function targetKey(kind, args = {}) {
     case "set_tick": return `tick:${args.section}:${args.task}`;
     case "set_option": return `option:${args.section}:${args.task}:${args.option}`;
     case "set_same_as_high": return "same_as_high";
+    case "set_farm_resource": return `farm_resource:${args.character}`;
+    case "set_separate": return `separate:${args.task}`;
+    case "reload_characters": return "reload";
     default: throw new Error(`not a kind of edit: ${kind}`);
   }
 }
@@ -32,6 +36,11 @@ export function currentValue(settings, kind, args = {}) {
     case "set_tick": return (section.tasks || {})[args.task];
     case "set_option": return ((section.params || {})[args.task] || {})[args.option];
     case "set_same_as_high": return ((s.sections || {}).lower || {}).same_as_high;
+    case "set_farm_resource": {
+      const pick = (s.farm_resources || {})[args.character];
+      return typeof pick === "string" ? pick : "";
+    }
+    case "set_separate": return (((s.sections || {}).lower || {}).separate || {})[args.task];
     default: return undefined;
   }
 }

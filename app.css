@@ -700,3 +700,29 @@ button.primary { background: var(--accent); color: var(--accent-on); box-shadow:
   }
   .bd-fx, .bead { display: none !important; }
 }
+
+/* ---- cards open on a tap (a task, a group of settings): a title, its switch
+   and one line of what it does until then; the line is cut with an ellipsis */
+.task-head { display: flex; align-items: flex-start; gap: 4px; }
+.task-switches { flex: 1 1 auto; min-width: 0; }
+.chev {
+  flex: none; width: 30px; height: 40px; margin: 0 0 0 -8px; padding: 0; background: none; border: 0;
+  color: var(--ink-soft); font-size: 19px; line-height: 1; cursor: pointer;
+}
+.brief {
+  margin: -2px 0 4px 26px; font-size: 12px; color: var(--ink-faint); cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.task.open > .brief, .fold.open > .brief { display: none; }
+.task-body[hidden], .fold-body[hidden] { display: none; }
+.task-body { margin-top: 4px; }
+.task-switches > .row:first-child > .row-label { font-weight: 700; }
+.task-off .task-switches > .row:first-child > .row-label { color: var(--ink-soft); }
+.task-switches > .row + .row { border-top: 0; min-height: 36px; padding-top: 0; }
+.task-body > .row-help:first-child { margin: 0 0 4px; font-size: 12px; color: var(--ink-faint); }
+h4.half { margin-top: 14px; }
+.chars .row { min-height: 40px; }
+.row-actions { margin: 6px 0 2px; }
+.fold-head { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.fold-head h2 { margin: 14px 4px 6px 0; }
+.fold > .brief { margin: -4px 0 6px 26px; }

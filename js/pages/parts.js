@@ -73,6 +73,14 @@ export function labelOf(schema, kind, given) {
     }
     case "set_same_as_high":
       return schema && schema.same_as_high ? schema.same_as_high.label : "Same tasks";
+    case "set_separate":
+      return taskName ? `${taskName}: ${(schema && schema.separate && schema.separate.label) || "Different for the second hall"}` : UNREADABLE;
+    case "set_farm_resource": {
+      const who = ((schema && schema.characters) || []).find((c) => c && c.id === args.character);
+      const words = (schema && schema.farm_resource && schema.farm_resource.label) || "Per character";
+      return `${words}: ${(who && who.name) || named(args.character) || "a character"}`;
+    }
+    case "reload_characters": return "Reload characters";
     default:
       return UNREADABLE;
   }

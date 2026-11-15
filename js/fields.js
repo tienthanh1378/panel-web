@@ -75,7 +75,13 @@ export function fieldFor(schema, kind, args = {}) {
     case "set_option": return (task && (task.params || []).find((f) => f.id === args.option)) || null;
     case "set_often": return { type: "choice", choices: schema.often_choices || [] };
     case "set_tick":
+    case "set_separate":
     case "set_same_as_high": return { type: "flag" };
+    case "set_farm_resource": {
+      const words = schema.farm_resource;
+      if (!words || !(schema.characters || []).some((c) => c.id === args.character)) return null;
+      return { type: "choice", choices: [["", words.none || ""], ...(words.choices || [])] };
+    }
     default: return null;
   }
 }

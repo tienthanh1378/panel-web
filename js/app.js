@@ -275,7 +275,13 @@ document.addEventListener("click", async (event) => {
   if ((hit = on("[data-period]"))) view.period = hit.dataset.period;
   else if ((hit = on("[data-section]"))) view.section = hit.dataset.section;
   else if ((hit = on("[data-tab]"))) view.tab = hit.dataset.tab;
-  else if ((hit = on("[data-pick]"))) view.pick = view.pick === hit.dataset.pick ? "" : hit.dataset.pick;
+  else if (on("[data-reload]")) {
+    try {
+      await store.submit("reload_characters", {});
+    } catch (error) {
+      toast(error && error.kind ? "Couldn't send the change. Nothing was changed." : (error && error.message) || "Not sent.");
+    }
+  } else if ((hit = on("[data-pick]"))) view.pick = view.pick === hit.dataset.pick ? "" : hit.dataset.pick;
   else if (on(".ring")) view.pick = "";
   else if ((hit = on("[data-open]"))) {
     if (!view.open.delete(hit.dataset.open)) view.open.add(hit.dataset.open);

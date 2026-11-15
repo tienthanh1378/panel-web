@@ -177,7 +177,7 @@ export function createStore({ client, storage, now, newId, device }) {
       state.edits.push(held);
       try {
         const { sha } = await client.put(`edits/${edit.id}.json`, edit,
-                                         `edit: ${key} = ${JSON.stringify(args.value)}`);
+                                         `edit: ${key}${args.value === undefined ? "" : ` = ${JSON.stringify(args.value)}`}`);
         held.sha = sha || "written";
         held.tick = ++tick;
         save();
