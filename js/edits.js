@@ -2,9 +2,12 @@
 
 // The version a page writes, and the ones it can read: 2, 3 and 4 added fields
 // to `live` only, so a page writes 2 and the PC takes it at 2, 3 or 4. 5 added
-// a setting (Chosen characters) a page that does not know it just lists.
+// a setting (Chosen characters) a page that does not know it just lists. 6 added
+// each character's own farm resource, a task's "Different for Lower Hall" and
+// reloading the characters, which a page that does not know them leaves alone
+// (the PC refuses an edit to the second section for a task that follows the first).
 export const CONTRACT = 2;
-export const CONTRACTS = [1, 2, 3, 4, 5];
+export const CONTRACTS = [1, 2, 3, 4, 5, 6];
 export const KINDS = ["set_setting", "set_often", "set_tick", "set_option", "set_same_as_high"];
 
 /** The one thing an edit changes, as a string two edits can be compared by. */

@@ -1,152 +1,117 @@
 {
-  "contract": 4,
-  "at": 1791897469.6055639,
+  "contract": 6,
+  "at": 1794785041.9130785,
   "data": {
-    "cycle": 4,
-    "cycle_started": "04:13:16",
-    "last_cycle_seconds": 6680,
-    "next": "Character 14",
+    "cycle": 6,
+    "cycle_started": "12:25:06",
+    "next": "Character 10",
     "home_order": [
+      "Character 10",
       "Character 14",
+      "Character 13",
+      "Character 12",
+      "Character 11",
+      "Character 9",
+      "Character 8",
+      "Character 7",
+      "Character 6",
+      "Character 5",
       "Character 4",
       "Character 3",
       "Character 2",
-      "Character 1",
-      "Character 5",
-      "Character 6",
-      "Character 7",
-      "Character 8",
-      "Character 9",
-      "Character 10",
-      "Character 11",
-      "Character 12",
-      "Character 13"
+      "Character 1"
     ],
-    "cycle_done": "75 task run(s), 10 character(s), 4 cycle(s), 1 retried after farming, 2 character(s) revisited, 474 skipped as done today, 1 failure(s)",
-    "next_run": "3h03m (at 07:43) (drawn from 2h45m-3h15m)",
+    "last_cycle_seconds": 2024,
+    "cycle_done": "267 task run(s), 11 character(s), 6 cycle(s), 4 retried after farming, 2 character(s) revisited, 789 skipped as done today",
+    "next_run": "46m (at 16:00)",
     "current": "",
     "progress": 1.0,
     "stopped": false,
     "totals": {
       "characters_done": 14,
       "characters_total": 14,
-      "tasks_ok": 25,
+      "tasks_ok": 38,
       "tasks_failed": 0,
       "tasks_nothing": 0,
-      "marches": 50,
+      "marches": 57,
       "research": 0,
-      "upgrades": 3
+      "upgrades": 0
     },
     "characters": [
       {
         "name": "Character 1",
         "game": "Game",
-        "index": 1,
-        "total": 4,
-        "section": "high",
-        "why": "power 22,620,824",
+        "index": 2,
+        "total": 11,
+        "section": "lower",
+        "why": "City Hall 18",
         "status": "done",
-        "started": "04:35:11",
-        "finished": "04:36:37",
-        "marches": 5,
+        "started": "12:27:38",
+        "finished": "12:33:49",
+        "marches": 3,
         "order": [
           "upgrade_city",
           "research",
-          "expedition",
-          "alliance_territory",
-          "collect_city",
           "merchant",
           "train_troops",
-          "blacksmith",
+          "collect_city",
           "daily_objectives",
+          "alliance_gifts",
           "dispatch",
+          "expedition",
+          "blacksmith",
+          "alliance_territory",
           "alliance_donate",
           "claim_vip",
           "farm"
         ],
-        "hall": 25,
-        "vip": 12,
-        "power": 22620824,
+        "hall": 18,
+        "vip": 5,
+        "power": 1488069,
         "resources": {
-          "food": 398300000,
-          "wood": 13800000,
-          "stone": 32900000,
-          "gold": 45800000,
-          "gems": 32743
+          "food": 62800000,
+          "wood": 31260000,
+          "stone": 59400000,
+          "gold": 37600000,
+          "gems": 181
         },
         "gained": {
-          "food": 29200000
+          "wood": 1080000,
+          "stone": 100000,
+          "gold": 100000
         },
-        "research": {
-          "text": "Open-pit Quarry",
-          "left_minutes": 93,
-          "fraction": 0.97
-        },
-        "upgrades": [],
-        "runs": [
+        "research": null,
+        "upgrades": [
           {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:35:11"
-          },
+            "text": "a building",
+            "left_minutes": 470,
+            "fraction": null
+          }
+        ],
+        "runs": [
           {
             "id": "research",
             "label": "Research",
             "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:35:11"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:35:11"
-          },
-          {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 24m",
-            "seconds": null,
-            "at": "04:35:11"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 24m",
-            "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 24m",
+            "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
           },
           {
-            "id": "train_troops",
-            "label": "Keep troops training",
+            "id": "collect_city",
+            "label": "Collect resource in city",
             "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:35:11"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 24m",
-            "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
           },
           {
             "id": "daily_objectives",
@@ -154,23 +119,55 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:27:38"
           },
           {
             "id": "dispatch",
             "label": "Travel from Dispatch",
             "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:27:38"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:27:38"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:27:38"
           },
           {
             "id": "alliance_donate",
             "label": "Donate technology",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 24m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
           },
           {
             "id": "claim_vip",
@@ -178,366 +175,82 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:35:11"
+            "at": "12:27:38"
+          },
+          {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "ok",
+            "detail": "City Hall 18; Stable ? is busy (no upgrade button - already upgrading?); Quarry ? is busy (no upgrade button - already upgrading?); Stable ? is busy (no upgrade button - already upgrading?); Academy 17 is busy (no upgrade button - already upgrading?); Storehouse not found; ran out of time - skipped the rest",
+            "seconds": 246.0,
+            "at": "12:27:43"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "training Siege Workshop (Tier I)",
+            "seconds": 52.0,
+            "at": "12:31:49"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "5 march(es) - queue full",
-            "seconds": 51.5,
-            "at": "04:35:16"
+            "detail": "3 march(es) - queue full",
+            "seconds": 35.4,
+            "at": "12:32:41"
           }
         ]
       },
       {
         "name": "Character 2",
         "game": "Game",
-        "index": 2,
-        "total": 4,
-        "section": "high",
-        "why": "power 16,819,973",
-        "status": "done",
-        "started": "04:36:37",
-        "finished": "04:38:05",
-        "marches": 5,
-        "order": [
-          "upgrade_city",
-          "research",
-          "collect_city",
-          "expedition",
-          "dispatch",
-          "claim_vip",
-          "blacksmith",
-          "daily_objectives",
-          "alliance_donate",
-          "merchant",
-          "train_troops",
-          "alliance_territory",
-          "farm"
-        ],
-        "hall": 25,
-        "vip": 10,
-        "power": 16819973,
-        "resources": {
-          "food": 22800000,
-          "wood": 23900000,
-          "stone": 259800000,
-          "gold": 56200000,
-          "gems": 1410
-        },
-        "gained": {
-          "stone": 13900000
-        },
-        "research": null,
-        "upgrades": [],
-        "runs": [
-          {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "research",
-            "label": "Research",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 23m",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 23m",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 23m",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 23m",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 23m",
-            "seconds": null,
-            "at": "04:36:37"
-          },
-          {
-            "id": "farm",
-            "label": "Farm resource",
-            "state": "ok",
-            "detail": "5 march(es) - queue full",
-            "seconds": 51.6,
-            "at": "04:36:42"
-          }
-        ]
-      },
-      {
-        "name": "Character 3",
-        "game": "Game",
         "index": 3,
-        "total": 4,
-        "section": "high",
-        "why": "power 14,085,237",
-        "status": "done",
-        "started": "04:38:05",
-        "finished": "04:38:49",
-        "marches": 1,
-        "order": [
-          "upgrade_city",
-          "research",
-          "dispatch",
-          "claim_vip",
-          "train_troops",
-          "expedition",
-          "blacksmith",
-          "alliance_territory",
-          "merchant",
-          "alliance_donate",
-          "daily_objectives",
-          "collect_city",
-          "farm"
-        ],
-        "hall": 25,
-        "vip": 10,
-        "power": 14085237,
-        "resources": {
-          "food": 8400000,
-          "wood": 303500000,
-          "stone": 11100000,
-          "gold": 61600000,
-          "gems": 22100
-        },
-        "gained": {
-          "wood": 16400000
-        },
-        "research": null,
-        "upgrades": [],
-        "runs": [
-          {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "research",
-            "label": "Research",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:05"
-          },
-          {
-            "id": "farm",
-            "label": "Farm resource",
-            "state": "ok",
-            "detail": "1 march(es) - queue full",
-            "seconds": 15.6,
-            "at": "04:38:10"
-          }
-        ]
-      },
-      {
-        "name": "Character 4",
-        "game": "Game",
-        "index": 4,
-        "total": 4,
+        "total": 11,
         "section": "lower",
-        "why": "City Hall 10",
+        "why": "City Hall 17",
         "status": "done",
-        "started": "04:38:49",
-        "finished": "04:39:55",
-        "marches": 2,
+        "started": "12:33:49",
+        "finished": "12:36:12",
+        "marches": 4,
         "order": [
           "upgrade_city",
           "research",
-          "merchant",
           "alliance_donate",
-          "collect_city",
           "blacksmith",
           "claim_vip",
-          "expedition",
           "daily_objectives",
           "dispatch",
+          "alliance_gifts",
           "train_troops",
           "alliance_territory",
+          "expedition",
+          "merchant",
+          "collect_city",
           "farm"
         ],
-        "hall": 10,
-        "vip": 1,
-        "power": 131261,
+        "hall": 17,
+        "vip": 5,
+        "power": 1383827,
         "resources": {
-          "food": 2100000,
-          "wood": 3200000,
-          "stone": 1400000,
-          "gold": 63918,
-          "gems": 1400
+          "food": 63600000,
+          "wood": 65100000,
+          "stone": 49100000,
+          "gold": 20600000,
+          "gems": 2516
         },
         "gained": {
-          "wood": 200000,
-          "stone": 200000,
-          "gold": 8380
+          "wood": 3699999,
+          "stone": 3200000,
+          "gold": 1700000
         },
         "research": null,
         "upgrades": [
           {
-            "text": "Wall to Level 10",
-            "left_minutes": 241,
-            "fraction": 0.72
-          },
-          {
-            "text": "Archery Range to Level 10",
-            "left_minutes": 364,
-            "fraction": 0.45
+            "text": "Farm to Level 17",
+            "left_minutes": 464,
+            "fraction": 0.47
           }
         ],
         "runs": [
@@ -545,41 +258,25 @@
             "id": "research",
             "label": "Research",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:38:49"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
             "id": "alliance_donate",
             "label": "Donate technology",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:38:49"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
-            "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
             "id": "blacksmith",
             "label": "Collect blacksmith and produce",
             "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
             "id": "claim_vip",
@@ -587,15 +284,7 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:38:49"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
             "id": "daily_objectives",
@@ -603,7 +292,7 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
             "id": "dispatch",
@@ -611,240 +300,288 @@
             "state": "skipped",
             "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:33:49"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 21m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:38:49"
+            "at": "12:33:49"
           },
           {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "ok",
-            "detail": "City Hall 10; both builders busy (Wall to Level 10, Archery Range to Level 10)",
-            "seconds": 24.4,
-            "at": "04:38:55"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "ok",
-            "detail": "training Barracks, Stable, Siege Workshop (Tier I)",
-            "seconds": 36.0,
-            "at": "04:39:19"
-          },
-          {
-            "id": "farm",
-            "label": "Farm resource",
-            "state": "ok",
-            "detail": "2 march(es) - queue full",
-            "seconds": 26.5,
-            "at": "04:39:55"
-          }
-        ]
-      },
-      {
-        "name": "Character 5",
-        "game": "Game",
-        "index": 10,
-        "total": 10,
-        "section": "high",
-        "why": "power 17,562,926",
-        "status": "done",
-        "started": "04:31:57",
-        "finished": "04:35:11",
-        "marches": 5,
-        "order": [
-          "upgrade_city",
-          "research",
-          "merchant",
-          "train_troops",
-          "alliance_territory",
-          "claim_vip",
-          "daily_objectives",
-          "dispatch",
-          "collect_city",
-          "alliance_donate",
-          "blacksmith",
-          "expedition",
-          "farm"
-        ],
-        "hall": 7,
-        "vip": 10,
-        "power": 17562926,
-        "resources": {
-          "food": 40300000,
-          "wood": 19200000,
-          "stone": 87400000,
-          "gold": 244200000,
-          "gems": 38221
-        },
-        "gained": {
-          "gold": 6700000
-        },
-        "research": {
-          "text": "Mathematics",
-          "left_minutes": 2458,
-          "fraction": 0.66
-        },
-        "upgrades": [],
-        "runs": [
-          {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
+            "id": "expedition",
+            "label": "Collect Expedition",
             "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
+            "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "research",
-            "label": "Research",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:31:57"
+            "at": "12:33:49"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 27m",
+            "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 27m",
-            "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:31:57"
+            "at": "12:33:49"
           },
           {
             "id": "collect_city",
             "label": "Collect resource in city",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 27m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:31:57"
+            "at": "12:33:49"
           },
           {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 27m",
-            "seconds": null,
-            "at": "04:31:57"
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "ok",
+            "detail": "City Hall 17; both builders busy (Quarry to Level 17, Farm to Level 17)",
+            "seconds": 23.7,
+            "at": "12:33:55"
           },
           {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 27m",
-            "seconds": null,
-            "at": "04:31:57"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:31:57"
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "training Stable, Siege Workshop (Tier I)",
+            "seconds": 42.5,
+            "at": "12:34:19"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
             "detail": "4 march(es) - queue full",
-            "seconds": 53.3,
-            "at": "04:32:03"
+            "seconds": 41.3,
+            "at": "12:35:01"
+          }
+        ]
+      },
+      {
+        "name": "Character 3",
+        "game": "Game",
+        "index": 4,
+        "total": 11,
+        "section": "lower",
+        "why": "City Hall 18",
+        "status": "done",
+        "started": "12:36:12",
+        "finished": "12:38:20",
+        "marches": 4,
+        "order": [
+          "upgrade_city",
+          "research",
+          "blacksmith",
+          "alliance_gifts",
+          "alliance_donate",
+          "alliance_territory",
+          "train_troops",
+          "daily_objectives",
+          "expedition",
+          "merchant",
+          "dispatch",
+          "collect_city",
+          "claim_vip",
+          "farm"
+        ],
+        "hall": 18,
+        "vip": 5,
+        "power": 1493565,
+        "resources": {
+          "food": 97500000,
+          "wood": 92100000,
+          "stone": 13790000,
+          "gold": 31900000,
+          "gems": 1183
+        },
+        "gained": {
+          "stone": 970000
+        },
+        "research": {
+          "text": "Whipsaw 1→2",
+          "left_minutes": 137,
+          "fraction": 0.82
+        },
+        "upgrades": [
+          {
+            "text": "Tavern to Level 18",
+            "left_minutes": 467,
+            "fraction": 0.81
+          },
+          {
+            "text": "Stable to Level 17",
+            "left_minutes": 772,
+            "fraction": 0.71
+          }
+        ],
+        "runs": [
+          {
+            "id": "research",
+            "label": "Research",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:36:12"
+          },
+          {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "ok",
+            "detail": "City Hall 18; both builders busy (Stable to Level 17, Tavern to Level 18)",
+            "seconds": 18.4,
+            "at": "12:36:18"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "training Barracks, Archery Range, Siege Workshop (Tier I)",
+            "seconds": 29.7,
+            "at": "12:36:36"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "1 march(es) - queue full",
-            "seconds": 15.9,
-            "at": "04:33:16"
+            "detail": "4 march(es) - queue full",
+            "seconds": 40.9,
+            "at": "12:37:06"
           }
         ]
       },
       {
-        "name": "Character 6",
+        "name": "Character 4",
         "game": "Game",
-        "index": 9,
-        "total": 10,
+        "index": 5,
+        "total": 11,
         "section": "high",
-        "why": "power 16,607,997",
+        "why": "power 18,325,246",
         "status": "done",
-        "started": "04:30:32",
-        "finished": "04:31:57",
+        "started": "12:38:20",
+        "finished": "12:39:57",
         "marches": 5,
         "order": [
           "upgrade_city",
           "research",
-          "blacksmith",
-          "claim_vip",
-          "alliance_donate",
-          "expedition",
-          "daily_objectives",
-          "dispatch",
-          "collect_city",
-          "train_troops",
-          "merchant",
           "alliance_territory",
+          "collect_city",
+          "blacksmith",
+          "alliance_gifts",
+          "dispatch",
+          "daily_objectives",
+          "train_troops",
+          "claim_vip",
+          "merchant",
+          "expedition",
+          "alliance_donate",
           "farm"
         ],
         "hall": 25,
-        "vip": 10,
-        "power": 16607997,
+        "vip": 11,
+        "power": 18325246,
         "resources": {
-          "food": 490500000,
-          "wood": 4400000,
-          "stone": 94000000,
-          "gold": 62400000,
-          "gems": 3374
+          "food": 957600000,
+          "wood": 49800000,
+          "stone": 50900000,
+          "gold": 55900000,
+          "gems": 14467
         },
         "gained": {
-          "food": 20700000
+          "food": 44000000,
+          "wood": 1100000,
+          "stone": 1200000,
+          "gold": 1500000
         },
         "research": null,
         "upgrades": [],
@@ -855,7 +592,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
             "id": "research",
@@ -863,47 +600,39 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:38:20"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:38:20"
           },
           {
             "id": "blacksmith",
             "label": "Collect blacksmith and produce",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 29m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:30:32"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 29m",
-            "seconds": null,
-            "at": "04:30:32"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:30:32"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
             "id": "dispatch",
@@ -911,47 +640,383 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
-            "id": "collect_city",
-            "label": "Collect resource in city",
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 29m",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
-            "id": "train_troops",
-            "label": "Keep troops training",
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
             "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 29m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
           },
           {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
+            "id": "expedition",
+            "label": "Collect Expedition",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 29m",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:30:32"
+            "at": "12:38:20"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:38:20"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "training Siege Workshop (Tier I)",
+            "seconds": 11.5,
+            "at": "12:38:26"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
             "detail": "5 march(es) - queue full",
-            "seconds": 53.0,
-            "at": "04:30:37"
+            "seconds": 51.4,
+            "at": "12:38:37"
+          }
+        ]
+      },
+      {
+        "name": "Character 5",
+        "game": "Game",
+        "index": 6,
+        "total": 11,
+        "section": "high",
+        "why": "power 19,171,623",
+        "status": "done",
+        "started": "12:39:57",
+        "finished": "12:41:35",
+        "marches": 5,
+        "order": [
+          "upgrade_city",
+          "research",
+          "alliance_donate",
+          "daily_objectives",
+          "blacksmith",
+          "dispatch",
+          "alliance_territory",
+          "claim_vip",
+          "alliance_gifts",
+          "collect_city",
+          "train_troops",
+          "merchant",
+          "expedition",
+          "farm"
+        ],
+        "hall": 25,
+        "vip": 10,
+        "power": 19171623,
+        "resources": {
+          "food": 6360000,
+          "wood": 97790000,
+          "stone": 56000000,
+          "gold": 61600000,
+          "gems": 19720
+        },
+        "gained": {
+          "food": 180000,
+          "wood": 4510000,
+          "stone": 1300000,
+          "gold": 1900000
+        },
+        "research": null,
+        "upgrades": [],
+        "runs": [
+          {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "research",
+            "label": "Research",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:39:57"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 7.9,
+            "at": "12:40:02"
+          },
+          {
+            "id": "farm",
+            "label": "Farm resource",
+            "state": "ok",
+            "detail": "5 march(es) - queue full",
+            "seconds": 52.3,
+            "at": "12:40:10"
+          }
+        ]
+      },
+      {
+        "name": "Character 6",
+        "game": "Game",
+        "index": 7,
+        "total": 11,
+        "section": "high",
+        "why": "power 18,864,473",
+        "status": "done",
+        "started": "12:41:35",
+        "finished": "12:43:37",
+        "marches": 4,
+        "order": [
+          "upgrade_city",
+          "research",
+          "collect_city",
+          "dispatch",
+          "alliance_territory",
+          "merchant",
+          "blacksmith",
+          "daily_objectives",
+          "claim_vip",
+          "expedition",
+          "alliance_donate",
+          "train_troops",
+          "alliance_gifts",
+          "farm"
+        ],
+        "hall": 25,
+        "vip": 11,
+        "power": 18864473,
+        "resources": {
+          "food": 13550000,
+          "wood": 4230000,
+          "stone": 19790000,
+          "gold": 172800000,
+          "gems": 17837
+        },
+        "gained": {
+          "food": 90000,
+          "wood": 100000,
+          "stone": 110000,
+          "gold": 16000000
+        },
+        "research": null,
+        "upgrades": [],
+        "runs": [
+          {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "research",
+            "label": "Research",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:41:35"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 25.0,
+            "at": "12:41:40"
+          },
+          {
+            "id": "farm",
+            "label": "Farm resource",
+            "state": "ok",
+            "detail": "4 march(es) - slots busy",
+            "seconds": 61.5,
+            "at": "12:42:05"
           }
         ]
       },
@@ -959,40 +1024,43 @@
         "name": "Character 7",
         "game": "Game",
         "index": 8,
-        "total": 10,
+        "total": 11,
         "section": "high",
-        "why": "power 17,562,926",
+        "why": "power 17,591,926",
         "status": "done",
-        "started": "04:28:29",
-        "finished": "04:30:32",
-        "marches": 3,
+        "started": "12:43:37",
+        "finished": "12:45:30",
+        "marches": 5,
         "order": [
           "upgrade_city",
           "research",
-          "collect_city",
-          "dispatch",
-          "merchant",
-          "train_troops",
-          "daily_objectives",
           "alliance_territory",
-          "alliance_donate",
           "claim_vip",
+          "alliance_gifts",
+          "dispatch",
+          "daily_objectives",
+          "merchant",
+          "alliance_donate",
           "blacksmith",
           "expedition",
+          "train_troops",
+          "collect_city",
           "farm"
         ],
         "hall": 25,
         "vip": 10,
-        "power": 17562926,
+        "power": 17591926,
         "resources": {
-          "food": 40300000,
-          "wood": 19200000,
-          "stone": 87400000,
-          "gold": 243600000,
-          "gems": 38221
+          "food": 74900000,
+          "wood": 6270000,
+          "stone": 531200000,
+          "gold": 14400000,
+          "gems": 37721
         },
         "gained": {
-          "gold": 7300000
+          "wood": 50000,
+          "stone": 33600000,
+          "gold": 140000
         },
         "research": null,
         "upgrades": [],
@@ -1003,7 +1071,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
           },
           {
             "id": "research",
@@ -1011,63 +1079,15 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 31m",
-            "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 31m",
-            "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 31m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:28:29"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 31m",
-            "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
           },
           {
             "id": "claim_vip",
@@ -1075,15 +1095,55 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
+          },
+          {
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
           },
           {
             "id": "blacksmith",
             "label": "Collect blacksmith and produce",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 31m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
           },
           {
             "id": "expedition",
@@ -1091,56 +1151,76 @@
             "state": "skipped",
             "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:28:29"
+            "at": "12:43:37"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:43:37"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 9.2,
+            "at": "12:43:42"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "3 march(es) - slots busy",
-            "seconds": 39.9,
-            "at": "04:28:34"
+            "detail": "5 march(es) - queue full",
+            "seconds": 50.2,
+            "at": "12:43:51"
           }
         ]
       },
       {
         "name": "Character 8",
         "game": "Game",
-        "index": 7,
-        "total": 10,
+        "index": 9,
+        "total": 11,
         "section": "high",
-        "why": "power 18,236,897",
+        "why": "power 16,961,777",
         "status": "done",
-        "started": "04:27:16",
-        "finished": "04:28:29",
-        "marches": 4,
+        "started": "12:45:30",
+        "finished": "12:47:28",
+        "marches": 5,
         "order": [
           "upgrade_city",
           "research",
+          "daily_objectives",
+          "alliance_gifts",
+          "blacksmith",
           "merchant",
-          "claim_vip",
           "collect_city",
           "dispatch",
-          "alliance_donate",
-          "daily_objectives",
-          "train_troops",
+          "claim_vip",
           "expedition",
-          "blacksmith",
+          "train_troops",
           "alliance_territory",
+          "alliance_donate",
           "farm"
         ],
         "hall": 25,
         "vip": 10,
-        "power": 18236897,
+        "power": 16961777,
         "resources": {
-          "food": 24700000,
-          "wood": 10000000,
-          "stone": 334100000,
-          "gold": 56400000,
-          "gems": 18337
+          "food": 66190000,
+          "wood": 35900000,
+          "stone": 38700000,
+          "gold": 4380000,
+          "gems": 2974
         },
         "gained": {
-          "stone": 14500000
+          "food": 3300000,
+          "wood": 900000,
+          "stone": 900000,
+          "gold": 420000
         },
         "research": null,
         "upgrades": [],
@@ -1151,7 +1231,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
           },
           {
             "id": "research",
@@ -1159,47 +1239,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 32m",
-            "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 32m",
-            "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 32m",
-            "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
           },
           {
             "id": "daily_objectives",
@@ -1207,15 +1247,55 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
           },
           {
-            "id": "train_troops",
-            "label": "Keep troops training",
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
             "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
           },
           {
             "id": "expedition",
@@ -1223,72 +1303,83 @@
             "state": "skipped",
             "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:27:16"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 32m",
-            "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 32m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:27:16"
+            "at": "12:45:30"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:45:30"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 8.3,
+            "at": "12:45:35"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "4 march(es) - queue full",
-            "seconds": 40.1,
-            "at": "04:27:21"
+            "detail": "5 march(es) - queue full",
+            "seconds": 57.3,
+            "at": "12:45:43"
           }
         ]
       },
       {
         "name": "Character 9",
         "game": "Game",
-        "index": 6,
-        "total": 10,
+        "index": 10,
+        "total": 11,
         "section": "high",
-        "why": "power 19,148,823",
+        "why": "power 17,221,169",
         "status": "done",
-        "started": "04:25:53",
-        "finished": "04:27:16",
+        "started": "12:47:28",
+        "finished": "12:49:19",
         "marches": 5,
         "order": [
           "upgrade_city",
           "research",
-          "dispatch",
           "alliance_territory",
-          "train_troops",
-          "expedition",
-          "collect_city",
-          "blacksmith",
-          "alliance_donate",
-          "merchant",
           "claim_vip",
+          "merchant",
+          "train_troops",
+          "alliance_donate",
+          "alliance_gifts",
+          "collect_city",
+          "expedition",
+          "blacksmith",
+          "dispatch",
           "daily_objectives",
           "farm"
         ],
         "hall": 25,
         "vip": 10,
-        "power": 19148823,
+        "power": 17221169,
         "resources": {
-          "food": 20400000,
-          "wood": 615200000,
-          "stone": 22700000,
-          "gold": 68100000,
-          "gems": 20120
+          "food": 27690000,
+          "wood": 4690000,
+          "stone": 224900000,
+          "gold": 6170000,
+          "gems": 16015
         },
         "gained": {
-          "wood": 25800000
+          "food": 90000,
+          "wood": 90000,
+          "gold": 150000
         },
         "research": null,
         "upgrades": [],
@@ -1299,7 +1390,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:25:53"
+            "at": "12:47:28"
           },
           {
             "id": "research",
@@ -1307,71 +1398,15 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:25:53"
+            "at": "12:47:28"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 34m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "already run 2 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 34m",
-            "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 34m",
-            "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 34m",
-            "seconds": null,
-            "at": "04:25:53"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 34m",
-            "seconds": null,
-            "at": "04:25:53"
+            "at": "12:47:28"
           },
           {
             "id": "claim_vip",
@@ -1379,7 +1414,63 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:25:53"
+            "at": "12:47:28"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:47:28"
           },
           {
             "id": "daily_objectives",
@@ -1387,56 +1478,241 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:25:53"
+            "at": "12:47:28"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 8.9,
+            "at": "12:47:33"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
             "detail": "5 march(es) - queue full",
-            "seconds": 48.0,
-            "at": "04:25:58"
+            "seconds": 55.2,
+            "at": "12:47:42"
           }
         ]
       },
       {
         "name": "Character 10",
         "game": "Game",
-        "index": 5,
-        "total": 10,
+        "index": 11,
+        "total": 11,
         "section": "high",
-        "why": "City Hall 25",
+        "why": "power 18,866,073",
         "status": "done",
-        "started": "04:24:20",
-        "finished": "04:25:53",
+        "started": "12:49:19",
+        "finished": "12:52:25",
+        "marches": 1,
+        "order": [
+          "upgrade_city",
+          "research",
+          "alliance_gifts",
+          "daily_objectives",
+          "expedition",
+          "merchant",
+          "blacksmith",
+          "train_troops",
+          "collect_city",
+          "dispatch",
+          "alliance_territory",
+          "claim_vip",
+          "alliance_donate",
+          "farm"
+        ],
+        "hall": 15,
+        "vip": 5,
+        "power": 18866073,
+        "resources": {
+          "food": 13550000,
+          "wood": 4230000,
+          "stone": 19790000,
+          "gold": 17340000,
+          "gems": 17837
+        },
+        "gained": {
+          "food": 2500000,
+          "wood": 2300000
+        },
+        "research": {
+          "text": "a technology",
+          "left_minutes": 2667,
+          "fraction": 0.52
+        },
+        "upgrades": [
+          {
+            "text": "City Hall to Level 16",
+            "left_minutes": 2667,
+            "fraction": 0.54
+          }
+        ],
+        "runs": [
+          {
+            "id": "research",
+            "label": "Research",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "daily_objectives",
+            "label": "Claim Daily Objectives",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "needs City Hall 16 - going up, done 11:50 - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "alliance_territory",
+            "label": "Claim alliance resource",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:49:19"
+          },
+          {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "ok",
+            "detail": "City Hall 15; both builders busy (Storehouse to Level 14, City Hall to Level 16)",
+            "seconds": 18.3,
+            "at": "12:49:24"
+          },
+          {
+            "id": "train_troops",
+            "label": "Keep troops training",
+            "state": "ok",
+            "detail": "nothing idle to train",
+            "seconds": 27.7,
+            "at": "12:49:43"
+          },
+          {
+            "id": "farm",
+            "label": "Farm resource",
+            "state": "ok",
+            "detail": "0 march(es) - queue full",
+            "seconds": 4.6,
+            "at": "12:50:10"
+          },
+          {
+            "id": "farm",
+            "label": "Farm resource",
+            "state": "ok",
+            "detail": "1 march(es) - queue full",
+            "seconds": 24.2,
+            "at": "12:50:45"
+          }
+        ]
+      },
+      {
+        "name": "Character 11",
+        "game": "Game",
+        "index": 1,
+        "total": 4,
+        "section": "high",
+        "why": "power 22,865,095",
+        "status": "done",
+        "started": "12:52:25",
+        "finished": "12:54:08",
         "marches": 5,
         "order": [
           "upgrade_city",
           "research",
           "blacksmith",
+          "alliance_gifts",
           "daily_objectives",
+          "collect_city",
           "alliance_territory",
           "alliance_donate",
+          "dispatch",
           "merchant",
-          "expedition",
-          "collect_city",
           "train_troops",
           "claim_vip",
-          "dispatch",
+          "expedition",
           "farm"
         ],
         "hall": 25,
-        "vip": 11,
-        "power": 18277579,
+        "vip": 12,
+        "power": 22865095,
         "resources": {
-          "food": 526900000,
-          "wood": 21500000,
-          "stone": 36000000,
-          "gold": 74400000,
-          "gems": 14967
+          "food": 1500000000,
+          "wood": 10660000,
+          "stone": 282300000,
+          "gold": 111500000,
+          "gems": 40227
         },
         "gained": {
-          "food": 26000000
+          "gold": 2800000
         },
         "research": null,
         "upgrades": [],
@@ -1447,7 +1723,7 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
           },
           {
             "id": "research",
@@ -1455,15 +1731,23 @@
             "state": "skipped",
             "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
           },
           {
             "id": "blacksmith",
             "label": "Collect blacksmith and produce",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 35m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:52:25"
           },
           {
             "id": "daily_objectives",
@@ -1471,31 +1755,55 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:52:25"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 35m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
           },
           {
             "id": "alliance_donate",
             "label": "Donate technology",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 35m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:52:25"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 35m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:52:25"
           },
           {
             "id": "expedition",
@@ -1503,260 +1811,108 @@
             "state": "skipped",
             "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:24:20"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 35m",
-            "seconds": null,
-            "at": "04:24:20"
+            "at": "12:52:25"
           },
           {
             "id": "train_troops",
             "label": "Keep troops training",
-            "state": "skipped",
-            "detail": "not ticked for Hall 24+ - skipping",
-            "seconds": null,
-            "at": "04:24:20"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:24:20"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:24:20"
+            "state": "ok",
+            "detail": "training Siege Workshop (Tier I)",
+            "seconds": 13.8,
+            "at": "12:52:30"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
             "detail": "5 march(es) - queue full",
-            "seconds": 55.5,
-            "at": "04:24:25"
-          }
-        ]
-      },
-      {
-        "name": "Character 11",
-        "game": "Game",
-        "index": 4,
-        "total": 10,
-        "section": "lower",
-        "why": "City Hall 13",
-        "status": "done",
-        "started": "04:22:33",
-        "finished": "04:24:20",
-        "marches": 3,
-        "order": [
-          "upgrade_city",
-          "research",
-          "blacksmith",
-          "collect_city",
-          "dispatch",
-          "train_troops",
-          "merchant",
-          "expedition",
-          "daily_objectives",
-          "alliance_territory",
-          "claim_vip",
-          "alliance_donate",
-          "farm"
-        ],
-        "hall": 13,
-        "vip": 3,
-        "power": 473923,
-        "resources": {
-          "food": 36800000,
-          "wood": 36400000,
-          "stone": 27300000,
-          "gold": 11100000,
-          "gems": 323
-        },
-        "gained": {
-          "food": 1800000,
-          "wood": 1100000,
-          "stone": 400000
-        },
-        "research": {
-          "text": "Writing 4→5",
-          "left_minutes": 630,
-          "fraction": 0.54
-        },
-        "upgrades": [
-          {
-            "text": "City Hall to Level 14",
-            "left_minutes": 583,
-            "fraction": 0.3
-          }
-        ],
-        "runs": [
-          {
-            "id": "research",
-            "label": "Research",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 37m",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 37m",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "daily_objectives",
-            "label": "Claim Daily Objectives",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "alliance_territory",
-            "label": "Claim alliance resource",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 37m",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 37m",
-            "seconds": null,
-            "at": "04:22:33"
-          },
-          {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "ok",
-            "detail": "City Hall 13; both builders busy (City Hall to Level 14)",
-            "seconds": 13.7,
-            "at": "04:22:38"
-          },
-          {
-            "id": "train_troops",
-            "label": "Keep troops training",
-            "state": "ok",
-            "detail": "training Siege Workshop (Tier I)",
-            "seconds": 29.6,
-            "at": "04:22:51"
-          },
-          {
-            "id": "farm",
-            "label": "Farm resource",
-            "state": "ok",
-            "detail": "3 march(es) - queue full",
-            "seconds": 29.5,
-            "at": "04:23:21"
+            "seconds": 51.4,
+            "at": "12:52:44"
           }
         ]
       },
       {
         "name": "Character 12",
         "game": "Game",
-        "index": 3,
-        "total": 10,
-        "section": "lower",
-        "why": "City Hall 13",
+        "index": 2,
+        "total": 4,
+        "section": "high",
+        "why": "power 16,948,977",
         "status": "done",
-        "started": "04:19:58",
-        "finished": "04:22:33",
-        "marches": 1,
+        "started": "12:54:08",
+        "finished": "12:55:49",
+        "marches": 5,
         "order": [
           "upgrade_city",
           "research",
-          "claim_vip",
-          "dispatch",
-          "blacksmith",
-          "expedition",
-          "alliance_donate",
-          "train_troops",
+          "alliance_gifts",
           "collect_city",
+          "blacksmith",
+          "claim_vip",
+          "alliance_donate",
+          "expedition",
           "alliance_territory",
+          "train_troops",
           "daily_objectives",
           "merchant",
+          "dispatch",
           "farm"
         ],
-        "hall": 13,
-        "vip": 3,
-        "power": 535980,
+        "hall": 25,
+        "vip": 10,
+        "power": 16948977,
         "resources": {
-          "food": 15500000,
-          "wood": 16400000,
-          "stone": 11700000,
-          "gold": 5400000,
-          "gems": 66
+          "food": 70000000,
+          "wood": 10990000,
+          "stone": 1200000000,
+          "gold": 84300000,
+          "gems": 18760
         },
         "gained": {
-          "wood": 1099999,
-          "stone": 100000
+          "gold": 1200000
         },
         "research": null,
         "upgrades": [],
         "runs": [
           {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:54:08"
+          },
+          {
             "id": "research",
             "label": "Research",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 39m",
+            "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:54:08"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:54:08"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:54:08"
           },
           {
             "id": "claim_vip",
@@ -1764,55 +1920,31 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:19:58"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:19:58"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:19:58"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
             "id": "alliance_donate",
             "label": "Donate technology",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 39m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
-            "id": "collect_city",
-            "label": "Collect resource in city",
+            "id": "expedition",
+            "label": "Collect Expedition",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 39m",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 39m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
             "id": "daily_objectives",
@@ -1820,92 +1952,101 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:19:58"
+            "at": "12:54:08"
           },
           {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "ok",
-            "detail": "City Hall 13; upgrading Goldmine -> 12; Academy 13 is busy (no upgrade button - already upgrading?)",
-            "seconds": 68.8,
-            "at": "04:20:03"
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:54:08"
           },
           {
             "id": "train_troops",
             "label": "Keep troops training",
             "state": "ok",
-            "detail": "training Siege Workshop (Tier I)",
-            "seconds": 37.8,
-            "at": "04:21:12"
+            "detail": "nothing idle to train",
+            "seconds": 12.6,
+            "at": "12:54:13"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "1 march(es) - queue full",
-            "seconds": 13.6,
-            "at": "04:21:50"
+            "detail": "5 march(es) - queue full",
+            "seconds": 58.9,
+            "at": "12:54:25"
           }
         ]
       },
       {
         "name": "Character 13",
         "game": "Game",
-        "index": 2,
-        "total": 10,
-        "section": "lower",
-        "why": "City Hall 13",
+        "index": 3,
+        "total": 4,
+        "section": "high",
+        "why": "power 14,882,496",
         "status": "done",
-        "started": "04:17:22",
-        "finished": "04:19:58",
-        "marches": 3,
+        "started": "12:55:49",
+        "finished": "12:57:46",
+        "marches": 5,
         "order": [
           "upgrade_city",
           "research",
           "claim_vip",
-          "blacksmith",
           "train_troops",
           "merchant",
-          "alliance_donate",
-          "expedition",
-          "dispatch",
-          "alliance_territory",
           "collect_city",
+          "dispatch",
+          "blacksmith",
+          "alliance_donate",
+          "alliance_territory",
+          "expedition",
           "daily_objectives",
+          "alliance_gifts",
           "farm"
         ],
-        "hall": 13,
-        "vip": 3,
-        "power": 575349,
+        "hall": 25,
+        "vip": 10,
+        "power": 14882496,
         "resources": {
-          "food": 46300000,
-          "wood": 46800000,
-          "stone": 35200000,
-          "gold": 15200000,
-          "gems": 281
+          "food": 82000000,
+          "wood": 1600000000,
+          "stone": 48600000,
+          "gold": 97300000,
+          "gems": 31300
         },
         "gained": {
-          "wood": 1000000,
-          "stone": 700000
+          "food": 9700000,
+          "gold": 500000
         },
         "research": null,
         "upgrades": [],
         "runs": [
           {
+            "id": "upgrade_city",
+            "label": "Upgrade city",
+            "state": "skipped",
+            "detail": "not ticked for Hall 24+ - skipping",
+            "seconds": null,
+            "at": "12:55:49"
+          },
+          {
             "id": "research",
             "label": "Research",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 42m",
+            "detail": "not ticked for Hall 24+ - skipping",
             "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
             "id": "claim_vip",
@@ -1913,63 +2054,55 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:17:22"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
             "id": "merchant",
             "label": "Buy from the merchant",
             "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:17:22"
-          },
-          {
-            "id": "alliance_donate",
-            "label": "Donate technology",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 42m",
-            "seconds": null,
-            "at": "04:17:22"
-          },
-          {
-            "id": "expedition",
-            "label": "Collect Expedition",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
             "id": "dispatch",
             "label": "Travel from Dispatch",
             "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:55:49"
+          },
+          {
+            "id": "alliance_donate",
+            "label": "Donate technology",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:55:49"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 42m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
-            "id": "collect_city",
-            "label": "Collect resource in city",
+            "id": "expedition",
+            "label": "Collect Expedition",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 42m",
+            "detail": "already run 2 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
             "id": "daily_objectives",
@@ -1977,148 +2110,147 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:17:22"
+            "at": "12:55:49"
           },
           {
-            "id": "upgrade_city",
-            "label": "Upgrade city",
-            "state": "ok",
-            "detail": "City Hall 14; upgrading Farm -> 14",
-            "seconds": 44.8,
-            "at": "04:17:27"
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:55:49"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "later",
+            "detail": "no resources on screen yet - the city may still be drawing after the game loaded",
+            "seconds": null,
+            "at": "12:55:54"
           },
           {
             "id": "train_troops",
             "label": "Keep troops training",
             "state": "ok",
-            "detail": "training Barracks, Archery Range, Stable, Siege Workshop (Tier I)",
-            "seconds": 48.2,
-            "at": "04:18:12"
+            "detail": "training Siege Workshop (Tier I)",
+            "seconds": 14.6,
+            "at": "12:55:57"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "3 march(es) - queue full",
-            "seconds": 31.2,
-            "at": "04:19:00"
+            "detail": "5 march(es) - queue full",
+            "seconds": 56.8,
+            "at": "12:56:11"
+          },
+          {
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "ok",
+            "detail": "16 bubble(s) collected in 4 click(s) (gold 4/4, stone 4/4, wood 4/4, food 4/4)",
+            "seconds": 7.3,
+            "at": "12:57:08"
           }
         ]
       },
       {
         "name": "Character 14",
         "game": "Game",
-        "index": 1,
-        "total": 10,
+        "index": 4,
+        "total": 4,
         "section": "lower",
-        "why": "City Hall 11",
+        "why": "City Hall 15",
         "status": "done",
-        "started": "04:14:52",
-        "finished": "04:17:22",
-        "marches": 3,
+        "started": "12:57:46",
+        "finished": "12:58:50",
+        "marches": 1,
         "order": [
           "upgrade_city",
           "research",
-          "train_troops",
-          "dispatch",
-          "blacksmith",
           "alliance_donate",
-          "collect_city",
-          "merchant",
           "alliance_territory",
-          "expedition",
-          "claim_vip",
+          "collect_city",
+          "blacksmith",
+          "alliance_gifts",
           "daily_objectives",
+          "expedition",
+          "train_troops",
+          "merchant",
+          "claim_vip",
+          "dispatch",
           "farm"
         ],
-        "hall": 11,
-        "vip": 3,
-        "power": 315759,
+        "hall": 15,
+        "vip": 5,
+        "power": 832703,
         "resources": {
-          "food": 11400000,
-          "wood": 11800000,
-          "stone": 8400000,
-          "gold": 3700000,
-          "gems": 173
+          "food": 14500000,
+          "wood": 14200000,
+          "stone": 12100000,
+          "gold": 4110000,
+          "gems": 3785
         },
         "gained": {
-          "food": 400000,
-          "wood": 1300000
+          "stone": 2200000,
+          "gold": 170000
         },
         "research": null,
-        "upgrades": [],
+        "upgrades": [
+          {
+            "text": "Wall to Level 15",
+            "left_minutes": 504,
+            "fraction": 0.73
+          }
+        ],
         "runs": [
           {
             "id": "research",
             "label": "Research",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 45m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:14:52"
-          },
-          {
-            "id": "dispatch",
-            "label": "Travel from Dispatch",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:14:52"
-          },
-          {
-            "id": "blacksmith",
-            "label": "Collect blacksmith and produce",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:14:52"
+            "at": "12:57:46"
           },
           {
             "id": "alliance_donate",
             "label": "Donate technology",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 45m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:14:52"
-          },
-          {
-            "id": "collect_city",
-            "label": "Collect resource in city",
-            "state": "skipped",
-            "detail": "1 of 2 done today, next one in 45m",
-            "seconds": null,
-            "at": "04:14:52"
-          },
-          {
-            "id": "merchant",
-            "label": "Buy from the merchant",
-            "state": "skipped",
-            "detail": "not ticked for Lower Hall - skipping",
-            "seconds": null,
-            "at": "04:14:52"
+            "at": "12:57:46"
           },
           {
             "id": "alliance_territory",
             "label": "Claim alliance resource",
             "state": "skipped",
-            "detail": "1 of 2 done today, next one in 45m",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
             "seconds": null,
-            "at": "04:14:52"
+            "at": "12:57:46"
           },
           {
-            "id": "expedition",
-            "label": "Collect Expedition",
+            "id": "collect_city",
+            "label": "Collect resource in city",
+            "state": "skipped",
+            "detail": "already run 2 time(s) today (limit 2) - skipping",
+            "seconds": null,
+            "at": "12:57:46"
+          },
+          {
+            "id": "blacksmith",
+            "label": "Collect blacksmith and produce",
+            "state": "skipped",
+            "detail": "needs City Hall 16 (this city: 15) - skipping",
+            "seconds": null,
+            "at": "12:57:46"
+          },
+          {
+            "id": "alliance_gifts",
+            "label": "Collect alliance gifts",
             "state": "skipped",
             "detail": "not ticked for Lower Hall - skipping",
             "seconds": null,
-            "at": "04:14:52"
-          },
-          {
-            "id": "claim_vip",
-            "label": "Claim VIP chest",
-            "state": "skipped",
-            "detail": "already run 1 time(s) today (limit 1) - skipping",
-            "seconds": null,
-            "at": "04:14:52"
+            "at": "12:57:46"
           },
           {
             "id": "daily_objectives",
@@ -2126,335 +2258,367 @@
             "state": "skipped",
             "detail": "already run 1 time(s) today (limit 1) - skipping",
             "seconds": null,
-            "at": "04:14:52"
+            "at": "12:57:46"
+          },
+          {
+            "id": "expedition",
+            "label": "Collect Expedition",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:57:46"
+          },
+          {
+            "id": "merchant",
+            "label": "Buy from the merchant",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:57:46"
+          },
+          {
+            "id": "claim_vip",
+            "label": "Claim VIP chest",
+            "state": "skipped",
+            "detail": "already run 1 time(s) today (limit 1) - skipping",
+            "seconds": null,
+            "at": "12:57:46"
+          },
+          {
+            "id": "dispatch",
+            "label": "Travel from Dispatch",
+            "state": "skipped",
+            "detail": "not ticked for Lower Hall - skipping",
+            "seconds": null,
+            "at": "12:57:46"
           },
           {
             "id": "upgrade_city",
             "label": "Upgrade city",
             "state": "ok",
-            "detail": "City Hall 11; upgrading City Hall 11 -> 12; Academy 11: City Hall is being upgraded",
-            "seconds": 44.4,
-            "at": "04:14:57"
+            "detail": "City Hall 15; both builders busy (Academy to Level 15, Wall to Level 15)",
+            "seconds": 23.7,
+            "at": "12:57:51"
           },
           {
             "id": "train_troops",
             "label": "Keep troops training",
             "state": "ok",
             "detail": "training Stable, Siege Workshop (Tier I)",
-            "seconds": 38.8,
-            "at": "04:15:42"
+            "seconds": 35.8,
+            "at": "12:58:15"
           },
           {
             "id": "farm",
             "label": "Farm resource",
             "state": "ok",
-            "detail": "3 march(es) - queue full",
-            "seconds": 32.6,
-            "at": "04:16:20"
+            "detail": "1 march(es) - queue full",
+            "seconds": 17.7,
+            "at": "12:58:50"
           }
         ]
       }
     ],
     "events": [
       {
-        "at": "04:39:55",
+        "at": "15:13:58",
         "who": "",
-        "text": "cycle 4 done · next 07:43",
+        "text": "panel restarted",
         "kind": "info"
       },
       {
-        "at": "04:39:55",
-        "who": "Character 4",
-        "text": "Farm resource: 2 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:38:55",
-        "who": "Character 4",
-        "text": "Upgrade city: builders busy",
-        "kind": "ok"
-      },
-      {
-        "at": "04:38:49",
-        "who": "Character 4",
-        "text": "started 4/4",
+        "at": "15:03:29",
+        "who": "",
+        "text": "panel restarted",
         "kind": "info"
       },
       {
-        "at": "04:38:10",
-        "who": "Character 3",
+        "at": "14:28:35",
+        "who": "",
+        "text": "panel restarted",
+        "kind": "info"
+      },
+      {
+        "at": "13:14:53",
+        "who": "",
+        "text": "panel restarted",
+        "kind": "info"
+      },
+      {
+        "at": "13:09:48",
+        "who": "",
+        "text": "panel restarted",
+        "kind": "info"
+      },
+      {
+        "at": "12:58:50",
+        "who": "",
+        "text": "cycle 6 done · next 16:00",
+        "kind": "info"
+      },
+      {
+        "at": "12:58:50",
+        "who": "Character 14",
         "text": "Farm resource: 1 march",
         "kind": "ok"
       },
       {
-        "at": "04:38:05",
-        "who": "Character 3",
+        "at": "12:57:51",
+        "who": "Character 14",
+        "text": "Upgrade city: builders busy",
+        "kind": "ok"
+      },
+      {
+        "at": "12:57:46",
+        "who": "Character 14",
+        "text": "started 4/4",
+        "kind": "info"
+      },
+      {
+        "at": "12:56:11",
+        "who": "Character 13",
+        "text": "Farm resource: 5 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:55:49",
+        "who": "Character 13",
         "text": "started 3/4",
         "kind": "info"
       },
       {
-        "at": "04:36:42",
-        "who": "Character 2",
+        "at": "12:54:25",
+        "who": "Character 12",
         "text": "Farm resource: 5 marches",
         "kind": "ok"
       },
       {
-        "at": "04:36:37",
-        "who": "Character 2",
+        "at": "12:54:08",
+        "who": "Character 12",
         "text": "started 2/4",
         "kind": "info"
       },
       {
-        "at": "04:35:16",
-        "who": "Character 1",
+        "at": "12:52:44",
+        "who": "Character 11",
         "text": "Farm resource: 5 marches",
         "kind": "ok"
       },
       {
-        "at": "04:35:11",
-        "who": "Character 1",
+        "at": "12:52:25",
+        "who": "Character 11",
         "text": "started 1/4",
         "kind": "info"
       },
       {
-        "at": "04:33:16",
+        "at": "12:50:45",
         "who": "",
         "text": "Rise of Kingdoms Global (2/2)",
         "kind": "info"
       },
       {
-        "at": "04:33:16",
-        "who": "Character 5",
+        "at": "12:50:45",
+        "who": "Character 10",
         "text": "Farm resource: 1 march",
         "kind": "ok"
       },
       {
-        "at": "04:32:03",
-        "who": "Character 5",
-        "text": "Farm resource: 4 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:31:57",
-        "who": "Character 5",
-        "text": "started 10/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:30:37",
-        "who": "Character 6",
-        "text": "Farm resource: 5 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:30:32",
-        "who": "Character 6",
-        "text": "started 9/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:28:34",
-        "who": "Character 7",
-        "text": "Farm resource: 3 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:28:29",
-        "who": "Character 7",
-        "text": "started 8/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:27:21",
-        "who": "Character 8",
-        "text": "Farm resource: 4 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:27:16",
-        "who": "Character 8",
-        "text": "started 7/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:25:58",
-        "who": "Character 9",
-        "text": "Farm resource: 5 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:25:53",
-        "who": "Character 9",
-        "text": "started 6/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:24:25",
+        "at": "12:50:10",
         "who": "Character 10",
-        "text": "Farm resource: 5 marches",
+        "text": "Farm resource: 0 marches",
         "kind": "ok"
       },
       {
-        "at": "04:24:20",
+        "at": "12:49:24",
         "who": "Character 10",
-        "text": "started 5/10",
-        "kind": "info"
-      },
-      {
-        "at": "04:23:21",
-        "who": "Character 11",
-        "text": "Farm resource: 3 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "04:22:38",
-        "who": "Character 11",
         "text": "Upgrade city: builders busy",
         "kind": "ok"
       },
       {
-        "at": "04:22:33",
-        "who": "Character 11",
-        "text": "started 4/10",
+        "at": "12:49:19",
+        "who": "Character 10",
+        "text": "started 11/11",
         "kind": "info"
       },
       {
-        "at": "04:21:50",
-        "who": "Character 12",
-        "text": "Farm resource: 1 march",
+        "at": "12:47:42",
+        "who": "Character 9",
+        "text": "Farm resource: 5 marches",
         "kind": "ok"
       },
       {
-        "at": "04:20:03",
-        "who": "Character 12",
-        "text": "Upgrade city: Goldmine →12",
-        "kind": "ok"
-      },
-      {
-        "at": "04:19:58",
-        "who": "Character 12",
-        "text": "started 3/10",
+        "at": "12:47:28",
+        "who": "Character 9",
+        "text": "started 10/11",
         "kind": "info"
       },
       {
-        "at": "04:19:00",
-        "who": "Character 13",
+        "at": "12:45:43",
+        "who": "Character 8",
+        "text": "Farm resource: 5 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:45:30",
+        "who": "Character 8",
+        "text": "started 9/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:43:51",
+        "who": "Character 7",
+        "text": "Farm resource: 5 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:43:37",
+        "who": "Character 7",
+        "text": "started 8/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:42:05",
+        "who": "Character 6",
+        "text": "Farm resource: 4 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:41:35",
+        "who": "Character 6",
+        "text": "started 7/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:40:10",
+        "who": "Character 5",
+        "text": "Farm resource: 5 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:39:57",
+        "who": "Character 5",
+        "text": "started 6/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:38:37",
+        "who": "Character 4",
+        "text": "Farm resource: 5 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:38:20",
+        "who": "Character 4",
+        "text": "started 5/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:37:06",
+        "who": "Character 3",
+        "text": "Farm resource: 4 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:36:18",
+        "who": "Character 3",
+        "text": "Upgrade city: builders busy",
+        "kind": "ok"
+      },
+      {
+        "at": "12:36:12",
+        "who": "Character 3",
+        "text": "started 4/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:35:01",
+        "who": "Character 2",
+        "text": "Farm resource: 4 marches",
+        "kind": "ok"
+      },
+      {
+        "at": "12:33:55",
+        "who": "Character 2",
+        "text": "Upgrade city: builders busy",
+        "kind": "ok"
+      },
+      {
+        "at": "12:33:49",
+        "who": "Character 2",
+        "text": "started 3/11",
+        "kind": "info"
+      },
+      {
+        "at": "12:32:41",
+        "who": "Character 1",
         "text": "Farm resource: 3 marches",
         "kind": "ok"
       },
       {
-        "at": "04:17:27",
-        "who": "Character 13",
-        "text": "Upgrade city: Farm →14",
+        "at": "12:27:43",
+        "who": "Character 1",
+        "text": "Upgrade city: building not found",
         "kind": "ok"
       },
       {
-        "at": "04:17:22",
-        "who": "Character 13",
-        "text": "started 2/10",
+        "at": "12:27:38",
+        "who": "Character 1",
+        "text": "started 2/11",
         "kind": "info"
       },
       {
-        "at": "04:16:20",
-        "who": "Character 14",
-        "text": "Farm resource: 3 marches",
+        "at": "12:27:02",
+        "who": "Character 10",
+        "text": "Farm resource: 0 marches",
         "kind": "ok"
       },
       {
-        "at": "04:14:57",
-        "who": "Character 14",
-        "text": "Upgrade city: City Hall 11→12",
+        "at": "12:26:16",
+        "who": "Character 10",
+        "text": "Upgrade city: builders busy",
         "kind": "ok"
       },
       {
-        "at": "04:14:52",
-        "who": "Character 14",
-        "text": "started 1/10",
+        "at": "12:26:15",
+        "who": "Character 10",
+        "text": "started 1/11",
         "kind": "info"
       },
       {
-        "at": "04:13:16",
+        "at": "12:25:06",
         "who": "",
         "text": "Rise of Kingdoms (1/2)",
         "kind": "info"
       },
       {
-        "at": "04:13:16",
+        "at": "12:25:06",
         "who": "",
-        "text": "cycle 4 started",
+        "text": "cycle 6 started",
         "kind": "info"
       },
       {
-        "at": "01:25:39",
+        "at": "09:07:41",
         "who": "",
-        "text": "cycle 3 done · next 04:13",
+        "text": "cycle 5 done · next 12:25",
         "kind": "info"
       },
       {
-        "at": "01:25:39",
-        "who": "Character 4",
-        "text": "Farm resource: 2 marches",
+        "at": "09:07:41",
+        "who": "Character 14",
+        "text": "Farm resource: 1 march",
         "kind": "ok"
       },
       {
-        "at": "01:24:19",
-        "who": "Character 4",
-        "text": "Upgrade city: Archery Range →10",
+        "at": "09:06:49",
+        "who": "Character 14",
+        "text": "Farm resource: 1 march",
         "kind": "ok"
       },
       {
-        "at": "01:24:08",
-        "who": "Character 4",
-        "text": "started 2/2",
-        "kind": "info"
-      },
-      {
-        "at": "01:23:06",
-        "who": "Character 3",
-        "text": "Farm resource: 4 marches",
+        "at": "09:05:50",
+        "who": "Character 14",
+        "text": "Upgrade city: builders busy",
         "kind": "ok"
-      },
-      {
-        "at": "01:23:01",
-        "who": "Character 3",
-        "text": "started 1/2",
-        "kind": "info"
-      },
-      {
-        "at": "01:21:06",
-        "who": "Character 2",
-        "text": "Farm resource failed: GameNotResponding: the game has stopped answering Windows - not raising it",
-        "kind": "error"
-      },
-      {
-        "at": "01:20:34",
-        "who": "Character 2",
-        "text": "Farm resource failed: GameNotResponding: the game has stopped answering Windows - not raising it",
-        "kind": "error"
-      },
-      {
-        "at": "01:20:34",
-        "who": "Character 2",
-        "text": "started 2/4",
-        "kind": "info"
-      },
-      {
-        "at": "01:19:25",
-        "who": "Character 1",
-        "text": "Farm resource: 4 marches",
-        "kind": "ok"
-      },
-      {
-        "at": "01:19:24",
-        "who": "Character 1",
-        "text": "started 1/4",
-        "kind": "info"
-      },
-      {
-        "at": "01:17:04",
-        "who": "",
-        "text": "Rise of Kingdoms Global (2/2)",
-        "kind": "info"
       }
     ]
   }

@@ -1,6 +1,6 @@
 {
-  "contract": 4,
-  "at": 1791897469.6055639,
+  "contract": 6,
+  "at": 1794785041.9130785,
   "data": {
     "sections": [
       {
@@ -141,6 +141,16 @@
             "default": true,
             "depends_on": "",
             "help": "Tops the shortfall up from resource items in storage. Never gems. Off: that building waits.",
+            "editable": true
+          },
+          {
+            "type": "flag",
+            "id": "hire_gems",
+            "label": "Hire a second builder with gems (150) when VIP is 5 or lower",
+            "heading": "Builders",
+            "default": false,
+            "depends_on": "",
+            "help": "When the second builder is not taken on and HIRE asks for gems, press it - only if the price reads exactly 150, only for a character whose VIP is known to be 5 or lower, and at most once a day. Off: never gems.",
             "editable": true
           }
         ]
@@ -513,6 +523,16 @@
         "params": []
       },
       {
+        "id": "alliance_gifts",
+        "label": "Collect alliance gifts",
+        "description": "Opens Alliance > Gifts and presses CLAIM ALL on the Rare tab and on the Normal tab, then opens the big Treasure chest on the left when it shows a red dot or its unlock text has gone.",
+        "tab": "before",
+        "feature": "Alliance",
+        "excludes": [],
+        "often": true,
+        "params": []
+      },
+      {
         "id": "alliance_donate",
         "label": "Donate technology",
         "description": "Reads the six skills' progress bars and donates to the ones that are not full yet, least full first, until the day's chances run out. Only ever the resource button, never the gem one beside it.",
@@ -530,6 +550,16 @@
         "feature": "City",
         "excludes": [],
         "often": true,
+        "params": []
+      },
+      {
+        "id": "vip_shop",
+        "label": "Buy from the VIP shop",
+        "description": "Opens the VIP shop from the Shop building and buys out every item priced in resources - all of its stock. Gem prices are skipped and gem prompts get No. Once a week for each character, after the shop restocks on Monday 00:00 UTC.",
+        "tab": "before",
+        "feature": "City",
+        "excludes": [],
+        "often": false,
         "params": []
       },
       {
@@ -555,12 +585,37 @@
       {
         "id": "expedition",
         "label": "Collect Expedition",
-        "description": "Presses U for Campaign, opens Expedition and collects the chest beside the stage map. Once a day. Never Challenge, never the Expedition shop.",
+        "description": "Presses U for Campaign, opens Expedition and collects the chest beside the stage map, then opens the Medal Store (the cart) and buys the third sculpture, the one for 1,500 medals. Once a day. Never Challenge.",
         "tab": "before",
         "feature": "Rewards",
         "excludes": [],
         "often": false,
-        "params": []
+        "params": [
+          {
+            "type": "flag",
+            "id": "buy_statue",
+            "label": "Buy the sculpture in the Medal Store",
+            "heading": "Medal Store",
+            "default": true,
+            "depends_on": "",
+            "help": "The third one on the top row, for 1,500 medals. Bought only while the price reads 1,500 and the medals cover it.",
+            "editable": true
+          },
+          {
+            "type": "number",
+            "min": 1,
+            "max": 5,
+            "picker": "",
+            "prefix": "",
+            "id": "buy_most",
+            "label": "Buy at most",
+            "heading": "Medal Store",
+            "default": 3,
+            "depends_on": "buy_statue",
+            "help": "The shop holds three of it a day.",
+            "editable": true
+          }
+        ]
       },
       {
         "id": "daily_objectives",
@@ -797,6 +852,10 @@
           [
             "all",
             "Change all characters"
+          ],
+          [
+            "chosen",
+            "Chosen characters"
           ]
         ],
         "dropdown": false,
@@ -806,6 +865,94 @@
         "default": "current",
         "depends_on": "",
         "help": "Every ticked task runs for each character in turn: the city work, then farming, then on to the next character.",
+        "editable": true
+      },
+      {
+        "type": "priority",
+        "items": [
+          "Character 1",
+          "Character 3",
+          "Character 11",
+          "Character 13",
+          "Character 10",
+          "Character 12",
+          "Character 4",
+          "Character 5",
+          "Character 6",
+          "Character 7",
+          "Character 8",
+          "Character 9",
+          "Character 2",
+          "Character 14"
+        ],
+        "ordered": false,
+        "when": {
+          "id": "characters",
+          "value": "chosen"
+        },
+        "id": "chosen_characters",
+        "label": "Characters to run",
+        "heading": "Characters",
+        "default": [
+          [
+            "Character 1",
+            false
+          ],
+          [
+            "Character 3",
+            false
+          ],
+          [
+            "Character 11",
+            false
+          ],
+          [
+            "Character 13",
+            false
+          ],
+          [
+            "Character 10",
+            false
+          ],
+          [
+            "Character 12",
+            false
+          ],
+          [
+            "Character 4",
+            false
+          ],
+          [
+            "Character 5",
+            false
+          ],
+          [
+            "Character 6",
+            false
+          ],
+          [
+            "Character 7",
+            false
+          ],
+          [
+            "Character 8",
+            false
+          ],
+          [
+            "Character 9",
+            false
+          ],
+          [
+            "Character 2",
+            false
+          ],
+          [
+            "Character 14",
+            false
+          ]
+        ],
+        "depends_on": "",
+        "help": "Used with Chosen characters: only the ticked ones are run, in the order of the game's favorite list.",
         "editable": true
       },
       {
@@ -1149,6 +1296,103 @@
     "same_as_high": {
       "label": "Same tasks as Hall 24+",
       "help": "Run Lower Hall characters with the tasks ticked on Hall 24+. Lower Hall's own ticks are kept, greyed out, for when this is off. Its options - the resource to farm, the buildings to upgrade - are still its own."
+    },
+    "characters": [
+      {
+        "id": "id:1000001",
+        "name": "Character 4"
+      },
+      {
+        "id": "id:1000002",
+        "name": "Character 5"
+      },
+      {
+        "id": "id:1000003",
+        "name": "Character 6"
+      },
+      {
+        "id": "id:1000004",
+        "name": "Character 7"
+      },
+      {
+        "id": "id:1000005",
+        "name": "Character 8"
+      },
+      {
+        "id": "id:1000006",
+        "name": "Character 9"
+      },
+      {
+        "id": "id:1000007",
+        "name": "Character 10"
+      },
+      {
+        "id": "id:1000008",
+        "name": "Character 1"
+      },
+      {
+        "id": "id:1000009",
+        "name": "Character 2"
+      },
+      {
+        "id": "id:1000010",
+        "name": "Character 3"
+      },
+      {
+        "id": "id:1000011",
+        "name": "Character 11"
+      },
+      {
+        "id": "id:1000012",
+        "name": "Character 12"
+      },
+      {
+        "id": "id:1000013",
+        "name": "Character 13"
+      },
+      {
+        "id": "id:1000014",
+        "name": "Character 14"
+      }
+    ],
+    "farm_resource": {
+      "label": "Per character",
+      "none": "Same as above",
+      "help": "Pick a resource for this character alone. Same as above uses Search for.",
+      "choices": [
+        [
+          "highest",
+          "Highest one"
+        ],
+        [
+          "lowest",
+          "Lowest resource, except gold"
+        ],
+        [
+          "lowest_gold",
+          "Lowest resource"
+        ],
+        [
+          "food",
+          "Food"
+        ],
+        [
+          "wood",
+          "Wood"
+        ],
+        [
+          "stone",
+          "Stone"
+        ],
+        [
+          "gold",
+          "Gold"
+        ]
+      ]
+    },
+    "separate": {
+      "label": "Different for Lower Hall",
+      "help": "Off: one on/off and one set of options, for Hall 24+ and Lower Hall alike. On: Lower Hall gets its own switch and its own options on this card."
     }
   }
 }

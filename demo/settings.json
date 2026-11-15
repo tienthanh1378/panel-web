@@ -1,14 +1,72 @@
 {
-  "contract": 4,
-  "at": 1791897469.6055639,
+  "contract": 6,
+  "at": 1794785041.9130785,
   "data": {
     "settings": {
       "characters": "all",
+      "chosen_characters": [
+        [
+          "Character 1",
+          true
+        ],
+        [
+          "Character 3",
+          true
+        ],
+        [
+          "Character 11",
+          false
+        ],
+        [
+          "Character 13",
+          true
+        ],
+        [
+          "Character 10",
+          true
+        ],
+        [
+          "Character 12",
+          true
+        ],
+        [
+          "Character 4",
+          true
+        ],
+        [
+          "Character 5",
+          true
+        ],
+        [
+          "Character 6",
+          true
+        ],
+        [
+          "Character 7",
+          true
+        ],
+        [
+          "Character 8",
+          true
+        ],
+        [
+          "Character 9",
+          true
+        ],
+        [
+          "Character 2",
+          true
+        ],
+        [
+          "Character 14",
+          true
+        ]
+      ],
       "repeat": true,
-      "wait_hours": 2,
-      "wait_minutes": 45,
+      "wait_hours": 3,
+      "wait_minutes": 0,
       "wait_max_hours": 3,
-      "wait_max_minutes": 15,
+      "wait_max_minutes": 30,
       "start_at": false,
       "start_hour": 23,
       "start_minute": 45,
@@ -23,7 +81,7 @@
       "always_admin": true,
       "screen_off_at_end": true,
       "screen_off_repeat": true,
-      "screen_off_x": "60",
+      "screen_off_x": "15",
       "hibernate_cycles": true,
       "keep_awake_between": false
     },
@@ -33,6 +91,7 @@
       "train_troops": "always",
       "blacksmith": "twice",
       "alliance_territory": "twice",
+      "alliance_gifts": "once",
       "alliance_donate": "twice",
       "merchant": "twice",
       "collect_city": "twice",
@@ -44,12 +103,14 @@
         "tasks": {
           "upgrade_city": false,
           "research": false,
-          "train_troops": false,
+          "train_troops": true,
           "blacksmith": true,
           "claim_vip": true,
           "alliance_territory": true,
+          "alliance_gifts": true,
           "alliance_donate": true,
           "merchant": true,
+          "vip_shop": false,
           "collect_city": true,
           "dispatch": true,
           "expedition": true,
@@ -126,7 +187,8 @@
                 false
               ]
             ],
-            "replenish": true
+            "replenish": true,
+            "hire_gems": false
           },
           "research": {
             "order": [
@@ -182,18 +244,22 @@
             "replenish": true
           },
           "train_troops": {
-            "train_barracks": true,
+            "train_barracks": false,
             "tier_barracks": "highest",
-            "train_archery": true,
+            "train_archery": false,
             "tier_archery": "highest",
-            "train_stable": true,
-            "tier_stable": "1",
+            "train_stable": false,
+            "tier_stable": "highest",
             "train_siege": true,
-            "tier_siege": "highest"
+            "tier_siege": "1"
           },
           "blacksmith": {
             "produce": true,
             "material": "bone"
+          },
+          "expedition": {
+            "buy_statue": true,
+            "buy_most": 3
           },
           "daily_objectives": {
             "from_hour": 18
@@ -218,11 +284,13 @@
           "upgrade_city": true,
           "research": true,
           "train_troops": true,
-          "blacksmith": false,
+          "blacksmith": true,
           "claim_vip": true,
           "alliance_territory": true,
+          "alliance_gifts": false,
           "alliance_donate": true,
           "merchant": false,
+          "vip_shop": false,
           "collect_city": true,
           "dispatch": false,
           "expedition": false,
@@ -292,14 +360,15 @@
               ],
               [
                 "Storehouse",
-                false
+                true
               ],
               [
                 "Tavern",
-                false
+                true
               ]
             ],
-            "replenish": true
+            "replenish": true,
+            "hire_gems": true
           },
           "research": {
             "order": [
@@ -368,6 +437,10 @@
             "produce": true,
             "material": "bone"
           },
+          "expedition": {
+            "buy_statue": true,
+            "buy_most": 3
+          },
           "daily_objectives": {
             "from_hour": 18
           },
@@ -381,11 +454,30 @@
           },
           "farm": {
             "resource": "lowest_gold",
-            "start_level": 4,
+            "start_level": 6,
             "min_level": 1
           }
         },
-        "same_as_high": false
+        "same_as_high": false,
+        "separate": {
+          "upgrade_city": true,
+          "research": true,
+          "train_troops": true,
+          "blacksmith": false,
+          "claim_vip": false,
+          "alliance_territory": false,
+          "alliance_gifts": true,
+          "alliance_donate": false,
+          "merchant": true,
+          "vip_shop": false,
+          "collect_city": false,
+          "dispatch": true,
+          "expedition": true,
+          "daily_objectives": false,
+          "farm_alliance_gold": true,
+          "fortress": false,
+          "farm": true
+        }
       },
       "special": {
         "tasks": {
@@ -397,6 +489,9 @@
           }
         }
       }
+    },
+    "farm_resources": {
+      "id:1000001": "wood"
     }
   }
 }

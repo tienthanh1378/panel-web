@@ -1,8 +1,226 @@
 {
-  "contract": 4,
-  "at": 1791897469.6055639,
+  "contract": 6,
+  "at": 1794785041.9130785,
   "data": {
     "results": [
+      {
+        "id": "a35430d0-ac07-4ae2-86ee-8232dc22e458",
+        "status": "applied",
+        "message": "",
+        "at": 1794686429.170843,
+        "kind": "set_option",
+        "args": {
+          "section": "lower",
+          "task": "upgrade_city",
+          "option": "hire_gems",
+          "value": true,
+          "seen": false
+        }
+      },
+      {
+        "id": "dc4acde6-9096-4de0-9659-aa3fd588c54a",
+        "status": "applied",
+        "message": "",
+        "at": 1794686429.14663,
+        "kind": "set_setting",
+        "args": {
+          "id": "screen_off_x",
+          "value": "15",
+          "seen": "60"
+        }
+      },
+      {
+        "id": "02925d3d-f327-4e59-852c-9cfbd18c788e",
+        "status": "applied",
+        "message": "",
+        "at": 1792975972.7581398,
+        "kind": "set_setting",
+        "args": {
+          "id": "characters",
+          "value": "all",
+          "seen": "chosen"
+        }
+      },
+      {
+        "id": "2e47c8d3-dd92-4fca-a0f3-79575ddf3f91",
+        "status": "applied",
+        "message": "",
+        "at": 1792386680.1135292,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_max_minutes",
+          "value": 30,
+          "seen": 15
+        }
+      },
+      {
+        "id": "6c545e25-2e31-466a-931b-e8c24772b5d3",
+        "status": "applied",
+        "message": "",
+        "at": 1792386680.1125298,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_minutes",
+          "value": 0,
+          "seen": 45
+        }
+      },
+      {
+        "id": "cd164ded-1f13-4c59-b84a-ed98f7ed9e6d",
+        "status": "applied",
+        "message": "",
+        "at": 1792386680.1110141,
+        "kind": "set_setting",
+        "args": {
+          "id": "wait_hours",
+          "value": 3,
+          "seen": 2
+        }
+      },
+      {
+        "id": "75e84d5a-4172-444a-adbe-bc0396ed6a6b",
+        "status": "applied",
+        "message": "",
+        "at": 1791961488.6959069,
+        "kind": "set_option",
+        "args": {
+          "section": "lower",
+          "task": "upgrade_city",
+          "option": "buildings",
+          "value": [
+            [
+              "Siege Workshop",
+              true
+            ],
+            [
+              "City Hall",
+              true
+            ],
+            [
+              "Academy",
+              true
+            ],
+            [
+              "Goldmine",
+              false
+            ],
+            [
+              "State Forum",
+              false
+            ],
+            [
+              "Castle",
+              false
+            ],
+            [
+              "Barracks",
+              false
+            ],
+            [
+              "Archery Range",
+              false
+            ],
+            [
+              "Stable",
+              false
+            ],
+            [
+              "Hospital",
+              false
+            ],
+            [
+              "Farm",
+              false
+            ],
+            [
+              "Lumber Mill",
+              false
+            ],
+            [
+              "Quarry",
+              false
+            ],
+            [
+              "Wall",
+              false
+            ],
+            [
+              "Storehouse",
+              true
+            ],
+            [
+              "Tavern",
+              true
+            ]
+          ],
+          "seen": [
+            [
+              "Siege Workshop",
+              true
+            ],
+            [
+              "City Hall",
+              true
+            ],
+            [
+              "Academy",
+              true
+            ],
+            [
+              "Goldmine",
+              false
+            ],
+            [
+              "State Forum",
+              false
+            ],
+            [
+              "Castle",
+              false
+            ],
+            [
+              "Barracks",
+              false
+            ],
+            [
+              "Archery Range",
+              false
+            ],
+            [
+              "Stable",
+              false
+            ],
+            [
+              "Hospital",
+              false
+            ],
+            [
+              "Farm",
+              false
+            ],
+            [
+              "Lumber Mill",
+              false
+            ],
+            [
+              "Quarry",
+              false
+            ],
+            [
+              "Wall",
+              false
+            ],
+            [
+              "Storehouse",
+              false
+            ],
+            [
+              "Tavern",
+              false
+            ]
+          ]
+        }
+      },
       {
         "id": "945444d4-ca14-47fe-9795-9184ac924929",
         "status": "applied",
