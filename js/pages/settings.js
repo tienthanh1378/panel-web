@@ -51,6 +51,8 @@ export function summary(heading, v) {
       if (on(v.start_at)) return `From ${clock(v.start_hour, v.start_minute)}`;
       if (on(v.end_at)) return `Until ${clock(v.end_hour, v.end_minute)}`;
       return "Any time of day";
+    case "Lower Hall":
+      return on(v.lower_options) ? "On - a task can be set apart for Lower Hall" : "Off - every task is for all halls";
     case "Run which game":
       return GAMES[v.run_games] || "";
     case "Both games":

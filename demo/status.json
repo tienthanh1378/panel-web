@@ -1,12 +1,12 @@
 {
   "contract": 6,
-  "at": 1794785041.9130785,
+  "at": 1794792573.089679,
   "data": {
     "state": "waiting",
-    "line": "Waiting - next cycle at 16:00",
+    "line": "Waiting - next cycle at 20:12",
     "running": true,
-    "cycle": 6,
-    "next_cycle_at": 1794787244.8047435,
+    "cycle": 1,
+    "next_cycle_at": 1794802361.0933907,
     "asleep_until": null,
     "panel": {
       "version": "example",

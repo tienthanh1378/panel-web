@@ -113,7 +113,11 @@ export function column(store, view, section, merged = false) {
         heads += draw({ id: `${task.id}-lower`, type: "flag", label: "Lower Hall" },
                       lowerTicks[task.id] === true, "set_tick", { section: LOWER, task: task.id }, canEdit && !sameOn);
       let body = task.description ? `<p class="row-help">${esc(task.description)}</p>` : "";
-      if (merged && schema.separate)
+      // The PC names a setting that lets a task offer this switch (shown_by);
+      // until it is on only a task already set apart has it.
+      const gate = schema.separate && schema.separate.shown_by;
+      const offered = !gate || (settings.settings || {})[gate] === true || separate;
+      if (merged && schema.separate && offered)
         body += draw({ id: `${task.id}-separate`, type: "flag", label: schema.separate.label, help: schema.separate.help },
                      separate, "set_separate", { task: task.id }, canEdit);
       body += merged

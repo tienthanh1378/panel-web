@@ -1,6 +1,6 @@
 {
   "contract": 6,
-  "at": 1794785041.9130785,
+  "at": 1794792573.089679,
   "data": {
     "sections": [
       {
@@ -870,19 +870,19 @@
       {
         "type": "priority",
         "items": [
-          "Character 1",
-          "Character 3",
-          "Character 11",
-          "Character 13",
-          "Character 10",
-          "Character 12",
+          "Character 2",
           "Character 4",
+          "Character 11",
+          "Character 1",
+          "Character 12",
           "Character 5",
           "Character 6",
-          "Character 7",
-          "Character 8",
+          "Character 10",
           "Character 9",
-          "Character 2",
+          "Character 8",
+          "Character 7",
+          "Character 13",
+          "Character 3",
           "Character 14"
         ],
         "ordered": false,
@@ -895,11 +895,11 @@
         "heading": "Characters",
         "default": [
           [
-            "Character 1",
+            "Character 2",
             false
           ],
           [
-            "Character 3",
+            "Character 4",
             false
           ],
           [
@@ -907,19 +907,11 @@
             false
           ],
           [
-            "Character 13",
-            false
-          ],
-          [
-            "Character 10",
+            "Character 1",
             false
           ],
           [
             "Character 12",
-            false
-          ],
-          [
-            "Character 4",
             false
           ],
           [
@@ -931,11 +923,7 @@
             false
           ],
           [
-            "Character 7",
-            false
-          ],
-          [
-            "Character 8",
+            "Character 10",
             false
           ],
           [
@@ -943,7 +931,19 @@
             false
           ],
           [
-            "Character 2",
+            "Character 8",
+            false
+          ],
+          [
+            "Character 7",
+            false
+          ],
+          [
+            "Character 13",
+            false
+          ],
+          [
+            "Character 3",
             false
           ],
           [
@@ -953,6 +953,16 @@
         ],
         "depends_on": "",
         "help": "Used with Chosen characters: only the ticked ones are run, in the order of the game's favorite list.",
+        "editable": true
+      },
+      {
+        "type": "flag",
+        "id": "lower_options",
+        "label": "Let tasks be set apart for Lower Hall",
+        "heading": "Lower Hall",
+        "default": false,
+        "depends_on": "",
+        "help": "Off: every task has one switch and one set of options, for all halls, and its card has no Lower Hall button. On: each task card gets a 'Different for Lower Hall' switch, and a task that has it on gets Lower Hall's own switch and options.",
         "editable": true
       },
       {
@@ -1300,19 +1310,19 @@
     "characters": [
       {
         "id": "id:1000001",
-        "name": "Character 4"
-      },
-      {
-        "id": "id:1000002",
         "name": "Character 5"
       },
       {
-        "id": "id:1000003",
+        "id": "id:1000002",
         "name": "Character 6"
       },
       {
+        "id": "id:1000003",
+        "name": "Character 10"
+      },
+      {
         "id": "id:1000004",
-        "name": "Character 7"
+        "name": "Character 9"
       },
       {
         "id": "id:1000005",
@@ -1320,23 +1330,23 @@
       },
       {
         "id": "id:1000006",
-        "name": "Character 9"
+        "name": "Character 7"
       },
       {
         "id": "id:1000007",
-        "name": "Character 10"
-      },
-      {
-        "id": "id:1000008",
         "name": "Character 1"
       },
       {
-        "id": "id:1000009",
+        "id": "id:1000008",
         "name": "Character 2"
       },
       {
-        "id": "id:1000010",
+        "id": "id:1000009",
         "name": "Character 3"
+      },
+      {
+        "id": "id:1000010",
+        "name": "Character 4"
       },
       {
         "id": "id:1000011",
@@ -1392,7 +1402,8 @@
     },
     "separate": {
       "label": "Different for Lower Hall",
-      "help": "Off: one on/off and one set of options, for Hall 24+ and Lower Hall alike. On: Lower Hall gets its own switch and its own options on this card."
+      "help": "Off: one on/off and one set of options, for Hall 24+ and Lower Hall alike. On: Lower Hall gets its own switch and its own options on this card.",
+      "shown_by": "lower_options"
     }
   }
 }
