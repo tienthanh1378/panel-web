@@ -131,33 +131,34 @@ function goings(who) {
   return out;
 }
 
-/** "Academy 24→25" -> "Academy": the name without the levels, for under a ring. */
-const nameOf = (text) => String(text || "").replace(/\s*\d.*$/, "").trim() || String(text || "");
-
-/** One circle with the percentage in it; the words (name, time left, a bar)
- *  show when it is tapped, under the row of circles. */
+/** One small circle with the number in it (15 Nov: beside the character's name,
+ *  not a row of its own); what it is - the name, time left, a bar - shows under
+ *  the card's resources when it is tapped. */
 function ring({ kind, slot, going }, who, view) {
   const fraction = going && going.fraction;
   const known = typeof fraction === "number" && Number.isFinite(fraction);
   const percent = known ? Math.round(Math.min(1, Math.max(0, fraction)) * 100) : 0;
   const key = `ring:${who.name}:${slot}`;
   const open = Boolean(view.open && view.open.has(key));
+  const words = `${kind}: ${going && going.text}${known ? `, ${percent}%` : ""}`;
   return `<button type="button" class="pr-btn pr-${kind.toLowerCase()}${open ? " pr-open" : ""}" data-open="${esc(key)}" aria-expanded="${open}" `
-    + `aria-label="${esc(kind)}: ${esc(going && going.text)}${known ? `, ${percent}%` : ""}">`
+    + `title="${esc(words)}" aria-label="${esc(words)}">`
     + '<svg class="pr" viewBox="0 0 40 40" aria-hidden="true">'
-    + '<circle class="pr-track" cx="20" cy="20" r="15.9155"/>'
-    + (known ? `<circle class="pr-arc" cx="20" cy="20" r="15.9155" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>` : "")
-    + `<text x="20" y="20" class="pr-text">${known ? `${percent}%` : "…"}</text></svg>`
-    + `<span class="pr-name">${esc(kind === "Research" ? "Research" : nameOf(going && going.text))}</span></button>`;
+    + '<circle class="pr-track" cx="20" cy="20" r="16"/>'
+    + (known ? `<circle class="pr-arc" cx="20" cy="20" r="16" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>` : "")
+    + `<text x="20" y="20" class="pr-text">${known ? percent : "…"}</text></svg></button>`;
 }
 
-/** The foot of a card: a circle each for the research and the buildings going
- *  up, and the full line of each one that was tapped. */
-function strips(who, view) {
+/** The circles for the research and the buildings going up, to sit after the name. */
+function rings(who, view) {
   const all = goings(who);
-  if (!all.length) return "";
-  const shown = all.filter(({ slot }) => view.open && view.open.has(`ring:${who.name}:${slot}`));
-  return `<div class="pr-row">${all.map((g) => ring(g, who, view)).join("")}</div>${shown.map(({ kind, going }) => strip(kind, going)).join("")}`;
+  return all.length ? `<span class="pr-mini">${all.map((g) => ring(g, who, view)).join("")}</span>` : "";
+}
+
+/** The full line of each circle that was tapped, at the foot of the card. */
+function strips(who, view) {
+  return goings(who).filter(({ slot }) => view.open && view.open.has(`ring:${who.name}:${slot}`))
+    .map(({ kind, going }) => strip(kind, going)).join("");
 }
 
 function card(who, ctx) {
@@ -170,7 +171,7 @@ function card(who, ctx) {
     + (number(gained[key]) > 0 ? `<small>+${esc(amount(gained[key]))}</small>` : "") + "</li>").join("");
   const known = facts(who);
   return `<article class="card who who-${status}"><div class="who-head">`
-    + `<span class="who-name">${esc(who.name)}</span>`
+    + `<span class="who-name">${esc(who.name)}${rings(who, view)}</span>`
     + (known ? `<span class="who-facts">${known}</span>` : "")
     + pill(who, ctx)
     + `</div><ul class="who-res">${resources}</ul>`

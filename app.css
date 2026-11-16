@@ -445,17 +445,16 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .pill-trouble { background: var(--danger-bg); color: var(--danger); }
 .pill-done { background: var(--ok-bg); color: var(--ok); }
 .pill-next { background: var(--warn-bg); color: var(--warn); }
-.pr-row { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); }
-.pr-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 66px; padding: 0; border: 0; background: none; color: var(--ink-soft); font: inherit; cursor: pointer; }
-.pr { width: 40px; height: 40px; }
-.pr-track { fill: none; stroke: var(--quiet); stroke-width: 3.6; }
-.pr-arc { fill: none; stroke: var(--accent); stroke-width: 3.6; stroke-linecap: round; transition: stroke-dasharray 0.6s var(--settle); }
+.pr-mini { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.pr-btn { display: inline-flex; padding: 0; border: 0; background: none; color: var(--ink-soft); font: inherit; cursor: pointer; border-radius: 50%; }
+.pr { width: 26px; height: 26px; }
+.pr-track { fill: none; stroke: var(--quiet); stroke-width: 4.4; }
+.pr-arc { fill: none; stroke: var(--accent); stroke-width: 4.4; stroke-linecap: round; transition: stroke-dasharray 0.6s var(--settle); }
 .pr-upgrade .pr-arc { stroke: var(--gold); }
-.pr-text { fill: var(--ink); font-size: 10px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
-.pr-name { max-width: 100%; font-size: 10px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pr-open .pr-name { color: var(--ink); font-weight: 700; }
-.pr-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
-.pr-row + .strip { margin-top: 8px; }
+.pr-text { fill: var(--ink); font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+.pr-open .pr-track { stroke: var(--rule); }
+.pr-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.strip { margin-top: 8px; }
 .strip { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-soft); }
 .strip-k { font-weight: 700; color: var(--ink); }
 .strip-bar { display: block; width: 100%; height: 5px; margin-top: 5px; border: 0; border-radius: 3px; overflow: hidden; background: var(--quiet); accent-color: var(--accent); appearance: none; }
