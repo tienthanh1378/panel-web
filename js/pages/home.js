@@ -8,9 +8,7 @@ import { EMPTY, dataOf, top } from "./parts.js";
 const WORD = { now: "Now", trouble: "Trouble", done: "Done", pending: "To come" };
 const RESOURCES = [["food", "Food"], ["wood", "Wood"], ["stone", "Stone"], ["gold", "Gold"]];
 // What the panel's Home shows before "Show all".
-const NEEDS_SHOWN = 4;
 const EVENTS_SHOWN = 4;
-const DETAIL_CUT = 90;
 // A running time longer than this means the PC's clock is not this device's.
 const RUNNING_LONGEST = 6 * 3600;
 
@@ -40,8 +38,6 @@ function clockOf(unixSeconds) {
   const two = (n) => String(n).padStart(2, "0");
   return `${two(d.getHours())}:${two(d.getMinutes())}:${two(d.getSeconds())}`;
 }
-
-const cut = (text) => (text.length > DETAIL_CUT ? `${text.slice(0, DETAIL_CUT - 1)}…` : text);
 
 /** The words for a task: the schema's, the run's own, or its id. */
 function labeller(schema) {
@@ -127,15 +123,45 @@ function strip(kind, going) {
     + "</div>";
 }
 
-/** The strip at the foot of a card: research, upgrades. */
-function strips(who) {
+/** What a card has going: research, and up to two buildings (15 Nov). */
+function goings(who) {
   const out = [];
-  if (who.research && typeof who.research === "object") out.push(strip("Research", who.research));
-  for (const up of list(who.upgrades)) out.push(strip("Upgrade", up));
-  return out.join("");
+  if (who.research && typeof who.research === "object") out.push({ kind: "Research", slot: "r", going: who.research });
+  list(who.upgrades).slice(0, 2).forEach((up, i) => out.push({ kind: "Upgrade", slot: `u${i}`, going: up }));
+  return out;
+}
+
+/** "Academy 24→25" -> "Academy": the name without the levels, for under a ring. */
+const nameOf = (text) => String(text || "").replace(/\s*\d.*$/, "").trim() || String(text || "");
+
+/** One circle with the percentage in it; the words (name, time left, a bar)
+ *  show when it is tapped, under the row of circles. */
+function ring({ kind, slot, going }, who, view) {
+  const fraction = going && going.fraction;
+  const known = typeof fraction === "number" && Number.isFinite(fraction);
+  const percent = known ? Math.round(Math.min(1, Math.max(0, fraction)) * 100) : 0;
+  const key = `ring:${who.name}:${slot}`;
+  const open = Boolean(view.open && view.open.has(key));
+  return `<button type="button" class="pr-btn pr-${kind.toLowerCase()}${open ? " pr-open" : ""}" data-open="${esc(key)}" aria-expanded="${open}" `
+    + `aria-label="${esc(kind)}: ${esc(going && going.text)}${known ? `, ${percent}%` : ""}">`
+    + '<svg class="pr" viewBox="0 0 40 40" aria-hidden="true">'
+    + '<circle class="pr-track" cx="20" cy="20" r="15.9155"/>'
+    + (known ? `<circle class="pr-arc" cx="20" cy="20" r="15.9155" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>` : "")
+    + `<text x="20" y="20" class="pr-text">${known ? `${percent}%` : "…"}</text></svg>`
+    + `<span class="pr-name">${esc(kind === "Research" ? "Research" : nameOf(going && going.text))}</span></button>`;
+}
+
+/** The foot of a card: a circle each for the research and the buildings going
+ *  up, and the full line of each one that was tapped. */
+function strips(who, view) {
+  const all = goings(who);
+  if (!all.length) return "";
+  const shown = all.filter(({ slot }) => view.open && view.open.has(`ring:${who.name}:${slot}`));
+  return `<div class="pr-row">${all.map((g) => ring(g, who, view)).join("")}</div>${shown.map(({ kind, going }) => strip(kind, going)).join("")}`;
 }
 
 function card(who, ctx) {
+  const view = ctx.view;
   const status = word(who.status, "pending");
   const held = who.resources || {};
   const gained = who.gained || {};
@@ -148,7 +174,7 @@ function card(who, ctx) {
     + (known ? `<span class="who-facts">${known}</span>` : "")
     + pill(who, ctx)
     + `</div><ul class="who-res">${resources}</ul>`
-    + strips(who)
+    + strips(who, view)
     + "</article>";
 }
 
@@ -174,14 +200,19 @@ function needsLook(live) {
 
 function needs(live, view, label) {
   const found = needsLook(live);
-  const all = Boolean(view.open && view.open.has("more:needs"));
-  const rows = (all ? found : found.slice(0, NEEDS_SHOWN)).map(({ who, run }) => {
-    const detail = cut(String(run.detail || ""));
+  const open = found.length > 0 && Boolean(view.open && view.open.has("more:needs"));
+  const title = `Needs a look · ${found.length || "all clear"}`;
+  // Closed it is its number and nothing else (15 Nov); a tap opens every line.
+  const head = found.length
+    ? `<button type="button" class="needs-head" data-open="more:needs" aria-expanded="${open}"><h2>${title}</h2><span class="needs-chev" aria-hidden="true"></span></button>`
+    : `<h2>${title}</h2>`;
+  const rows = open ? found.map(({ who, run }) => {
+    const detail = String(run.detail || "");
     return `<li class="need need-${run.state === "failed" ? "failed" : "nothing"}"><b>${esc(who.name)}</b> `
       + `${esc(label(run.id, list(who.runs)))}${detail ? ` · ${esc(detail)}` : ""}</li>`;
-  }).join("");
-  return `<section class="card needs${found.length ? "" : " needs-clear"}"><h2>Needs a look · ${found.length || "all clear"}</h2>`
-    + (rows ? `<ul>${rows}</ul>` : "") + more(view, "needs", found.length, NEEDS_SHOWN) + "</section>";
+  }).join("") : "";
+  return `<section class="card needs${found.length ? "" : " needs-clear"}${open ? " needs-open" : ""}">${head}`
+    + (rows ? `<ul>${rows}</ul>` : "") + "</section>";
 }
 
 /** The cycle's progress as the panel shows it: a dial with the number, and a
@@ -226,16 +257,19 @@ const countdown = (unixSeconds, now) => {
  *  while it runs, who is at work. `line` is what the status line should say,
  *  short where the block says the rest. */
 function focus(status, live, mode, now, fallback) {
-  const block = (kind, label, value, sub) => `<div class="next next-${kind}"><span class="next-k">${label}</span>`
+  // The block carries the state too (15 Nov): its dot, and its label's words -
+  // a line under it saying "Waiting" said the same thing twice. `line` is
+  // empty when the block has said it.
+  const block = (kind, label, value, sub) => `<div class="next next-${kind} pc-${mode}"><span class="next-k"><span class="dot"></span>${label}</span>`
     + `<b class="next-v">${value}</b>${sub ? `<span class="next-sub">${sub}</span>` : ""}</div>`;
   if (mode === "waiting" && typeof status.next_cycle_at === "number")
-    return { html: block("waiting", "Next cycle", when(status.next_cycle_at, now), countdown(status.next_cycle_at, now)), line: "Waiting" };
+    return { html: block("waiting", "Waiting · next cycle", when(status.next_cycle_at, now), countdown(status.next_cycle_at, now)), line: "" };
   if (mode === "asleep" && typeof status.asleep_until === "number")
-    return { html: block("asleep", "PC asleep · back at", when(status.asleep_until, now), countdown(status.asleep_until, now)), line: "Asleep" };
+    return { html: block("asleep", "PC asleep · back at", when(status.asleep_until, now), countdown(status.asleep_until, now)), line: "" };
   const doing = list(live.characters).find((who) => who && who.status === "now");
   if (mode === "running" && doing) {
     const after = typeof live.next === "string" && live.next ? `Next: ${esc(live.next)}` : "";
-    return { html: block("now", "Now", esc(doing.name), after), line: fallback };
+    return { html: block("now", "Running now", esc(doing.name), after), line: "" };
   }
   return { html: "", line: fallback };
 }
@@ -276,9 +310,9 @@ export function render(store, view, now) {
   const ran = number(live.last_cycle_seconds);
   const last = ran > 0 ? ` · last run ${ran < 30 ? "&lt;1" : Math.round(ran / 60)} min` : "";
   const cycle = number(live.cycle)
-    ? `<p class="top-sub">Cycle ${number(live.cycle)} · ${number(totals.characters_done)} of ${number(totals.characters_total)} characters${last}</p>` : "";
+    ? `<p class="top-sub">Cycle ${number(live.cycle)}${last}</p>` : "";
   const header = top("Home", store, "live", view, now,
-    `${next.html}<div class="hero">${dial}<div class="hero-text">${line(next.line)}${cycle}</div></div>${bar}`);
+    `${next.html}<div class="hero">${dial}<div class="hero-text">${next.line ? line(next.line) : ""}${cycle}</div></div>${bar}`);
 
   // [what it shows, its name, its colour, whether it is a plain number that can count up]
   const tiles = [
@@ -293,7 +327,7 @@ export function render(store, view, now) {
 
   const label = labeller(schema);
   const ctx = {
-    label, running: mode === "running", clock: clockOf(store.state.files.live.at),
+    label, view, running: mode === "running", clock: clockOf(store.state.files.live.at),
     // contract 2 says who is next; a file of contract 1 does not
     next: typeof live.next === "string" ? live.next
       : (list(live.characters).find((who) => who.status === "pending") || {}).name,
