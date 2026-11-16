@@ -131,27 +131,25 @@ function goings(who) {
   return out;
 }
 
-/** One small circle with the number in it (15 Nov: beside the character's name,
- *  not a row of its own); what it is - the name, time left, a bar - shows under
- *  the card's resources when it is tapped. */
-function ring({ kind, slot, going }, who, view) {
+/** One small circle with its picture in the middle - a book for research, a
+ *  house for a building (15 Nov). Any of them opens all of the card's lines:
+ *  what each is, the time left and a bar. */
+function ring({ kind, going }, who, view) {
   const fraction = going && going.fraction;
   const known = typeof fraction === "number" && Number.isFinite(fraction);
   const percent = known ? Math.round(Math.min(1, Math.max(0, fraction)) * 100) : 0;
-  const key = `ring:${who.name}:${slot}`;
+  const key = `ring:${who.name}`;
   const open = Boolean(view.open && view.open.has(key));
   const words = `${kind}: ${going && going.text}${known ? `, ${percent}%` : ""}`;
-  // What it is, before the circle: a book for research, a house for a building.
   const icon = kind === "Research"
     ? '<path d="M12 6.5v14M12 6.5 7 4.5 3 5v13.5l4-.5 5 2.5zM12 6.5l5-2 4 .5v13.5l-4-.5-5 2.5z"/>'
     : '<path d="M3 12 12 4l9 8M6 11v9h12v-9M10 20v-5h4v5"/>';
   return `<button type="button" class="pr-btn pr-${kind.toLowerCase()}${open ? " pr-open" : ""}" data-open="${esc(key)}" aria-expanded="${open}" `
     + `title="${esc(words)}" aria-label="${esc(words)}">`
-    + `<svg class="pr-ico" viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>`
     + '<svg class="pr" viewBox="0 0 40 40" aria-hidden="true">'
     + '<circle class="pr-track" cx="20" cy="20" r="16"/>'
     + (known ? `<circle class="pr-arc" cx="20" cy="20" r="16" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>` : "")
-    + `<text x="20" y="20" class="pr-text">${known ? percent : "…"}</text></svg></button>`;
+    + `<svg class="pr-ico" x="10" y="10" width="20" height="20" viewBox="0 0 24 24">${icon}</svg></svg></button>`;
 }
 
 /** The circles for the research and the buildings going up, to sit after the name. */
@@ -160,10 +158,11 @@ function rings(who, view) {
   return all.length ? `<span class="pr-mini">${all.map((g) => ring(g, who, view)).join("")}</span>` : "";
 }
 
-/** The full line of each circle that was tapped, at the foot of the card. */
+/** The full lines at the foot of the card - research and both buildings - while
+ *  the circles are open. */
 function strips(who, view) {
-  return goings(who).filter(({ slot }) => view.open && view.open.has(`ring:${who.name}:${slot}`))
-    .map(({ kind, going }) => strip(kind, going)).join("");
+  if (!(view.open && view.open.has(`ring:${who.name}`))) return "";
+  return goings(who).map(({ kind, going }) => strip(kind, going)).join("");
 }
 
 function card(who, ctx) {
