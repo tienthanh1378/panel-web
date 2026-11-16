@@ -23,6 +23,59 @@ const BRIEFS = {
   "Web sync": "Show the panel on this page and take its changes back.",
 };
 
+const on = (v) => v === true || v === "true" || v === 1;
+const num = (v, otherwise = 0) => (Number.isFinite(Number(v)) && v !== "" && v !== null ? Math.trunc(Number(v)) : otherwise);
+const span = (h, m) => {
+  const hours = num(h), minutes = num(m);
+  return hours && minutes ? `${hours}h ${minutes}m` : (hours ? `${hours}h` : `${minutes}m`);
+};
+const clock = (h, m) => `${String(num(h)).padStart(2, "0")}:${String(num(m)).padStart(2, "0")}`;
+const WHO = { current: "Current character only", next: "Change 1 character", all: "All characters" };
+const GAMES = { first: "First game only", second: "Second game only", both: "Both games" };
+
+/** What a closed group is set to now, in a line; "" when there is nothing to say
+ *  (the page then shows what the group is for). */
+export function summary(heading, v) {
+  const ticked = Array.isArray(v.chosen_characters)
+    ? v.chosen_characters.filter((c) => !Array.isArray(c) || c[1]).length : 0;
+  switch (heading) {
+    case "Characters":
+      return v.characters === "chosen" ? `${ticked} chosen` : (WHO[v.characters] || "");
+    case "Timer":
+      if (!on(v.repeat)) return "Runs once";
+      return `Repeats every ${span(v.wait_hours, v.wait_minutes)}`
+        + (v.wait_max_hours === undefined && v.wait_max_minutes === undefined ? ""
+          : ` to ${span(v.wait_max_hours, v.wait_max_minutes)}`);
+    case "Active hours":
+      if (on(v.start_at) && on(v.end_at)) return `${clock(v.start_hour, v.start_minute)} to ${clock(v.end_hour, v.end_minute)}`;
+      if (on(v.start_at)) return `From ${clock(v.start_hour, v.start_minute)}`;
+      if (on(v.end_at)) return `Until ${clock(v.end_hour, v.end_minute)}`;
+      return "Any time of day";
+    case "Run which game":
+      return GAMES[v.run_games] || "";
+    case "Both games":
+      return [on(v.launch_game) ? "Starts a game if needed" : "", on(v.close_game) ? "closes it while waiting" : ""]
+        .filter(Boolean).join(", ") || "Left running";
+    case "Report time zone":
+      return v.report_zone === "utc" ? "UTC days" : (v.report_zone ? "My time zone's days" : "");
+    case "Keep history for":
+      return v.keep_days === undefined ? "" : `${num(v.keep_days)} days`;
+    case "Startup":
+      return v.always_admin === undefined ? "" : (on(v.always_admin) ? "Starts as administrator" : "Starts normally");
+    case "Screen off": {
+      if (on(v.keep_awake_between)) return "Keeps the PC awake between runs";
+      const parts = [];
+      if (on(v.screen_off_at_end)) parts.push("off after the run");
+      if (on(v.screen_off_repeat)) parts.push(`off every ${num(v.screen_off_x, 15)} min`);
+      if (on(v.hibernate_cycles)) parts.push("hibernates between cycles");
+      const text = parts.join(", ");
+      return text ? text[0].toUpperCase() + text.slice(1) : "Screen stays on";
+    }
+    default:
+      return "";
+  }
+}
+
 const chevron = (key, open) =>
   `<button type="button" class="chev" data-open="${esc(key)}" aria-expanded="${open ? "true" : "false"}" `
   + `aria-label="${open ? "Hide" : "Show"} the details">${open ? "▾" : "▸"}</button>`;
@@ -69,7 +122,8 @@ export function render(store, view, now) {
   const drawn = groups(schema.settings || []).map((group) => {
     const key = `set:${group.heading}`;
     const shown = open(key);
-    const line = BRIEFS[group.heading] ? `<p class="brief" data-open="${esc(key)}">${esc(BRIEFS[group.heading])}</p>` : "";
+    const words = summary(group.heading, values) || BRIEFS[group.heading] || "";
+    const line = words ? `<p class="brief" data-open="${esc(key)}">${esc(words)}</p>` : "";
     return `<section class="group fold${shown ? " open" : ""}">`
     + (group.heading ? `<div class="fold-head" data-open="${esc(key)}">${chevron(key, shown)}<h2>${esc(group.heading)}</h2></div>${line}` : "")
     + `<div class="card fold-body"${shown || !group.heading ? "" : " hidden"}>`
