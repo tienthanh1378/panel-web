@@ -446,7 +446,9 @@ h4 { font-size: 11px; font-weight: 600; color: var(--ink-faint); margin: 12px 0 
 .pill-done { background: var(--ok-bg); color: var(--ok); }
 .pill-next { background: var(--warn-bg); color: var(--warn); }
 .pr-mini { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
-.pr-btn { display: inline-flex; padding: 0; border: 0; background: none; color: var(--ink-soft); font: inherit; cursor: pointer; border-radius: 50%; }
+.pr-ico { width: 13px; height: 13px; flex: none; fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pr-upgrade .pr-ico { stroke: var(--gold); }
+.pr-btn { display: inline-flex; align-items: center; gap: 2px; padding: 0; border: 0; background: none; color: var(--ink-soft); font: inherit; cursor: pointer; border-radius: 50%; }
 .pr { width: 26px; height: 26px; }
 .pr-track { fill: none; stroke: var(--quiet); stroke-width: 4.4; }
 .pr-arc { fill: none; stroke: var(--accent); stroke-width: 4.4; stroke-linecap: round; transition: stroke-dasharray 0.6s var(--settle); }

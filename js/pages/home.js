@@ -141,8 +141,13 @@ function ring({ kind, slot, going }, who, view) {
   const key = `ring:${who.name}:${slot}`;
   const open = Boolean(view.open && view.open.has(key));
   const words = `${kind}: ${going && going.text}${known ? `, ${percent}%` : ""}`;
+  // What it is, before the circle: a book for research, a house for a building.
+  const icon = kind === "Research"
+    ? '<path d="M12 6.5v14M12 6.5 7 4.5 3 5v13.5l4-.5 5 2.5zM12 6.5l5-2 4 .5v13.5l-4-.5-5 2.5z"/>'
+    : '<path d="M3 12 12 4l9 8M6 11v9h12v-9M10 20v-5h4v5"/>';
   return `<button type="button" class="pr-btn pr-${kind.toLowerCase()}${open ? " pr-open" : ""}" data-open="${esc(key)}" aria-expanded="${open}" `
     + `title="${esc(words)}" aria-label="${esc(words)}">`
+    + `<svg class="pr-ico" viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>`
     + '<svg class="pr" viewBox="0 0 40 40" aria-hidden="true">'
     + '<circle class="pr-track" cx="20" cy="20" r="16"/>'
     + (known ? `<circle class="pr-arc" cx="20" cy="20" r="16" pathLength="100" stroke-dasharray="${percent} 100" transform="rotate(-90 20 20)"/>` : "")
